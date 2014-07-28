@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<widget xmlns     = "http://www.w3.org/ns/widgets"
+        xmlns:gap = "http://phonegap.com/ns/1.0"
+        id        = "com.elderflower"
+        version   = "1.0.0">
+    
+    <name>Elderflower</name>
+    
+    <description>
+        Tap the right tile - it's harder than you think!
+    </description>
+    
+    <author href="http://flippeethegame.blogspot.com/" email="richard.scales@live.com">
+        Richard Scales
+    </author>
+    
+    <!-- Preferences -->
+    <preference name="permissions" value="none"/>
+    <preference name="orientation" value="portrait" />
+    <preference name="stay-in-webview" value="false" />
+    
+    <preference name="android-minSdkVersion" value="16" />
+    
+    <!-- Icons -->
+    <icon src="icon.png" />
+    
+    <!-- Android Icons -->
+    <platform name="android">
+        <icon src="res/drawable-mdpi/ic_launcher.png" density="mdpi" />
+        <icon src="res/drawable-hdpi/ic_launcher.png" density="hdpi" />
+        <icon src="res/drawable-xhdpi/ic_launcher.png" density="xhdpi" />
+        <icon src="res/drawable-xxhdpi/ic_launcher.png" density="xxhdpi" />
+        <icon src="res/drawable-xxxhdpi/ic_launcher.png" density="xxxhdpi" />
+     </platform>
+    
+    <gap:platform name="ios" />
+    
+    <!-- Plugins -->
+    <gap:plugin name="org.apache.cordova.device" />
+    <gap:plugin name="com.phonegap.plugins.childbrowser" version="5.0.0" />
+
+    <!-- Access -->
+    <access origin="*" />
+</widget>
