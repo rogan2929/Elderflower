@@ -24,7 +24,11 @@ and open the template in the editor.
 }
 
 .tile {
-    
+    display: inline-block;
+}
+
+.hidden {
+    display: none;
 }
 
 .color1 {
@@ -83,11 +87,46 @@ and open the template in the editor.
     position: absolute;
 }
 
-.fill-horizontal {
+.relative {
+    position: relative;
+}
+
+absolute.fill-horizontal {
     left: 0;
     right: 0;
 }
 
+absolute.fill-vertical {
+    top : 0;
+    bottom: 0;
+}
+
+.fill-horizontal {
+    width: 100%;
+}
+
+.fill-vertical {
+    height: 100%;
+}
+
 .margin-auto {
     margin: auto;
+}
+
+.header {
+    position: absolute;
+    top: 0;
+    height: 60px;
+    line-height: 60px;
+    left: 0;
+    right: 0;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 50px;
+    line-height: 50px;
 }
