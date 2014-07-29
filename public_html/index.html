@@ -27,18 +27,42 @@ and open the template in the editor.
             }
         </script>
 
-        <script src="js/mobileinit.js"></script>
-        <script src="js/vendor/jquery.mobile-1.4.3.min.js"></script>    
+        <script src="js/mobileinit.js" type="text/javascript"></script>
+        <script src="js/vendor/jquery.mobile-1.4.3.min.js" type="text/javascript"></script>    
         <script src='http://my.mobfox.com/ad.js'></script>
-
+        
+        <script src="js/event-bus.js" type="text/javascript"></script>
+        <script src="js/game-view.js" type="text/javascript"></script>
+        <script src="js/game-presenter.js" type="text/javascript"></script>
         <script src="js/main.js"></script>
     </head>
 
     <body>
-        <div id='instructions'></div>
-        
+        <div id='game' data-role='page'>
+            <div id='tile1' class='tile color1'></div>
+            <div id='tile2' class='tile color2'></div>
+            <div id='tile3' class='tile color3'></div>
+            <div id='tile4' class='tile color4'></div>
+            <div id='tile5' class='tile color5'></div>
+            <div id='tile6' class='tile color6'></div>
+            <div id='tile7' class='tile color7'></div>
+            <div id='tile8' class='tile color8'></div>
+        </div>
+
         <div id='main' data-role='page'>
-            <span class='ui-title ui-bar'>Elderflower</span>
+            <h2 class='ui-title ui-bar h-centered'>MENU</h2>
+
+            <div class='ui-content h-centered half absolute fill-horizontal margin-auto'>
+                <a href='#game' id='btn-resume' class='ui-btn'>Resume</a>
+                <a href='#game' id='btn-new' class='ui-btn'>New Game</a>
+                <a href='#instructions' class='ui-btn'>Instructions</a>
+                <a href='#leaderboard' class='ui-btn'>Leaderboard</a>
+                <a href='#' id='btn-rate' class='ui-btn'>Feedback</a>
+            </div>
+        </div>
+
+        <div id='instructions' data-role='page'>
+            TODO: Instructions go here.
         </div>
     </body>
 </html>

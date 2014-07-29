@@ -8,3 +8,86 @@ and open the template in the editor.
     Author     : rogan2929
 */
 
+* {
+    /* Disable all of those annoying little zoom and selection features that browsers sometimes have. */
+    -webkit-user-drag: none;
+    -webkit-user-modify: none;
+    -webkit-highlight: none;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+    font-family: Verdana, Geneva, sans-serif;
+}
+
+.tile {
+    
+}
+
+.color1 {
+    background-color: #ffd761;
+}
+
+.color2 {
+    background-color: #90d3f0;
+}
+
+.color3 {
+    background-color: #f6898c;
+}
+
+.color4 {
+    background-color: #a1d162;
+}
+
+.color5 {
+    background-color: #e7d5c1;
+}
+
+.color6 {
+    background-color: #4FE7E7;
+}
+
+.color7 {
+    background-color: #FFF12A;
+}
+
+.color8 {
+    background-color: #C299F7;
+}
+
+.h-centered {
+    text-align: center;
+}
+
+.quarter {
+    width: 25%;
+    max-width: 150px;
+}
+
+
+.third {
+    width: 33%;
+    max-width: 200px;
+}
+
+.half {
+    width: 50%;
+    max-width: 300px;
+}
+
+.absolute {
+    position: absolute;
+}
+
+.fill-horizontal {
+    left: 0;
+    right: 0;
+}
+
+.margin-auto {
+    margin: auto;
+}

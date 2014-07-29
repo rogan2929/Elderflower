@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 
-$(document).on('pagebeforeshow', '#game', function(e) {
-    gamePresenter.init();
-});
+var gameView = {
+    init: function() {
+        
+    }
+};
