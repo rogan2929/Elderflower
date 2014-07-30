@@ -34,6 +34,8 @@ var gamePresenter = {
         gameView.clearTiles();
         
         gameView.loadTiles(gamePresenter.GRID_LENGTH, gamePresenter.tiles);
+        
+        eventBus.installHandler('gamePresenter.onTapTile', gamePresenter.onTapTile, '.tile', 'tap');
     },
     /**
      * Generate tile values and colors.
@@ -56,5 +58,8 @@ var gamePresenter = {
             
             gamePresenter.tiles.push(new Tile(value, rnd));
         }
+    },
+    onTapTile: function() {
+        alert('test');
     }
 };

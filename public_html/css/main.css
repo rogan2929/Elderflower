@@ -25,6 +25,13 @@ and open the template in the editor.
 
 .tile {
     display: inline-block;
+    text-shadow: none !important;
+}
+
+.bevel-shadow {
+    -webkit-box-shadow: 3px 3px 5px 0px rgba(50, 50, 50, 0.75), inset 0 0 15px 0px rgba(50, 50, 50, 0.75);
+    -moz-box-shadow:    3px 3px 5px 0px rgba(50, 50, 50, 0.75), inset 0 0 15px 0px rgba(50, 50, 50, 0.75);
+    box-shadow:         3px 3px 5px 0px rgba(50, 50, 50, 0.75), inset 0 0 15px 0px rgba(50, 50, 50, 0.75);
 }
 
 .hidden {
@@ -122,11 +129,23 @@ absolute.fill-vertical {
     right: 0;
 }
 
-.footer {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
+.middle {
+    top: 55px;
+    bottom: 55px;
+}
+
+.header {
+    top: 0;
     height: 50px;
     line-height: 50px;
+}
+
+.footer {
+    bottom: 0;
+    height: 50px;
+    line-height: 50px;
+}
+
+.ad-bar {
+    background: #ccccff;
 }
