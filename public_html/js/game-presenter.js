@@ -30,27 +30,27 @@ var gamePresenter = {
         gameView.colors.push('color8');
 
         gamePresenter.generateTiles();
-        
+
         gameView.clearTiles();
-        
+
         gameView.loadTiles(gamePresenter.GRID_LENGTH, gamePresenter.tiles);
-        
+
         eventBus.installHandler('gamePresenter.onTapTile', gamePresenter.onTapTile, '.tile', 'tap');
     },
-			generateTile: function() {
-						var tile, color, value;
-						
-					 value = Math.ceil((Math.random() * gamePresenter.MAX_TILE_SIZE));
+    generateTile: function() {
+        var tile, color, value;
+
+        value = Math.ceil((Math.random() * gamePresenter.MAX_TILE_SIZE));
         color = Math.ceil((Math.random() * gamePresenter.MAX_TILE_SIZE));
-            
+
         while (value === color) {
             color = Math.ceil((Math.random() * gamePresenter.MAX_TILE_SIZE));
         }
 
-						tile = new Tile(value, color);
-						
-						return tile;
-			},
+        tile = new Tile(value, color);
+
+        return tile;
+    },
     /**
      * Generate tile values and colors.
      */
@@ -61,15 +61,15 @@ var gamePresenter = {
         gamePresenter.tiles = [];
 
         gridSquare = gamePresenter.GRID_LENGTH * gamePresenter.GRID_LENGTH;
-	
-							for (i = 0; i < gridSquare; i++) {
-           tile = gamePresenter.generateTile();
-								
-									while ($.inArray(tile, gamePresenter.tiles) != -1) {
-										 		tile = gamePresenter.generateTile();
-									}
-            
-           gamePresenter.tiles.push(tile);
+
+        for (i = 0; i < gridSquare; i++) {
+            tile = gamePresenter.generateTile();
+
+            while ($.inArray(tile, gamePresenter.tiles) !== -1) {
+                tile = gamePresenter.generateTile();
+            }
+
+            gamePresenter.tiles.push(tile);
         }
     },
     onTapTile: function() {

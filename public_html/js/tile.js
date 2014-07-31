@@ -12,7 +12,8 @@
 function Tile(value, color) {
     this.value = value;
     this.color = color;
-};
+}
+;
 
 /**
  * Setter for value.
@@ -47,9 +48,10 @@ Tile.prototype.getColor = function() {
 };
 
 /**
-* Equals operator function
-* @returns {type}
-*/
+ * Equals operator function
+ * @param {Tile} tile
+ * @returns {type}
+ */
 Tile.prototype.equals = function(tile) {
-			return (this.value === tile.value && this.color === tile.color);
-}
+    return (this.value === tile.value && this.color === tile.color);
+};
