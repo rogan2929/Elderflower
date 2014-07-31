@@ -120,15 +120,6 @@ absolute.fill-vertical {
     margin: auto;
 }
 
-.header {
-    position: absolute;
-    top: 0;
-    height: 60px;
-    line-height: 60px;
-    left: 0;
-    right: 0;
-}
-
 .middle {
     top: 55px;
     bottom: 55px;
@@ -138,6 +129,7 @@ absolute.fill-vertical {
     top: 0;
     height: 50px;
     line-height: 50px;
+			 background-color: green;
 }
 
 .footer {
