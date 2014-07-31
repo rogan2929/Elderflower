@@ -44,4 +44,12 @@ Tile.prototype.setColor = function(color) {
  */
 Tile.prototype.getColor = function() {
     return this.color;
+};
+
+/**
+* Equals operator function
+* @returns {type}
+*/
+Tile.prototype.equals = function(tile) {
+			return (this.value === tile.value && this.color === tile.color);
 }

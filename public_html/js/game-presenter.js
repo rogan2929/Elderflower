@@ -37,26 +37,39 @@ var gamePresenter = {
         
         eventBus.installHandler('gamePresenter.onTapTile', gamePresenter.onTapTile, '.tile', 'tap');
     },
+			generateTile: function() {
+						var tile, color, value;
+						
+					 value = Math.ceil((Math.random() * gamePresenter.MAX_TILE_SIZE));
+        color = Math.ceil((Math.random() * gamePresenter.MAX_TILE_SIZE));
+            
+        while (value === color) {
+            color = Math.ceil((Math.random() * gamePresenter.MAX_TILE_SIZE));
+        }
+
+						tile = new Tile(value, color);
+						
+						return tile;
+			},
     /**
      * Generate tile values and colors.
      */
     generateTiles: function() {
-        var value, i, gridSquare, rnd;
+        var value, i, gridSquare, color, tile;
 
         values = [];
         gamePresenter.tiles = [];
 
         gridSquare = gamePresenter.GRID_LENGTH * gamePresenter.GRID_LENGTH;
-
-        for (i = 0; i < gridSquare; i++) {
-            value = Math.ceil((Math.random() * gamePresenter.MAX_TILE_SIZE));
-            rnd = Math.ceil((Math.random() * gamePresenter.MAX_TILE_SIZE));
+	
+							for (i = 0; i < gridSquare; i++) {
+           tile = gamePresenter.generateTile();
+								
+									while ($.inArray(tile, gamePresenter.tiles) != -1) {
+										 		tile = gamePresenter.generateTile();
+									}
             
-            while (value === rnd) {
-                rnd = Math.ceil((Math.random() * gamePresenter.MAX_TILE_SIZE));
-            }
-            
-            gamePresenter.tiles.push(new Tile(value, rnd));
+           gamePresenter.tiles.push(tile);
         }
     },
     onTapTile: function() {
