@@ -9,70 +9,118 @@ var gamePresenter = {
     MIN_TILE_SIZE: 1,
     MAX_TILE_SIZE: 8,
     GRID_LENGTH: 5,
+    MAX_CHANCES: 3,
+    LOOP_TICK: 2600,
     // Variables
     colors: null,
     tiles: null,
+    loopInterval: null,
+    newGame: true,
+    score: 0,
+    chances: 0,
     /**
      * Entry point.
      */
     init: function() {
-        gameView.init();
+        if (gamePresenter.newGame) {
+            gameView.init();
 
-        gameView.colors = [];
+            gameView.colors = [];
 
-        gameView.colors.push('color1');
-        gameView.colors.push('color2');
-        gameView.colors.push('color3');
-        gameView.colors.push('color4');
-        gameView.colors.push('color5');
-        gameView.colors.push('color6');
-        gameView.colors.push('color7');
-        gameView.colors.push('color8');
+            gameView.colors.push('color1');
+            gameView.colors.push('color2');
+            gameView.colors.push('color3');
+            gameView.colors.push('color4');
+            gameView.colors.push('color5');
+            gameView.colors.push('color6');
+            gameView.colors.push('color7');
+            gameView.colors.push('color8');
 
-        gamePresenter.generateTiles();
-
-        gameView.clearTiles();
-
-        gameView.loadTiles(gamePresenter.GRID_LENGTH, gamePresenter.tiles);
-
-        eventBus.installHandler('gamePresenter.onTapTile', gamePresenter.onTapTile, '.tile', 'tap');
-    },
-    generateTile: function() {
-        var tile, color, value;
-
-        value = Math.ceil((Math.random() * gamePresenter.MAX_TILE_SIZE));
-        color = Math.ceil((Math.random() * gamePresenter.MAX_TILE_SIZE));
-
-        while (value === color) {
-            color = Math.ceil((Math.random() * gamePresenter.MAX_TILE_SIZE));
+            gamePresenter.score = 0;
+            
+            gamePresenter.chances = gamePresenter.MAX_CHANCES;
         }
 
-        tile = new Tile(value, color);
+        // Event Handling
+        eventBus.installHandler('gamePresenter.onTapTile', gamePresenter.onTapTile, '.tile', 'tap');
 
-        return tile;
+        // Start the game loop.
+        gamePresenter.resetLoop();
     },
     /**
-     * Generate tile values and colors.
+     * Finish the game.
+     * @param {type} victory
      */
-    generateTiles: function() {
-        var value, i, gridSquare, color, tile;
-
-        values = [];
-        gamePresenter.tiles = [];
-
-        gridSquare = gamePresenter.GRID_LENGTH * gamePresenter.GRID_LENGTH;
-
-        for (i = 0; i < gridSquare; i++) {
-            tile = gamePresenter.generateTile();
-
-            while (gamePresenter.tiles.contains(tile)) {
-                tile = gamePresenter.generateTile();
-            }
-
-            gamePresenter.tiles.push(tile);
+    finishGame: function(victory) {
+        // Stop the loop.
+        gamePresenter.stopLoop();
+        
+        if (victory) {
+            alert('victory!');
+        }
+        else {
+            alert('loser!');
         }
     },
+    /**
+     * Load tiles.
+     */
+    loadTiles: function() {
+        gamePresenter.tiles = tileFactory.generateTiles();
+
+        // Populate the interface.
+        gameView.clearTiles();
+        gameView.loadTiles(gamePresenter.GRID_LENGTH, gamePresenter.tiles);
+    },
+    /**
+     * The main game loop function.
+     */
+    loop: function() {
+        // Main game loop is as follows.
+        // 1. Show colored number, then hide it.
+        // 2. Load tiles.
+        // 3. Decrement chances if correct tile was not tapped.
+
+        gamePresenter.loadTiles();
+        
+        gamePresenter.chances--;
+        
+        console.log(gamePresenter.chances);
+        
+        if (gamePresenter.chances <= 0) {
+            gamePresenter.finishGame(false);
+        }
+    },
+    /**
+     * Reset the game loop.
+     */
+    resetLoop: function() {
+        if (gamePresenter.loopInterval) {
+            clearInterval(gamePresenter.loopInterval);
+            gamePresenter.loopInterval = null;
+        }
+
+        gamePresenter.loopInterval = setInterval(gamePresenter.loop, gamePresenter.LOOP_TICK);
+    },
+    /**
+     * Stop the game loop.
+     */
+    stopLoop: function() {
+        if (gamePresenter.loopInterval) {
+            clearInterval(gamePresenter.loopInterval);
+            gamePresenter.loopInterval = null;
+        }
+    },
+    /**
+     * onTapTile
+     */
     onTapTile: function() {
-        alert('test');
+        // Evaluate if correct tile was tapped.
+        // If it was:
+        // 1. Stop Timer.
+        // 2. Increase score, taking into account how many correct in a row.
+        // 3. Restart the loop.
+
+        gamePresenter.stopLoop();
     }
 };

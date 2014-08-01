@@ -26,7 +26,7 @@ and open the template in the editor.
 .tile {
     display: inline-block;
     text-shadow: none !important;
-    margin: 5px;
+    margin: 4px;
 }
 
 .bevel-shadow {

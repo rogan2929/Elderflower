@@ -17,12 +17,12 @@ var gameView = {
      * @param {type} tiles
      */
     loadTiles: function(gridSize, tiles) {
-        var html, i, j, width, tile, color, value, margin, textSize, containerSize;
+        var html, i, j, width, tile, color, value, textSize;
 
         containerWidth = $(window).width();
 
         $('#tile-container').fadeOut(constants.ANIMATION_LENGTH / 2, function() {
-            width = containerWidth / gridSize - 10;
+            width = containerWidth / gridSize - 8;
             textSize = (width / 3);
 
             html = $('#tile-template').html();
