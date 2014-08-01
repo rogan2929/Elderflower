@@ -65,7 +65,7 @@ var gamePresenter = {
         for (i = 0; i < gridSquare; i++) {
             tile = gamePresenter.generateTile();
 
-            while ($.inArray(tile, gamePresenter.tiles) !== -1) {
+            while (gamePresenter.tiles.contains(tile)) {
                 tile = gamePresenter.generateTile();
             }
 

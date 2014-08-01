@@ -29,7 +29,7 @@ Array.prototype.contains = function(obj) {
         }
     }
     
-    return true;
+    return match;
 };
 
 $(document).on('pagebeforeshow', '#game', function(e) {
