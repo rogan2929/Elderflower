@@ -39,7 +39,7 @@ var gamePresenter = {
             gamePresenter.score = 0;
             
             gamePresenter.chances = gamePresenter.MAX_CHANCES; 
-				gamePresenter.loadTiles();
+			gamePresenter.loadTiles();
         }
 
         // Event Handling
