@@ -38,7 +38,8 @@ var gamePresenter = {
 
             gamePresenter.score = 0;
             
-            gamePresenter.chances = gamePresenter.MAX_CHANCES;
+            gamePresenter.chances = gamePresenter.MAX_CHANCES; 
+				gamePresenter.loadTiles();
         }
 
         // Event Handling
@@ -81,7 +82,7 @@ var gamePresenter = {
         // 2. Load tiles.
         // 3. Decrement chances if correct tile was not tapped.
 
-        gamePresenter.loadTiles();
+        //gamePresenter.loadTiles();
         
         gamePresenter.chances--;
         
