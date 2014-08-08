@@ -8,60 +8,60 @@ var gamePresenter = {
     // Constants
     MIN_TILE_SIZE: 1,
     MAX_TILE_SIZE: 8,
-    GRID_LENGTH: 5,
-    MAX_CHANCES: 3,
-    LOOP_TICK: 2600,
+    GRID_LENGTH: 6,
+    MAX_CHANCES: 8,
+    LOOP_TICK: 2000,
+    HINT_LENGTH: 500,
+    RESULT_TIMEOUT: 2000,
+    
     // Variables
-    colors: null,
     tiles: null,
-    loopInterval: null,
     newGame: true,
     score: 0,
+    combo: 1,
     chances: 0,
+    matchTile: null,
+    selectedTile: null,
+    stopCondition: false,
     /**
      * Entry point.
      */
     init: function() {
         if (gamePresenter.newGame) {
-            gameView.init();
-
-            gameView.colors = [];
-
-            gameView.colors.push('color1');
-            gameView.colors.push('color2');
-            gameView.colors.push('color3');
-            gameView.colors.push('color4');
-            gameView.colors.push('color5');
-            gameView.colors.push('color6');
-            gameView.colors.push('color7');
-            gameView.colors.push('color8');
-
             gamePresenter.score = 0;
-            
-            gamePresenter.chances = gamePresenter.MAX_CHANCES; 
-			gamePresenter.loadTiles();
+            gamePresenter.chances = gamePresenter.MAX_CHANCES;
         }
+        
+        gameView.init();
 
         // Event Handling
         eventBus.installHandler('gamePresenter.onTapTile', gamePresenter.onTapTile, '.tile', 'tap');
-
-        // Start the game loop.
+            
+        // Start the game loop. 
         gamePresenter.resetLoop();
     },
     /**
-     * Finish the game.
-     * @param {type} victory
+    * Evaluate the given tile to see if is the match tile.
+    * @param {type} tile
+    * @returns {type}
+    */
+    evaluate: function(tile) {
+        return true;
+    },
+    /**
+     * Finish the game. 
      */
-    finishGame: function(victory) {
-        // Stop the loop.
-        gamePresenter.stopLoop();
+    finishGame: function() {
+        alert(gamePresenter.score);
         
-        if (victory) {
-            alert('victory!');
-        }
-        else {
-            alert('loser!');
-        }
+        // Navigate to game over page.
+        // TODO
+    },
+    /**
+    * Increment the score. 
+    */
+    incrementScore: function() {
+        gamePresenter.score += (1000 * gamePresenter.combo);
     },
     /**
      * Load tiles.
@@ -77,51 +77,83 @@ var gamePresenter = {
      * The main game loop function.
      */
     loop: function() {
-        // Main game loop is as follows.
-        // 1. Show colored number, then hide it.
-        // 2. Load tiles.
-        // 3. Decrement chances if correct tile was not tapped.
+        var value, color, match;
+        
+        match = gamePresenter.evaluate(gamePresenter.selectedTile);
 
-        //gamePresenter.loadTiles();
+        if (match) {
+            // Correct tile was tapped. 
+            gamePresenter.incrementScore();
+        }
+        else {
+            // Incorrect selection. 
+            gamePresenter.chances -= 1;
         
-        gamePresenter.chances--;
+            if (gamePresenter.chances === 0) {
+                // Game over. No chances left. 
+                gamePresenter.finishGame();
+                return;
+            }   
+        }
         
-        console.log(gamePresenter.chances);
+        // Show the tap result.
+        gameView.showTapResult(match, gamePresenter.RESULT_TIMEOUT);
+        gameView.setScore(gamePresenter.score);
+        gameView.setChances(gamePresenter.chances);
+        gameView.clearTiles();
         
-        if (gamePresenter.chances <= 0) {
-            gamePresenter.finishGame(false);
+        if (!gamePresenter.stopCondition) {            
+            setTimeout(function() {
+                gamePresenter.loadTiles();
+            
+                gamePresenter.matchTile = gamePresenter.selectMatchTile();
+        
+                value = gamePresenter.matchTile.getValue();
+                color = gamePresenter.matchTile.getColor();
+        
+                gameView.showMatchTile(value, color, gamePresenter.HINT_LENGTH);
+            
+                // Start next iteration. 
+                setTimeout(gamePresenter.loop, gamePresenter.LOOP_TICK);
+            }, gamePresenter.RESULT_TIMEOUT + 500);
         }
     },
     /**
      * Reset the game loop.
      */
     resetLoop: function() {
-        if (gamePresenter.loopInterval) {
-            clearInterval(gamePresenter.loopInterval);
-            gamePresenter.loopInterval = null;
-        }
-
-        gamePresenter.loopInterval = setInterval(gamePresenter.loop, gamePresenter.LOOP_TICK);
+        
+        var value, color;
+        
+        gamePresenter.loadTiles();
+        gameView.setScore(gamePresenter.score);
+        gameView.setChances(gamePresenter.chances);
+        
+        gamePresenter.matchTile = gamePresenter.selectMatchTile();
+        
+        value = gamePresenter.matchTile.getValue();
+        color = gamePresenter.matchTile.getColor();
+        
+        gameView.showMatchTile(value, color, gamePresenter.HINT_LENGTH);
+        
+        // Start the first iteration.
+        setTimeout(gamePresenter.loop, gamePresenter.LOOP_TICK);
     },
     /**
-     * Stop the game loop.
-     */
-    stopLoop: function() {
-        if (gamePresenter.loopInterval) {
-            clearInterval(gamePresenter.loopInterval);
-            gamePresenter.loopInterval = null;
-        }
+    * Choose the match tile.
+    * @returns {Tile}
+    */
+    selectMatchTile: function() {
+        return gamePresenter.tiles[Math.floor(Math.random() * gamePresenter.tiles.length)];
     },
     /**
      * onTapTile
      */
-    onTapTile: function() {
-        // Evaluate if correct tile was tapped.
-        // If it was:
-        // 1. Stop Timer.
-        // 2. Increase score, taking into account how many correct in a row.
-        // 3. Restart the loop.
-
-        gamePresenter.stopLoop();
+    onTapTile: function(e) {
+        // Mark the given tile as selected. 
+        
+        var index;
+        
+        index = $(e.currentTarget).data('index');
     }
 };

@@ -42,9 +42,18 @@ and open the template in the editor.
 
     <body>
         <div id='game' data-role='page'>
-            <div class='absolute header fill-horizontal'>HEADER</div>
+            <div class='absolute header fill-horizontal'>
+                <div id='game-score' class='float-left color3 header-text tile'></div>
+                <div class='float-right'>
+                    <div id='game-chances' class='color6 header-text tile'></div>
+                </div>
+            </div>
             <div id='tile-container' class='absolute middle h-centered fill-horizontal margin-auto'></div>
             <div class='absolute footer fill-horizontal h-centered ad-bar'>ADS GO HERE</div>
+        </div>
+        
+        <div id='game-over' data-role='page'>
+        
         </div>
 
         <div id='main' data-role='page'>
@@ -65,7 +74,16 @@ and open the template in the editor.
 
         <!-- Templates -->
         <div id='tile-template' class='hidden'>
-            <div class='tile h-centered ui-corner-all bevel-shadow'></div>
+            <div class='tile h-centered'></div>
+        </div>
+        
+        <!-- Popups and overlays -->
+        <div id='match-tile' class='ui-shadow hidden message-overlay'>
+             <div class='content'></div>
+        </div>
+        
+        <div id='message' class='ui-shadow hidden message-overlay'>
+            <div class='content'></div>
         </div>
     </body>
 </html>

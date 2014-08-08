@@ -26,7 +26,9 @@ and open the template in the editor.
 .tile {
     display: inline-block;
     text-shadow: none !important;
-    margin: 4px;
+    margin: 0px;
+    border: 1px solid #ccc;
+    color: white;
 }
 
 .bevel-shadow {
@@ -70,6 +72,39 @@ and open the template in the editor.
 .color8 {
     background-color: #C299F7;
 }
+
+.message-overlay .color1 {
+    color: #ffd761;
+}
+
+.message-overlay .color2 {
+    color: #90d3f0;
+}
+
+.message-overlay .color3 {
+    color: #f6898c;
+}
+
+.message-overlay .color4 {
+    color: #a1d162 ;
+}
+
+.message-overlay .color5 {
+    color: #e7d5c1 ;
+}
+
+.message-overlay .color6 {
+    color: #4FE7E7 ;
+}
+
+.message-overlay .color7 {
+    color: #FFF12A ;
+}
+
+.message-overlay .color8 {
+    color: #C299F7 ;
+}
+
 
 .h-centered {
     text-align: center;
@@ -130,7 +165,6 @@ absolute.fill-vertical {
     top: 0;
     height: 50px;
     line-height: 50px;
-    background-color: green;
 }
 
 .footer {
@@ -141,4 +175,48 @@ absolute.fill-vertical {
 
 .ad-bar {
     background: #ccccff;
+}
+
+.message-overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background: rgba(100, 100, 100, 0.65);
+}
+
+.message-overlay .content {
+    font-size: 9em;
+    text-align: center;
+    height: 2em;
+    line-height: 2em;
+    vertical-align: middle;
+    background: white;
+    position: absolute;
+    top: 0;
+    z-index: 100;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+.float-left {
+    float: left;
+}
+
+.float-right {
+    float: right;
+}
+
+.header-text {
+    padding-left: 1em;
+    padding-right: 1em;
+    font-size: 1.5em;
+}
+
+.header .tile {
+    height: 48px;
 }

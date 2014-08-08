@@ -4,6 +4,11 @@
  * and open the template in the editor.
  */
 
+window.onerror = function(msg, url, linenumber) {
+    alert('Error Message: ' + msg + '\nURL: ' + url + '\nLineNumber: ' + linenumber);
+    return true;
+};
+
 /**
  * Create a basic Array.contains() function.
  * @param {type} obj
