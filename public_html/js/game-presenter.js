@@ -10,7 +10,7 @@ var gamePresenter = {
     MAX_TILE_SIZE: 8,
     GRID_LENGTH: 6,
     MAX_CHANCES: 8,
-    LOOP_TICK: 2250,
+    LOOP_TICK: 2750,
     HINT_LENGTH: 750,
     RESULT_TIMEOUT: 2000,
     SCORE_INCREMENT: 50,
@@ -53,7 +53,7 @@ var gamePresenter = {
             result = false;
         }
         else {
-            result = true;
+            result = gamePresenter.matchTile.equals(tile);
         }
         
         return result;
@@ -64,6 +64,7 @@ var gamePresenter = {
     finishGame: function() {
         // Navigate to game over page.
         // TODO
+        alert('Game over!');
     },
     /**
     * Increment the score. 
@@ -90,12 +91,22 @@ var gamePresenter = {
         match = gamePresenter.evaluate(gamePresenter.selectedTile);
 
         if (match) {
-            // Correct tile was tapped. 
+            // Correct tile was tapped.
             gamePresenter.incrementScore();
+            
+            // Increment the multiplier..
+            gamePresenter.combo += 1;
+            
+            // Every ten in a row, give one up
+            if (gamePresenter.combo % 10 === 0) {
+                gamePresenter.chances += 1;
+            }
         }
         else {
             // Incorrect selection. 
             gamePresenter.chances -= 1;
+            
+            gamePresenter.combo = 1;
         
             if (gamePresenter.chances === 0) {
                 // Game over. No chances left. 
@@ -147,7 +158,7 @@ var gamePresenter = {
         gameView.showMatchTile(value, color, gamePresenter.HINT_LENGTH);
         
         // Start the first iteration.
-        //setTimeout(gamePresenter.loop, gamePresenter.LOOP_TICK);
+        setTimeout(gamePresenter.loop, gamePresenter.LOOP_TICK);
     },
     /**
     * Choose the match tile.

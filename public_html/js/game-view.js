@@ -8,7 +8,7 @@ var gameView = {
     colors: null,
     values: null,
     // Constants
-    FADE_LENGTH: 100,
+    FADE_LENGTH: 150,
     init: function() {
         gameView.colors = [];
 
@@ -115,8 +115,8 @@ var gameView = {
      * @param {type} tile
      */
     showSelectedTile: function(tile) {
-        $('.tile').removeClass('top popout');
-        $(tile).addClass('top popout');
+        $('.tile').removeClass('popout');
+        $(tile).addClass('popout');
     },
     /**
      * Show the result
