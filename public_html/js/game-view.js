@@ -39,6 +39,12 @@ var gameView = {
         $('#tile-container .tile').remove();
     },
     /**
+     * Hides the start game button.
+     */
+    hideButtonStartGame: function() {
+        $('#button-start-game').fadeOut(gameView.FADE_LENGTH);
+    },
+    /**
      * Hides all tiles.
      */
     hideTiles: function() {

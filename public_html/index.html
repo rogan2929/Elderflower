@@ -29,7 +29,6 @@ and open the template in the editor.
 
         <script src="js/mobileinit.js" type="text/javascript"></script>
         <script src="js/vendor/jquery.mobile-1.4.3.min.js" type="text/javascript"></script>    
-        <script src='http://my.mobfox.com/ad.js'></script>
 
         <script src="js/constants.js" type="text/javascript"></script>
         <script src="js/tile.js" type="text/javascript"></script>
@@ -50,11 +49,14 @@ and open the template in the editor.
                 <div id='game-chances' class='color3 right tile'></div>
             </div>
             <div id='tile-container' class='absolute middle h-centered fill-horizontal margin-auto'></div>
+            <div id='button-start-game' class='ui-shadow message-overlay'>
+                <div class='content'>start</div>
+            </div>
             <div class='absolute footer fill-horizontal h-centered ad-bar'>ADS GO HERE</div>
         </div>
-        
+
         <div id='game-over' data-role='page'>
-        
+
         </div>
 
         <div id='main' data-role='page'>
@@ -77,12 +79,12 @@ and open the template in the editor.
         <div id='tile-template' class='hidden'>
             <div class='tile h-centered'></div>
         </div>
-        
+
         <!-- Popups and overlays -->
         <div id='match-tile' class='ui-shadow hidden message-overlay'>
-             <div class='content'></div>
+            <div class='content'></div>
         </div>
-        
+
         <div id='message' class='ui-shadow hidden message-overlay'>
             <div class='content'></div>
         </div>
