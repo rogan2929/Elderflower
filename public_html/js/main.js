@@ -40,3 +40,12 @@ Array.prototype.contains = function(obj) {
 $(document).on('pagebeforeshow', '#game', function(e) {
     gamePresenter.init();
 });
+
+$(document).on('pagebeforehide', '#game', function(e) {
+    // Pause the game and save it. 
+    gamePresenter.stopLoop();
+});
+
+$(document).on('pagebeforeshow', '#main', function(e) {
+    mainPresenter.init();
+});

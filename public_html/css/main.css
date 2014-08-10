@@ -122,7 +122,7 @@ and open the template in the editor.
 
 .half {
     width: 50%;
-    max-width: 300px;
+    max-width: 250px;
 }
 
 .absolute {
@@ -133,12 +133,12 @@ and open the template in the editor.
     position: relative;
 }
 
-absolute.fill-horizontal {
+.absolute.fill-horizontal {
     left: 0;
     right: 0;
 }
 
-absolute.fill-vertical {
+.absolute.fill-vertical {
     top : 0;
     bottom: 0;
 }

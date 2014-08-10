@@ -30,12 +30,12 @@ and open the template in the editor.
         <script src="js/mobileinit.js" type="text/javascript"></script>
         <script src="js/vendor/jquery.mobile-1.4.3.min.js" type="text/javascript"></script>    
 
-        <script src="js/constants.js" type="text/javascript"></script>
         <script src="js/tile.js" type="text/javascript"></script>
         <script src="js/tile-factory.js" type="text/javascript"></script>
         <script src="js/event-bus.js" type="text/javascript"></script>
         <script src="js/game-view.js" type="text/javascript"></script>
         <script src="js/game-presenter.js" type="text/javascript"></script>
+        <script src="js/main-presenter.js" type="text/javascript"></script>
         <script src="js/main.js"></script>
     </head>
 
@@ -62,11 +62,12 @@ and open the template in the editor.
         <div id='main' data-role='page'>
             <h2 class='ui-title ui-bar h-centered'>MENU</h2>
 
-            <div class='ui-content h-centered half absolute fill-horizontal margin-auto'>
+            <div class='ui-content h-centered half fill-horizontal absolute margin-auto'>
                 <a href='#game' id='btn-resume' class='ui-btn'>Resume</a>
                 <a href='#game' id='btn-new' class='ui-btn'>New Game</a>
                 <a href='#instructions' class='ui-btn'>Instructions</a>
                 <a href='#leaderboard' class='ui-btn'>Leaderboard</a>
+                <a href='#options' class='ui-btn'>Options</a>
                 <a href='#' id='btn-rate' class='ui-btn'>Feedback</a>
             </div>
         </div>
@@ -74,10 +75,18 @@ and open the template in the editor.
         <div id='instructions' data-role='page'>
             TODO: Instructions go here.
         </div>
+        
+        <div id='leaderboard' data-role='page'>
+            TODO: Leaderboard goes here.
+        </div>
+        
+        <div id='options' data-role='page'>
+            TODO: Options go here.
+        </div>
 
         <!-- Templates -->
         <div id='tile-template' class='hidden'>
-            <div class='tile h-centered'></div>
+            <div class='game tile h-centered'></div>
         </div>
 
         <!-- Popups and overlays -->

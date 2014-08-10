@@ -31,6 +31,9 @@ var gameView = {
         gameView.values.push('six');
         gameView.values.push('seven');
         gameView.values.push('eight');
+        
+        gameView.showButtonStartGame();
+        gameView.clearTiles();
     },
     /**
      * Removes all tiles.
@@ -82,8 +85,7 @@ var gameView = {
 
         $('#tile-container').height(containerWidth + 'px').fadeIn(gameView.FADE_LENGTH, function() {
             // Re-register event hookups.
-            eventBus.installHandler('gamePresenter.onTapTile', gamePresenter.onTapTile, '.tile', 'tap');
-            eventBus.installHandler('gamePresenter.onTapHoldTile', gamePresenter.onTapHoldTile, '.tile', 'taphold');
+            eventBus.installHandler('gamePresenter.onTapTile', gamePresenter.onTapTile, '.game.tile', 'tap');
         });
     },
     /**
@@ -99,6 +101,12 @@ var gameView = {
      */
     setScore: function(score) {
         $('#game-score').html('Score:<br/>' + score);
+    },
+    /**
+    * Shows the start game button.
+    */
+    showButtonStartGame: function() {
+        $('#button-start-game').fadeIn(gameView.FADE_LENGTH);
     },
     /**
      * Display the tile that has to be tapped.

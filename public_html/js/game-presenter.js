@@ -10,7 +10,7 @@ var gamePresenter = {
     MAX_TILE_SIZE: 8,
     GRID_LENGTH: 6,
     MAX_CHANCES: 8,
-    LOOP_TICK: 2750,
+    LOOP_TICK: 2250,
     HINT_LENGTH: 750,
     RESULT_TIMEOUT: 2000,
     SCORE_INCREMENT: 50,
@@ -22,7 +22,8 @@ var gamePresenter = {
     chances: 0,
     matchTile: null,
     selectedTile: null,
-    stopCondition: false,
+    loopTimeout: null,
+    loopTick: null,
     /**
      * Entry point.
      */
@@ -30,12 +31,20 @@ var gamePresenter = {
         if (gamePresenter.newGame) {
             gamePresenter.score = 0;
             gamePresenter.chances = gamePresenter.MAX_CHANCES;
+            gamePresenter.combo = 1;
+            
+            gameView.setScore(gamePresenter.score);
+            gameView.setChances(gamePresenter.chances);
         }
 
         gameView.init();
+        
+        if (!gamePresenter.loopTick) {
+            gamePresenter.loopTick = gamePresenter.LOOP_TICK;
+        }
 
         // Event Handling
-        eventBus.installHandler('gamePresenter.onTapTile', gamePresenter.onTapTile, '.tile', 'tap');
+        eventBus.installHandler('gamePresenter.onTapTile', gamePresenter.onTapTile, '.game.tile', 'tap');
         eventBus.installHandler('gamePresenter.onTapButtonStartGame', gamePresenter.onTapButtonStartGame, '#button-start-game', 'tap');
     },
     /**
@@ -91,8 +100,10 @@ var gamePresenter = {
             // Correct tile was tapped.
             gamePresenter.incrementScore();
 
-            // Increment the multiplier..
-            gamePresenter.combo += 1;
+            // Increment the multiplier...
+            if (gamePresenter.combo < 10) {
+                gamePresenter.combo += 1;
+            }
 
             // Every ten in a row, give one up
             if (gamePresenter.combo % 10 === 0) {
@@ -118,23 +129,21 @@ var gamePresenter = {
         gameView.setChances(gamePresenter.chances);
         gameView.hideTiles();
 
-        if (!gamePresenter.stopCondition) {
-            setTimeout(function() {
-                gamePresenter.loadTiles();
+        setTimeout(function() {
+            gamePresenter.loadTiles();
 
-                gamePresenter.selectedTile = null;
+            gamePresenter.selectedTile = null;
 
-                gamePresenter.matchTile = gamePresenter.selectMatchTile();
+            gamePresenter.matchTile = gamePresenter.selectMatchTile();
 
-                value = gamePresenter.matchTile.getValue();
-                color = gamePresenter.matchTile.getColor();
+            value = gamePresenter.matchTile.getValue();
+            color = gamePresenter.matchTile.getColor();
 
-                gameView.showMatchTile(value, color, gamePresenter.HINT_LENGTH);
+            gameView.showMatchTile(value, color, gamePresenter.HINT_LENGTH);
 
-                // Start next iteration. 
-                setTimeout(gamePresenter.loop, gamePresenter.LOOP_TICK);
-            }, gamePresenter.RESULT_TIMEOUT + 300);
-        }
+            // Start next iteration. 
+            gamePresenter.loopTimeout = setTimeout(gamePresenter.loop, gamePresenter.loopTick);
+        }, gamePresenter.RESULT_TIMEOUT + 300);
     },
     /**
      * Reset the game loop.
@@ -155,7 +164,7 @@ var gamePresenter = {
         gameView.showMatchTile(value, color, gamePresenter.HINT_LENGTH);
 
         // Start the first iteration.
-        setTimeout(gamePresenter.loop, gamePresenter.LOOP_TICK);
+        gamePresenter.loopTimeout = setTimeout(gamePresenter.loop, gamePresenter.loopTick);
     },
     /**
      * Choose the match tile.
@@ -164,11 +173,20 @@ var gamePresenter = {
     selectMatchTile: function() {
         return gamePresenter.tiles[Math.floor(Math.random() * gamePresenter.tiles.length)];
     },
+    setLoopTick: function(loopTick) {
+        gamePresenter.loopTick = loopTick;
+    },
+    setNewGame: function(newGame) {
+        gamePresenter.newGame = newGame;
+    },
     /**
-     * Sets a stop condition so the main loop will halt.
-     */
-    setTopCondition: function() {
-        gamePresenter.stopCondition = true;
+    * Stops the main game loop. 
+    */
+    stopLoop: function() {
+        if (gamePresenter.loopTimeout) {
+            clearTimeout(gamePresenter.loopTimeout);
+            gamePresenter.loopTimeout = null;
+        }
     },
     /**
      * onTapButtonStartGame
@@ -194,7 +212,6 @@ var gamePresenter = {
         index = $(e.currentTarget).data('index');
 
         gamePresenter.selectedTile = gamePresenter.tiles[index];
-        console.log(gamePresenter.selectedTile);
 
         gameView.showSelectedTile(e.currentTarget);
     }
