@@ -9,6 +9,8 @@ var mainPresenter = {
     * Entry point
     */
     init: function() {
+        // Load previous game, if it exists.
+        
         eventBus.installHandler('mainPresenter.onTapBtnNew', mainPresenter.onTapBtnNew, '#btn-new', 'tap');
         eventBus.installHandler('mainPresenter.onTapBtnResume', mainPresenter.onTapBtnResume, '#btn-resume', 'tap');
     },

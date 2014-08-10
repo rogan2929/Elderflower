@@ -173,9 +173,24 @@ var gamePresenter = {
     selectMatchTile: function() {
         return gamePresenter.tiles[Math.floor(Math.random() * gamePresenter.tiles.length)];
     },
+    /**
+     * 
+     * @param {type} gameData
+     */
+    setGameData: function(gameData) {
+        
+    },
+    /**
+     * Setter for loopTick
+     * @param {type} loopTick
+     */
     setLoopTick: function(loopTick) {
         gamePresenter.loopTick = loopTick;
     },
+    /**
+     * Setter for newGame
+     * @param {type} newGame
+     */
     setNewGame: function(newGame) {
         gamePresenter.newGame = newGame;
     },
