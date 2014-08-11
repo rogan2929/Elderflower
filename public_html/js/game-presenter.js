@@ -16,6 +16,7 @@ var gamePresenter = {
     MAX_TILE_SIZE: 8,
     GRID_LENGTH: 6,
     MAX_CHANCES: 5,
+    MAX_MULTIPLIER: 5,
     HINT_LENGTH: 750,
     RESULT_TIMEOUT: 2000,
     SCORE_INCREMENT: 50,
@@ -97,7 +98,11 @@ var gamePresenter = {
      * Increment the score. 
      */
     incrementScore: function() {
-        gamePresenter.score += (gamePresenter.SCORE_INCREMENT * gamePresenter.combo * 0.5);
+        var multiplier;
+        
+        multiplier = Math.min(gamePresenter.combo, gamePresenter.MAX_MULTIPLIER);
+        
+        gamePresenter.score += (gamePresenter.SCORE_INCREMENT * multiplier);
     },
     /**
      * Load tiles.
@@ -122,9 +127,7 @@ var gamePresenter = {
             gamePresenter.incrementScore();
 
             // Increment the multiplier...
-            if (gamePresenter.combo < 10) {
-                gamePresenter.combo += 1;
-            }
+            gamePresenter.combo += 1;
 
             // Every ten in a row, give one up
             if (gamePresenter.combo % 10 === 0) {
