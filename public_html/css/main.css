@@ -273,3 +273,8 @@ and open the template in the editor.
     margin-left: auto;
     margin-right: auto;
 }
+
+.spaced {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
