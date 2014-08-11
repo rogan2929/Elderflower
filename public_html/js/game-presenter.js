@@ -100,7 +100,9 @@ var gamePresenter = {
     incrementScore: function() {
         var multiplier;
         
+        // Factor a bonus for combo and game speed. 
         multiplier = Math.min(gamePresenter.combo, gamePresenter.MAX_MULTIPLIER);
+        multiplier = multiplier * LoopTicks[0] / gamePresenter.loopTick;
         
         gamePresenter.score += (gamePresenter.SCORE_INCREMENT * multiplier);
     },
