@@ -15,8 +15,7 @@ var gamePresenter = {
     MIN_TILE_SIZE: 1,
     MAX_TILE_SIZE: 8,
     GRID_LENGTH: 6,
-    MAX_CHANCES: 8,
-    LOOP_TICK: 2250,
+    MAX_CHANCES: 5,
     HINT_LENGTH: 750,
     RESULT_TIMEOUT: 2000,
     SCORE_INCREMENT: 50,
@@ -98,7 +97,7 @@ var gamePresenter = {
      * Increment the score. 
      */
     incrementScore: function() {
-        gamePresenter.score += (gamePresenter.SCORE_INCREMENT * gamePresenter.combo);
+        gamePresenter.score += (gamePresenter.SCORE_INCREMENT * gamePresenter.combo * 0.5);
     },
     /**
      * Load tiles.
