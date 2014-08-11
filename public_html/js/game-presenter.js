@@ -104,7 +104,7 @@ var gamePresenter = {
         multiplier = Math.min(gamePresenter.combo, gamePresenter.MAX_MULTIPLIER);
         multiplier = multiplier * LoopTicks[0] / gamePresenter.loopTick;
         
-        gamePresenter.score += (gamePresenter.SCORE_INCREMENT * multiplier);
+        gamePresenter.score += Math.floor(gamePresenter.SCORE_INCREMENT * multiplier);
     },
     /**
      * Load tiles.
