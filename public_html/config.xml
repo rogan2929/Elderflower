@@ -2,16 +2,16 @@
 
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
-        id        = "com.elderflower"
+        id        = "com.rogan2929.elderflower"
         version   = "1.0.0">
     
-    <name>Elderflower</name>
+    <name>Match me if you can!</name>
     
     <description>
         Tap the right tile - it's harder than you think!
     </description>
     
-    <author href="http://flippeethegame.blogspot.com/" email="richard.scales@live.com">
+    <author href="http://richsindieapps.blogspot.com/" email="richard.scales@live.com">
         Richard Scales
     </author>
     
@@ -34,7 +34,7 @@
         <icon src="res/drawable-xxxhdpi/ic_launcher.png" density="xxxhdpi" />
      </platform>
     
-    <gap:platform name="ios" />
+    <gap:platform name="android" />
     
     <!-- Plugins -->
     <gap:plugin name="org.apache.cordova.device" />

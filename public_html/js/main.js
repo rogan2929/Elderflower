@@ -37,6 +37,8 @@ Array.prototype.contains = function(obj) {
     return match;
 };
 
+// Page load / hide events.
+
 $(document).on('pagebeforeshow', '#game', function(e) {
     var gameData;
 
@@ -59,4 +61,8 @@ $(document).on('pagebeforehide', '#game', function(e) {
 
 $(document).on('pagebeforeshow', '#main', function(e) {
     mainPresenter.init();
+});
+
+$(document).on('pagebeforeshow', '#options', function(e) {
+    optionsPresenter.init();
 });

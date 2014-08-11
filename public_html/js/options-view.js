@@ -5,5 +5,15 @@
  */
 
 var optionsView = {
-    
+    init: function() {
+        optionsView.setGameSpeed(1);
+    },
+    /**
+     * Sets the game speed control.
+     * @param {type} index
+     */
+    setGameSpeed: function(index) {
+        $('#select-game-speed')[0].selectedIndex = index;
+        $('#select-game-speed').selectmenu('refresh');
+    }
 };

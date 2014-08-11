@@ -6,6 +6,6 @@
 
 var optionsPresenter = {
     init: function() {
-        
+        optionsView.init();
     }
 };

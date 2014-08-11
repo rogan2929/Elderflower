@@ -172,10 +172,6 @@ and open the template in the editor.
     line-height: 50px;
 }
 
-.ad-bar {
-    background: #ccccff;
-}
-
 .message-overlay {
     position: absolute;
     top: 0;
@@ -277,4 +273,17 @@ and open the template in the editor.
 .spaced {
     margin-top: 10px;
     margin-bottom: 10px;
+}
+
+.full {
+    width: 100%;
+    max-width: 350px;
+}
+
+iframe.clean {
+    margin: 0;
+    padding: 0;
+    border: none;
+    width: 100%;
+    min-height: 800px;
 }
