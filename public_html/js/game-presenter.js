@@ -4,6 +4,12 @@
  * and open the template in the editor.
  */
 
+var LoopTicks = {
+    0: 3500, // slow
+    1: 2750, // regular
+    2: 2250         // fast
+};
+
 var gamePresenter = {
     // Constants
     MIN_TILE_SIZE: 1,
@@ -28,6 +34,26 @@ var gamePresenter = {
      * Entry point.
      */
     init: function() {
+        var gameData, speed;
+
+        // Load game data and speed.
+        gameData = model.loadGame();
+        speed = model.loadGameSpeed();
+
+        // Resume the game if there is one.
+        if (gameData) {
+            gamePresenter.setNewGame(false);
+            gamePresenter.setGameData(gameData);
+        }
+
+        // Attempt to set the game speed.
+        if (speed) {
+            gamePresenter.setGameSpeed(speed);
+        }
+        else {
+            gamePresenter.setGameSpeed(1);      // Assume normal speed.
+        }
+
         if (gamePresenter.newGame) {
             gamePresenter.score = 0;
             gamePresenter.chances = gamePresenter.MAX_CHANCES;
@@ -35,10 +61,6 @@ var gamePresenter = {
         }
 
         gameView.init();
-
-        if (!gamePresenter.loopTick) {
-            gamePresenter.loopTick = gamePresenter.LOOP_TICK;
-        }
 
         gameView.setScore(gamePresenter.score);
         gameView.setChances(gamePresenter.chances);
@@ -149,7 +171,6 @@ var gamePresenter = {
      * Reset the game loop.
      */
     resetLoop: function() {
-
         var value, color;
 
         gamePresenter.loadTiles();
@@ -177,24 +198,24 @@ var gamePresenter = {
      * Saves the game state.
      */
     saveGameData: function() {
-        model.saveGame(new GameData(gamePresenter.loopTick, gamePresenter.score, gamePresenter.chances, gamePresenter.combo));
+        model.saveGame(new GameData(gamePresenter.score, gamePresenter.chances, gamePresenter.combo));
     },
     /**
      * Set game data.
      * @param {GameData} gameData
      */
     setGameData: function(gameData) {
-        gamePresenter.loopTick = gameData.loopTick;
         gamePresenter.score = gameData.score;
         gamePresenter.chances = gameData.chances;
         gamePresenter.combo = gameData.combo;
     },
     /**
-     * Setter for loopTick
-     * @param {type} loopTick
+     * Set the game speed.
+     * @param {type} speed
      */
-    setLoopTick: function(loopTick) {
-        gamePresenter.loopTick = loopTick;
+    setGameSpeed: function(speed) {
+        // Retrieve loop duration based on speed index.
+        gamePresenter.loopTick = LoopTicks[speed];
     },
     /**
      * Setter for newGame

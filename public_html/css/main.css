@@ -291,3 +291,13 @@ iframe.clean {
     width: 100%;
     min-height: 800px;
 }
+
+.no-scroll, .ui-page.no-scroll {
+    overflow: hidden;
+}
+
+.full-page-center {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}

@@ -5,9 +5,6 @@
  */
 
 var optionsView = {
-    init: function() {
-        optionsView.setGameSpeed(1);
-    },
     /**
      * Sets the game speed control.
      * @param {type} index

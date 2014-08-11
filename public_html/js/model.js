@@ -16,10 +16,24 @@ var model = {
         return JSON.parse(localStorage.getItem('gameData'));
     },
     /**
+     * Loads game speed.
+     * @returns {DOMString}
+     */
+    loadGameSpeed: function() {
+        return localStorage.getItem('gameSpeed');
+    },
+    /**
      * Saves the game data.
      * @param {GameData} gameData
      */
     saveGame: function(gameData) {
         localStorage.setItem('gameData', JSON.stringify(gameData));
+    },
+    /**
+     * Saves the game speed.
+     * @param {type} speed
+     */
+    saveGameSpeed: function(speed) {
+        localStorage.setItem('gameSpeed', speed);
     }
 };

@@ -40,16 +40,6 @@ Array.prototype.contains = function(obj) {
 // Page load / hide events.
 
 $(document).on('pagebeforeshow', '#game', function(e) {
-    var gameData;
-
-    gameData = model.loadGame();
-
-    // Resume the game if there is one.
-    if (gameData) {
-        gamePresenter.setNewGame(false);
-        gamePresenter.setGameData(gameData);
-    }
-
     gamePresenter.init();
 });
 

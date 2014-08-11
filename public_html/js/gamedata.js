@@ -4,19 +4,10 @@
  * and open the template in the editor.
  */
 
-function GameData(loopTick, score, chances, combo) {
-    this.loopTick = loopTick;
+function GameData(score, chances, combo) {
     this.score = score;
     this.chances = chances;
     this.combo = combo;
-};
-
-/**
- * Getter for loopTick
- * @returns {GameData.loopTick}
- */
-GameData.prototype.getLoopTick = function() {
-    return this.loopTick;
 };
 
 /**

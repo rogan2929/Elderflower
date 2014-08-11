@@ -6,6 +6,25 @@
 
 var optionsPresenter = {
     init: function() {
-        optionsView.init();
+        var speed;
+        
+        speed = model.loadGameSpeed();
+        
+        // Attempt to set the game speed.
+        if (speed) {
+            optionsView.setGameSpeed(speed);
+        }
+        else {
+            optionsView.setGameSpeed(1);      // Assume normal speed.
+        }
+        
+        //eventBus.installHandler('optionsPresenter.onChangeSelectGameSpeed', optionsPresenter.onChangeSelectGameSpeed, '#select-game-speed', 'change');
+        
+        // Not sure why... but for some reason we have to bypass the eventBus. It prevents the ui from updating after the change event fires.
+        $("#select-game-speed").bind("change", optionsPresenter.onChangeSelectGameSpeed);
+    },
+    onChangeSelectGameSpeed: function(e) {
+        // Save the game speed.
+        model.saveGameSpeed($(e.currentTarget)[0].selectedIndex);
     }
 };
