@@ -23,6 +23,10 @@ and open the template in the editor.
     font-family: Verdana, Geneva, sans-serif;
 }
 
+img {
+    display: block;
+}
+
 .tile {
     display: inline-block;
     text-shadow: none !important;

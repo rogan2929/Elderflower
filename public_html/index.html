@@ -9,11 +9,28 @@ and open the template in the editor.
         <title>Elderflower</title>
         <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no,minimal-ui" />
         <meta name="format-detection" content="telephone=no">
+        <meta name="google-signin-clientid" content="218442145746-puhv60r2bt1342qmupgt13tptnsi67r4.apps.googleusercontent.com" />
+        <meta name="google-signin-cookiepolicy" content="single_host_origin" />
+        <meta name="google-signin-callback" content="signinCallback" />
+        <meta name="google-signin-scope" content="https://www.googleapis.com/auth/plus.login" />
 
         <link rel="stylesheet" href="css/themes/elderflower/Elderflower.min.css">
         <link rel="stylesheet" href="css/themes/elderflower/jquery.mobile.icons.min.css">
         <link rel="stylesheet" href="css/vendor/jquery.mobile.structure-1.4.2.min.css">
         <link rel='stylesheet' href='css/main.css'>
+
+        <!-- Google Plus / Game Play Services -->
+        <script src="https://apis.google.com/js/client.js"></script>
+        <script type="text/javascript">
+            (function() {
+                var po = document.createElement('script');
+                po.type = 'text/javascript';
+                po.async = true;
+                po.src = 'https://apis.google.com/js/client:plusone.js';
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(po, s);
+            })();
+        </script>
 
         <script src="js/vendor/jquery-2.1.1.min.js"></script>
         <script type="text/javascript" src="phonegap.js"></script>
@@ -68,13 +85,18 @@ and open the template in the editor.
         <div id='main' data-role='page'>
             <h2 class='ui-title ui-bar h-centered'>MENU</h2>
 
-            <a href='#game' id='btn-resume' class='ui-btn half'>Resume</a>
-            <a href='#game' id='btn-new' class='ui-btn half'>New Game</a>
-            <a href='#instructions' class='ui-btn half'>Instructions</a>
-            <a href='#leaderboard' class='ui-btn half'>Leaderboard</a>
-            <a href='#options' class='ui-btn half'>Options</a>
-            <a href='#more-apps' class='ui-btn half'>More Apps</a>
-            <a href='#' id='btn-rate' class='ui-btn half'>Feedback</a>
+            <div data-role='controlgroup'>
+                <a href='#game' id='btn-resume' class='ui-btn half'>Resume</a>
+                <a href='#game' id='btn-new' class='ui-btn half'>New Game</a>
+                <a href='#instructions' class='ui-btn half'>Instructions</a>
+                <a href='#leaderboard' class='ui-btn half'>Leaderboard</a>
+                <a href='#options' class='ui-btn half'>Options</a>
+                <a href='#more-apps' class='ui-btn half'>More Apps</a>
+                <a href='#' id='btn-rate' class='ui-btn half'>Feedback</a>
+            </div>
+            <span id="signinButton" class='absolute fill-horizontal h-centered margin-auto'>
+                <span class="g-signin"></span>
+            </span>
         </div>
 
         <div id='instructions' data-role='page'>
@@ -83,7 +105,7 @@ and open the template in the editor.
             <div class="ui-content">
                 Gameplay is simple. Just try to match the correct numbered and colored
                 tile to what is given by <strong>tapping</strong> the right tile in the main grid.
-                <img src="css/img/match-tile.png" alt="" class="spaced full" style='width: 100%;'/>
+                <img src="css/img/match-tile.png" alt="" class="spaced full"/>
                 <br/><strong>You only have a short amount of time, so you need to be quick!</strong><br/>
                 <br/>
                 You may pause the game at any time by tapping the 'menu' button:
