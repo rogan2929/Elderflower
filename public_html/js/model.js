@@ -10,14 +10,14 @@ var model = {
     },
     /**
      * Loads the game data.
-     * @returns {type}
+     * @returns {GameData}
      */
     loadGame: function() {
         return JSON.parse(localStorage.getItem('gameData'));
     },
     /**
      * Saves the game data.
-     * @param {type} gameData
+     * @param {GameData} gameData
      */
     saveGame: function(gameData) {
         localStorage.setItem('gameData', JSON.stringify(gameData));

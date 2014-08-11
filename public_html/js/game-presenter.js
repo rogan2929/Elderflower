@@ -32,16 +32,16 @@ var gamePresenter = {
             gamePresenter.score = 0;
             gamePresenter.chances = gamePresenter.MAX_CHANCES;
             gamePresenter.combo = 1;
-            
-            gameView.setScore(gamePresenter.score);
-            gameView.setChances(gamePresenter.chances);
         }
 
         gameView.init();
-        
+
         if (!gamePresenter.loopTick) {
             gamePresenter.loopTick = gamePresenter.LOOP_TICK;
         }
+
+        gameView.setScore(gamePresenter.score);
+        gameView.setChances(gamePresenter.chances);
 
         // Event Handling
         eventBus.installHandler('gamePresenter.onTapTile', gamePresenter.onTapTile, '.game.tile', 'tap');
@@ -174,11 +174,20 @@ var gamePresenter = {
         return gamePresenter.tiles[Math.floor(Math.random() * gamePresenter.tiles.length)];
     },
     /**
-     * 
-     * @param {type} gameData
+     * Saves the game state.
+     */
+    saveGameData: function() {
+        model.saveGame(new GameData(gamePresenter.loopTick, gamePresenter.score, gamePresenter.chances, gamePresenter.combo));
+    },
+    /**
+     * Set game data.
+     * @param {GameData} gameData
      */
     setGameData: function(gameData) {
-        
+        gamePresenter.loopTick = gameData.loopTick;
+        gamePresenter.score = gameData.score;
+        gamePresenter.chances = gameData.chances;
+        gamePresenter.combo = gameData.combo;
     },
     /**
      * Setter for loopTick
@@ -195,8 +204,8 @@ var gamePresenter = {
         gamePresenter.newGame = newGame;
     },
     /**
-    * Stops the main game loop. 
-    */
+     * Stops the main game loop. 
+     */
     stopLoop: function() {
         if (gamePresenter.loopTimeout) {
             clearTimeout(gamePresenter.loopTimeout);
@@ -220,14 +229,11 @@ var gamePresenter = {
      * @param {type} e
      */
     onTapTile: function(e) {
-        // Mark the given tile as selected. 
-
         var index;
 
+        // Mark the given tile as selected. 
         index = $(e.currentTarget).data('index');
-
         gamePresenter.selectedTile = gamePresenter.tiles[index];
-
         gameView.showSelectedTile(e.currentTarget);
     }
 };

@@ -1,0 +1,44 @@
+/* 
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+function GameData(loopTick, score, chances, combo) {
+    this.loopTick = loopTick;
+    this.score = score;
+    this.chances = chances;
+    this.combo = combo;
+};
+
+/**
+ * Getter for loopTick
+ * @returns {GameData.loopTick}
+ */
+GameData.prototype.getLoopTick = function() {
+    return this.loopTick;
+};
+
+/**
+ * Getter for score.
+ * @returns {GameData.score}
+ */
+GameData.prototype.getScore = function() {
+    return this.score;
+};
+
+/**
+ * Getter for chances.
+ * @returns {GameData.chances}
+ */
+GameData.prototype.getChances = function() {
+    return this.chances;
+};
+
+/**
+ * Getter for combo.
+ * @returns {GameData.combo}
+ */
+GameData.prototype.getCombo = function() {
+    return this.combo;
+};

@@ -16,9 +16,9 @@ window.onerror = function(msg, url, linenumber) {
  */
 Array.prototype.contains = function(obj) {
     var i, match;
-    
+
     match = false;
-    
+
     for (i = 0; i < this.length; i++) {
         // Check for equals() function.
         if (this[i].equals) {
@@ -33,17 +33,28 @@ Array.prototype.contains = function(obj) {
             }
         }
     }
-    
+
     return match;
 };
 
 $(document).on('pagebeforeshow', '#game', function(e) {
+    var gameData;
+
+    gameData = model.loadGame();
+
+    // Resume the game if there is one.
+    if (gameData) {
+        gamePresenter.setNewGame(false);
+        gamePresenter.setGameData(gameData);
+    }
+
     gamePresenter.init();
 });
 
 $(document).on('pagebeforehide', '#game', function(e) {
     // Pause the game and save it. 
     gamePresenter.stopLoop();
+    gamePresenter.saveGameData();
 });
 
 $(document).on('pagebeforeshow', '#main', function(e) {

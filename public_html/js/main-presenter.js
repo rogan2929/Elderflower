@@ -16,8 +16,17 @@ var mainPresenter = {
     },
     onTapBtnNew: function(e) {
         gamePresenter.setNewGame(true);
+        model.clearGame();
     },
     onTapBtnResume: function(e) {
-        gamePresenter.setNewGame(false);
+        var gameData;
+        
+        gameData = model.loadGame();
+        
+        // Resume the game if there is one.
+        if (gameData) {
+            gamePresenter.setNewGame(false);
+            gamePresenter.setGameData(gameData);
+        }
     }
 };

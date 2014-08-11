@@ -262,3 +262,14 @@ and open the template in the editor.
     box-shadow: 3px 3px 5px 0px rgba(50, 50, 50, 0.75);
     z-index: 100;
 }
+
+.absolute.bottom {
+    bottom: 0;
+}
+
+.h-centered .ui-btn, .ui-btn.half {
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+}
