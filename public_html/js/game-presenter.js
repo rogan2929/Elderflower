@@ -129,7 +129,7 @@ var gamePresenter = {
 
             // Every ten in a row, give one up
             if (gamePresenter.combo % 10 === 0) {
-                gamePresenter.chances += 1;
+                gamePresenter.chances = Math.min(gamePresenter.chances + 1, gamePresenter.MAX_CHANCES);
             }
         }
         else {
