@@ -15,7 +15,7 @@ var optionsPresenter = {
             optionsView.setGameSpeed(speed);
         }
         else {
-            optionsView.setGameSpeed(1);      // Assume normal speed.
+            optionsView.setGameSpeed(2);      // Assume normal speed.
         }
         
         //eventBus.installHandler('optionsPresenter.onChangeSelectGameSpeed', optionsPresenter.onChangeSelectGameSpeed, '#select-game-speed', 'change');

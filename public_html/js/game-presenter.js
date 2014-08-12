@@ -5,9 +5,10 @@
  */
 
 var LoopTicks = {
-    0: 3500, // slow
-    1: 2750, // regular
-    2: 2250         // fast
+    0: 4500,     // very slow
+    1: 3500,     // slow
+    2: 2750,     // regular
+    3: 2250      // fast
 };
 
 var gamePresenter = {
@@ -51,7 +52,7 @@ var gamePresenter = {
             gamePresenter.setGameSpeed(speed);
         }
         else {
-            gamePresenter.setGameSpeed(1);      // Assume normal speed.
+            gamePresenter.setGameSpeed(2);      // Assume normal speed.
         }
 
         if (gamePresenter.newGame) {
