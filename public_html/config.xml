@@ -38,7 +38,7 @@
     
     <!-- Plugins -->
     <gap:plugin name="org.apache.cordova.device" />
-    <gap:plugin name="com.phonegap.plugins.childbrowser" version="5.0.0" />
+    <gap:plugin name="org.apache.cordova.media" version="0.2.8" />
 
     <!-- Access -->
     <access origin="*" />

@@ -13,21 +13,10 @@ var musicPlayer = {
      * Starts the background music.
      */
     startMusic: function() {
-        var music = document.getElementById('loop');
-
-        $(music).bind('ended', function() {
-            this.currentTime = 0;
-            this.load();
-            this.play();
-        });
-
-        music.play();
     },
     /**
      * Stops the background music.
      */
     stopMusic: function() {
-        var music = document.getElementById('loop');
-        music.abort();
     }
 };

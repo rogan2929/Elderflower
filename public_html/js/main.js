@@ -41,14 +41,14 @@ Array.prototype.contains = function(obj) {
 
 $(document).on('pagebeforeshow', '#game', function(e) {
     gamePresenter.init();
-    //musicPlayer.startMusic();
+    musicPlayer.startMusic();
 });
 
 $(document).on('pagebeforehide', '#game', function(e) {
     // Pause the game and save it. 
     gamePresenter.stopLoop();
     gamePresenter.saveGameData();
-    //musicPlayer.stopMusic();
+    musicPlayer.stopMusic();
 });
 
 $(document).on('pagebeforeshow', '#game-over', function(e) {
