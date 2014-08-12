@@ -14,7 +14,14 @@ var soundManager = {
         
         element = document.getElementById(id);
         url = element.getAttribute('src');
-        media = new Media(url);
+        
+        if (typeof(Media) !== 'undefined') {
+            media = new Media(url);
+        }
+        else {
+            media = new Audio(url);
+        }
+        
         media.play();
     },
     /**
