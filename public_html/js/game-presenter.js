@@ -9,9 +9,9 @@
  * @type type
  */
 var LoopTicks = {
-    0: 4500,     // very slow
-    1: 3500,     // slow
-    2: 2750,     // regular
+    0: 4500, // very slow
+    1: 3500, // slow
+    2: 2750, // regular
     3: 2250      // fast
 };
 
@@ -39,6 +39,7 @@ var gamePresenter = {
     selectedTile: null,
     loopTimeout: null,
     loopTick: null,
+    stopped: false,
     /**
      * Entry point.
      */
@@ -71,13 +72,15 @@ var gamePresenter = {
 
         gameView.init();
 
+        gamePresenter.stopped = false;
+
         gameView.setScore(gamePresenter.score);
         gameView.setChances(gamePresenter.chances);
 
         // Event Handling
         eventBus.installHandler('gamePresenter.onTapTile', gamePresenter.onTapTile, '.game.tile', 'touchstart');    // Bind to touchstart, since tap has a 300ms delay. 
         eventBus.installHandler('gamePresenter.onTapButtonStartGame', gamePresenter.onTapButtonStartGame, '#button-start-game', 'tap');
-        
+
         // Play a neat sound effect.
         soundManager.playSound('woosh', 0.1);
     },
@@ -117,11 +120,11 @@ var gamePresenter = {
      */
     incrementScore: function() {
         var multiplier;
-        
+
         // Factor a bonus for combo and game speed. 
         multiplier = Math.min(gamePresenter.combo, gamePresenter.MAX_MULTIPLIER);
         multiplier = multiplier * LoopTicks[0] / gamePresenter.loopTick;
-        
+
         gamePresenter.score += Math.floor(gamePresenter.SCORE_INCREMENT * multiplier);
     },
     /**
@@ -153,7 +156,7 @@ var gamePresenter = {
             if (gamePresenter.combo % 10 === 0) {
                 gamePresenter.chances = Math.min(gamePresenter.chances + 1, gamePresenter.MAX_CHANCES);
             }
-            
+
             sound = {name: 'success', volume: 0.7};
         }
         else {
@@ -167,7 +170,7 @@ var gamePresenter = {
                 gamePresenter.finishGame();
                 return;
             }
-            
+
             sound = {name: 'fail', volume: 0.4};
         }
 
@@ -200,19 +203,22 @@ var gamePresenter = {
     resetLoop: function() {
         var value, color;
 
-        gamePresenter.loadTiles();
-        gameView.setScore(gamePresenter.score);
-        gameView.setChances(gamePresenter.chances);
+        // Only start the loop if the game is not stopped.
+        if (!gamePresenter.stopped) {
+            gamePresenter.loadTiles();
+            gameView.setScore(gamePresenter.score);
+            gameView.setChances(gamePresenter.chances);
 
-        gamePresenter.matchTile = gamePresenter.selectMatchTile();
+            gamePresenter.matchTile = gamePresenter.selectMatchTile();
 
-        value = gamePresenter.matchTile.getValue();
-        color = gamePresenter.matchTile.getColor();
+            value = gamePresenter.matchTile.getValue();
+            color = gamePresenter.matchTile.getColor();
 
-        gameView.showMatchTile(value, color, gamePresenter.HINT_LENGTH);
+            gameView.showMatchTile(value, color, gamePresenter.HINT_LENGTH);
 
-        // Start the first iteration.
-        gamePresenter.loopTimeout = setTimeout(gamePresenter.loop, gamePresenter.loopTick);
+            // Start the first iteration.
+            gamePresenter.loopTimeout = setTimeout(gamePresenter.loop, gamePresenter.loopTick);
+        }
     },
     /**
      * Choose the match tile.
@@ -259,6 +265,9 @@ var gamePresenter = {
             clearTimeout(gamePresenter.loopTimeout);
             gamePresenter.loopTimeout = null;
         }
+        
+        // Prevent a race condition where stopLoop() is called before resetLoop().
+        gamePresenter.stopped = true;
     },
     /**
      * onTapButtonStartGame
@@ -283,7 +292,7 @@ var gamePresenter = {
         index = $(e.currentTarget).data('index');
         gamePresenter.selectedTile = gamePresenter.tiles[index];
         gameView.showSelectedTile(e.currentTarget);
-        
+
         // Play a pop sound.
         soundManager.playSound('pop', 1.0);
     }

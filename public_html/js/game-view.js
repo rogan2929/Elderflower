@@ -142,19 +142,23 @@ var gameView = {
      * @param {type} timeout
      */
     showTapResult: function(result, timeout) {
-        var text;
+        var text, color;
 
         if (result) {
             text = 'match';
+            color = 'color4';
         }
         else {
             text = 'fail';
+            color = 'color3';
         }
 
-        $('#message .content').text(text).parent().fadeIn(gameView.FADE_LENGTH);
+        $('#message .content').addClass(color).text(text).parent().fadeIn(gameView.FADE_LENGTH);
 
         setTimeout(function() {
-            $('#message').fadeOut(gameView.FADE_LENGTH);
+            $('#message').fadeOut(gameView.FADE_LENGTH, function() {
+                $(this).children('.content').removeClass('color3 color4');
+            });
         }, timeout);
     }
 };
