@@ -166,6 +166,273 @@
          in2="SourceGraphic"
          id="feComposite3762" />
     </filter>
+    <filter
+       style="color-interpolation-filters:sRGB;"
+       inkscape:label="Rough paper"
+       id="filter3188"
+       y="-0.15"
+       height="1.3"
+       x="-0.15"
+       width="1.3"
+       inkscape:menu-tooltip="Aquarelle paper effect which can be used for pictures as for objects"
+       inkscape:menu="Textures"
+       color-interpolation-filters="sRGB">
+      <feFlood
+         flood-opacity="0.5"
+         flood-color="rgb(0,0,0)"
+         result="flood"
+         id="feFlood3190" />
+      <feComposite
+         in="flood"
+         in2="SourceGraphic"
+         operator="in"
+         result="composite1"
+         id="feComposite3192" />
+      <feGaussianBlur
+         in="composite"
+         stdDeviation="2"
+         result="blur"
+         id="feGaussianBlur3194" />
+      <feOffset
+         dx="4"
+         dy="4"
+         result="offset"
+         id="feOffset3196" />
+      <feComposite
+         in="SourceGraphic"
+         in2="offset"
+         operator="over"
+         result="fbSourceGraphic"
+         id="feComposite3198" />
+      <feColorMatrix
+         result="fbSourceGraphicAlpha"
+         in="fbSourceGraphic"
+         values="0 0 0 -1 0 0 0 0 -1 0 0 0 0 -1 0 0 0 0 1 0"
+         id="feColorMatrix4347" />
+      <feTurbulence
+         id="feTurbulence4349"
+         type="fractalNoise"
+         baseFrequency="0.04"
+         numOctaves="5"
+         seed="0"
+         result="result4"
+         in="fbSourceGraphic" />
+      <feDisplacementMap
+         id="feDisplacementMap4351"
+         in2="result4"
+         in="fbSourceGraphic"
+         yChannelSelector="G"
+         xChannelSelector="R"
+         scale="10"
+         result="result3" />
+      <feDiffuseLighting
+         id="feDiffuseLighting4353"
+         lighting-color="rgb(233,230,215)"
+         diffuseConstant="1"
+         surfaceScale="2"
+         result="result1"
+         in="result4">
+        <feDistantLight
+           id="feDistantLight4355"
+           azimuth="235"
+           elevation="40" />
+      </feDiffuseLighting>
+      <feComposite
+         id="feComposite4357"
+         in2="result1"
+         operator="in"
+         in="result3"
+         result="result2" />
+      <feComposite
+         id="feComposite4359"
+         in2="result1"
+         result="result5"
+         operator="arithmetic"
+         k1="1.7" />
+      <feBlend
+         id="feBlend4361"
+         in2="result3"
+         in="result5"
+         mode="normal" />
+    </filter>
+    <filter
+       style="color-interpolation-filters:sRGB;"
+       inkscape:label="Rough paper"
+       id="filter3200"
+       y="-0.15"
+       height="1.3"
+       x="-0.15"
+       width="1.3"
+       inkscape:menu-tooltip="Aquarelle paper effect which can be used for pictures as for objects"
+       inkscape:menu="Textures"
+       color-interpolation-filters="sRGB">
+      <feFlood
+         flood-opacity="0.5"
+         flood-color="rgb(0,0,0)"
+         result="flood"
+         id="feFlood3202" />
+      <feComposite
+         in="flood"
+         in2="SourceGraphic"
+         operator="in"
+         result="composite1"
+         id="feComposite3204" />
+      <feGaussianBlur
+         in="composite"
+         stdDeviation="2"
+         result="blur"
+         id="feGaussianBlur3206" />
+      <feOffset
+         dx="4"
+         dy="4"
+         result="offset"
+         id="feOffset3208" />
+      <feComposite
+         in="SourceGraphic"
+         in2="offset"
+         operator="over"
+         result="fbSourceGraphic"
+         id="feComposite3210" />
+      <feColorMatrix
+         result="fbSourceGraphicAlpha"
+         in="fbSourceGraphic"
+         values="0 0 0 -1 0 0 0 0 -1 0 0 0 0 -1 0 0 0 0 1 0"
+         id="feColorMatrix4363" />
+      <feTurbulence
+         id="feTurbulence4365"
+         type="fractalNoise"
+         baseFrequency="0.04"
+         numOctaves="5"
+         seed="0"
+         result="result4"
+         in="fbSourceGraphic" />
+      <feDisplacementMap
+         id="feDisplacementMap4367"
+         in2="result4"
+         in="fbSourceGraphic"
+         yChannelSelector="G"
+         xChannelSelector="R"
+         scale="10"
+         result="result3" />
+      <feDiffuseLighting
+         id="feDiffuseLighting4369"
+         lighting-color="rgb(233,230,215)"
+         diffuseConstant="1"
+         surfaceScale="2"
+         result="result1"
+         in="result4">
+        <feDistantLight
+           id="feDistantLight4371"
+           azimuth="235"
+           elevation="40" />
+      </feDiffuseLighting>
+      <feComposite
+         id="feComposite4373"
+         in2="result1"
+         operator="in"
+         in="result3"
+         result="result2" />
+      <feComposite
+         id="feComposite4375"
+         in2="result1"
+         result="result5"
+         operator="arithmetic"
+         k1="1.7" />
+      <feBlend
+         id="feBlend4377"
+         in2="result3"
+         in="result5"
+         mode="normal" />
+    </filter>
+    <filter
+       style="color-interpolation-filters:sRGB;"
+       inkscape:label="Rough paper"
+       id="filter3212"
+       y="-0.15"
+       height="1.3"
+       x="-0.15"
+       width="1.3"
+       inkscape:menu-tooltip="Aquarelle paper effect which can be used for pictures as for objects"
+       inkscape:menu="Textures"
+       color-interpolation-filters="sRGB">
+      <feFlood
+         flood-opacity="0.5"
+         flood-color="rgb(0,0,0)"
+         result="flood"
+         id="feFlood3214" />
+      <feComposite
+         in="flood"
+         in2="SourceGraphic"
+         operator="in"
+         result="composite1"
+         id="feComposite3216" />
+      <feGaussianBlur
+         in="composite"
+         stdDeviation="2"
+         result="blur"
+         id="feGaussianBlur3218" />
+      <feOffset
+         dx="4"
+         dy="4"
+         result="offset"
+         id="feOffset3220" />
+      <feComposite
+         in="SourceGraphic"
+         in2="offset"
+         operator="over"
+         result="fbSourceGraphic"
+         id="feComposite3222" />
+      <feColorMatrix
+         result="fbSourceGraphicAlpha"
+         in="fbSourceGraphic"
+         values="0 0 0 -1 0 0 0 0 -1 0 0 0 0 -1 0 0 0 0 1 0"
+         id="feColorMatrix4379" />
+      <feTurbulence
+         id="feTurbulence4381"
+         type="fractalNoise"
+         baseFrequency="0.04"
+         numOctaves="5"
+         seed="0"
+         result="result4"
+         in="fbSourceGraphic" />
+      <feDisplacementMap
+         id="feDisplacementMap4383"
+         in2="result4"
+         in="fbSourceGraphic"
+         yChannelSelector="G"
+         xChannelSelector="R"
+         scale="10"
+         result="result3" />
+      <feDiffuseLighting
+         id="feDiffuseLighting4385"
+         lighting-color="rgb(233,230,215)"
+         diffuseConstant="1"
+         surfaceScale="2"
+         result="result1"
+         in="result4">
+        <feDistantLight
+           id="feDistantLight4387"
+           azimuth="235"
+           elevation="40" />
+      </feDiffuseLighting>
+      <feComposite
+         id="feComposite4389"
+         in2="result1"
+         operator="in"
+         in="result3"
+         result="result2" />
+      <feComposite
+         id="feComposite4391"
+         in2="result1"
+         result="result5"
+         operator="arithmetic"
+         k1="1.7" />
+      <feBlend
+         id="feBlend4393"
+         in2="result3"
+         in="result5"
+         mode="normal" />
+    </filter>
   </defs>
   <sodipodi:namedview
      id="base"
@@ -182,8 +449,8 @@
      showgrid="false"
      inkscape:window-width="1205"
      inkscape:window-height="823"
-     inkscape:window-x="117"
-     inkscape:window-y="40"
+     inkscape:window-x="172"
+     inkscape:window-y="60"
      inkscape:window-maximized="0" />
   <metadata
      id="metadata7">
@@ -204,7 +471,8 @@
      transform="translate(0,-540.36218)">
     <g
        id="g3826"
-       transform="matrix(0.88661144,0,0,0.88661144,149.72374,84.750282)">
+       transform="matrix(0.88661144,0,0,0.88661144,138.61206,196.87721)"
+       style="filter:url(#filter3188)">
       <rect
          y="667.31964"
          x="124.77921"
@@ -227,9 +495,34 @@
            sodipodi:role="line">5</tspan></text>
     </g>
     <g
+       id="g3838"
+       transform="translate(83.842662,27.274119)"
+       style="filter:url(#filter3212)">
+      <rect
+         y="549.57324"
+         x="13.065833"
+         height="309.2254"
+         width="309.2254"
+         id="rect4469-6-7"
+         style="fill:#c299ff;fill-opacity:1;stroke:#000000;stroke-width:1.65663183;stroke-opacity:1" />
+      <text
+         transform="scale(1.0564685,0.94654975)"
+         sodipodi:linespacing="125%"
+         id="text4792-7-4"
+         y="868.19977"
+         x="61.528511"
+         style="font-size:100.53466034px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:Sans"
+         xml:space="preserve"><tspan
+           style="font-size:361.92477417px;fill:#ffffff;fill-opacity:1"
+           y="868.19977"
+           x="61.528511"
+           id="tspan4794-8-0"
+           sodipodi:role="line">1</tspan></text>
+    </g>
+    <g
        id="g4930"
-       transform="matrix(1.4413154,0,0,1.4413154,-791.76263,-387.97144)"
-       style="display:inline">
+       transform="matrix(1.4413154,0,0,1.4413154,-794.79309,-418.27602)"
+       style="display:inline;filter:url(#filter3200)">
       <rect
          y="806.82404"
          x="567.49377"
@@ -250,29 +543,6 @@
            x="567.49493"
            id="tspan4794"
            sodipodi:role="line">3</tspan></text>
-    </g>
-    <g
-       id="g3838">
-      <rect
-         y="549.57324"
-         x="13.065833"
-         height="309.2254"
-         width="309.2254"
-         id="rect4469-6-7"
-         style="fill:#c299ff;fill-opacity:1;stroke:#000000;stroke-width:1.65663183000000000;stroke-opacity:1" />
-      <text
-         transform="scale(1.0564685,0.94654975)"
-         sodipodi:linespacing="125%"
-         id="text4792-7-4"
-         y="868.19977"
-         x="61.528511"
-         style="font-size:100.53466034px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:Sans"
-         xml:space="preserve"><tspan
-           style="font-size:361.92477417px;fill:#ffffff;fill-opacity:1"
-           y="868.19977"
-           x="61.528511"
-           id="tspan4794-8-0"
-           sodipodi:role="line">1</tspan></text>
     </g>
   </g>
 </svg>
