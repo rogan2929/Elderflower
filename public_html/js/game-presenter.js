@@ -154,7 +154,7 @@ var gamePresenter = {
                 gamePresenter.chances = Math.min(gamePresenter.chances + 1, gamePresenter.MAX_CHANCES);
             }
             
-            sound = 'success';
+            sound = {name: 'success', volume: 0.7};
         }
         else {
             // Incorrect selection. 
@@ -168,12 +168,12 @@ var gamePresenter = {
                 return;
             }
             
-            sound = 'fail';
+            sound = {name: 'fail', volume: 0.4};
         }
 
         // Show the tap result.
         gameView.showTapResult(match, gamePresenter.RESULT_TIMEOUT);
-        soundManager.playSound(sound, 0.3);
+        soundManager.playSound(sound.name, sound.volume);
         gameView.setScore(gamePresenter.score);
         gameView.setChances(gamePresenter.chances);
         gameView.hideTiles();
@@ -189,7 +189,7 @@ var gamePresenter = {
             color = gamePresenter.matchTile.getColor();
 
             gameView.showMatchTile(value, color, gamePresenter.HINT_LENGTH);
-            soundManager.playSound('woosh', 0.3);
+            soundManager.playSound('woosh', 0.15);
 
             // Start next iteration. 
             gamePresenter.loopTimeout = setTimeout(gamePresenter.loop, gamePresenter.loopTick);
@@ -211,7 +211,7 @@ var gamePresenter = {
         color = gamePresenter.matchTile.getColor();
 
         gameView.showMatchTile(value, color, gamePresenter.HINT_LENGTH);
-        soundManager.playSound('woosh', 0.3);
+        soundManager.playSound('woosh', 0.15);
 
         // Start the first iteration.
         gamePresenter.loopTimeout = setTimeout(gamePresenter.loop, gamePresenter.loopTick);
