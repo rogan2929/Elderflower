@@ -4,6 +4,10 @@
  * and open the template in the editor.
  */
 
+/**
+ * View for #game.
+ * @type type
+ */
 var gameView = {
     colors: null,
     values: null,

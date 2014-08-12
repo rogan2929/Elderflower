@@ -4,13 +4,15 @@
  * and open the template in the editor.
  */
 
+/**
+ * Presenter for #main
+ * @type type
+ */
 var mainPresenter = {
     /**
     * Entry point
     */
     init: function() {
-        // Load previous game, if it exists.
-        
         eventBus.installHandler('mainPresenter.onTapBtnNew', mainPresenter.onTapBtnNew, '#btn-new', 'tap');
         eventBus.installHandler('mainPresenter.onTapBtnResume', mainPresenter.onTapBtnResume, '#btn-resume', 'tap');
     },
@@ -27,6 +29,10 @@ var mainPresenter = {
         if (gameData) {
             gamePresenter.setNewGame(false);
             gamePresenter.setGameData(gameData);
+        }
+        else {
+            gamePresenter.setNewGame(true);
+            model.clearGame();
         }
     }
 };

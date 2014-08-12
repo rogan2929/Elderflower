@@ -4,6 +4,10 @@
  * and open the template in the editor.
  */
 
+/**
+ * Event bus.
+ * @type type
+ */
 var eventBus = {
     handlers: {},
     /**

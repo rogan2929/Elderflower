@@ -4,6 +4,10 @@
  * and open the template in the editor.
  */
 
+/**
+ * View for #options
+ * @type type
+ */
 var optionsView = {
     /**
      * Sets the game speed control.

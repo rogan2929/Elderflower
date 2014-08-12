@@ -4,6 +4,13 @@
  * and open the template in the editor.
  */
 
+/**
+ * GameData class constructor.
+ * @param {type} score
+ * @param {type} chances
+ * @param {type} combo
+ * @returns {GameData}
+ */
 function GameData(score, chances, combo) {
     this.score = score;
     this.chances = chances;

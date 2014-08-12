@@ -4,6 +4,10 @@
  * and open the template in the editor.
  */
 
+/**
+ * Model class.
+ * @type type
+ */
 var model = {
     clearGame: function() {
         localStorage.removeItem('gameData');

@@ -33,12 +33,15 @@ and open the template in the editor.
         <script src="js/tile.js" type="text/javascript"></script>
         <script src="js/tile-factory.js" type="text/javascript"></script>
         <script src="js/gamedata.js" type="text/javascript"></script>
+        <script src="js/navigation.js" type="text/javascript"></script>
         <script src="js/model.js" type="text/javascript"></script>
         <script src="js/event-bus.js" type="text/javascript"></script>
         <script src="js/options-view.js" type="text/javascript"></script>
         <script src="js/options-presenter.js" type="text/javascript"></script>
         <script src="js/game-view.js" type="text/javascript"></script>
         <script src="js/game-presenter.js" type="text/javascript"></script>
+        <script src="js/game-over-view.js" type="text/javascript"></script>
+        <script src="js/game-over-presenter.js" type="text/javascript"></script>
         <script src="js/main-presenter.js" type="text/javascript"></script>
         <script src="js/main.js"></script>
     </head>
@@ -46,12 +49,12 @@ and open the template in the editor.
     <body>
         <div id='landing' data-role='page'>
             <script>
-                setTimeout(function() {
-                    $('body').pagecontainer('change', '#game');
-                }, 1750);
+            setTimeout(function() {
+                $('body').pagecontainer('change', '#game');
+            }, 1750);
             </script>
         </div>
-        
+
         <div id='game' data-role='page' class='no-scroll'>
             <div class='absolute header fill-horizontal'>
                 <div id='game-score' class='color4 left tile'></div>
@@ -70,7 +73,13 @@ and open the template in the editor.
         </div>
 
         <div id='game-over' data-role='page'>
+            <h2 class='ui-title ui-bar h-centered'>GAME OVER</h2>
 
+            <h3 id='score-result' class='h-centered'></h3>
+
+            <a href='#leaderboard' class='ui-btn half'>Leaderboard</a>
+            <a href='#game' class='ui-btn half'>New Game</a>
+            <a href='#main' class='ui-btn half'>Menu</a>
         </div>
 
         <div id='main' data-role='page'>

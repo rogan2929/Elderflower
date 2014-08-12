@@ -4,6 +4,10 @@
  * and open the template in the editor.
  */
 
+/**
+ * Presenter for #options
+ * @type type
+ */
 var optionsPresenter = {
     init: function() {
         var speed;

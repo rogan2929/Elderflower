@@ -4,6 +4,10 @@
  * and open the template in the editor.
  */
 
+/**
+ * LoopTicks enum.
+ * @type type
+ */
 var LoopTicks = {
     0: 4500,     // very slow
     1: 3500,     // slow
@@ -11,6 +15,10 @@ var LoopTicks = {
     3: 2250      // fast
 };
 
+/**
+ * Presenter for #game
+ * @type type
+ */
 var gamePresenter = {
     // Constants
     MIN_TILE_SIZE: 1,
@@ -71,6 +79,13 @@ var gamePresenter = {
         eventBus.installHandler('gamePresenter.onTapButtonStartGame', gamePresenter.onTapButtonStartGame, '#button-start-game', 'tap');
     },
     /**
+     * Getter for score.
+     * @returns {gameData.score|Number}
+     */
+    getScore: function() {
+        return gamePresenter.score;
+    },
+    /**
      * Evaluate the given tile to see if is the match tile.
      * @param {type} tile
      * @returns {type}
@@ -91,9 +106,8 @@ var gamePresenter = {
      * Finish the game. 
      */
     finishGame: function() {
-        // Navigate to game over page.
-        // TODO
-        alert('Game over!');
+        // Set new game 
+        navigation.navigateTo('game-over');
     },
     /**
      * Increment the score. 

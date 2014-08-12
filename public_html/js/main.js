@@ -49,6 +49,10 @@ $(document).on('pagebeforehide', '#game', function(e) {
     gamePresenter.saveGameData();
 });
 
+$(document).on('pagebeforeshow', '#game-over', function(e) {
+    gameOverPresenter.init();
+});
+
 $(document).on('pagebeforeshow', '#main', function(e) {
     mainPresenter.init();
 });
