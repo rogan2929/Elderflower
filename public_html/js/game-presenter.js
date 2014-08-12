@@ -75,7 +75,7 @@ var gamePresenter = {
         gameView.setChances(gamePresenter.chances);
 
         // Event Handling
-        eventBus.installHandler('gamePresenter.onTapTile', gamePresenter.onTapTile, '.game.tile', 'tap');
+        eventBus.installHandler('gamePresenter.onTapTile', gamePresenter.onTapTile, '.game.tile', 'touchstart');    // Bind to touchstart, since tap has a 300ms delay. 
         eventBus.installHandler('gamePresenter.onTapButtonStartGame', gamePresenter.onTapButtonStartGame, '#button-start-game', 'tap');
     },
     /**
