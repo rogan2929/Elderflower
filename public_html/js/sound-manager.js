@@ -20,8 +20,8 @@ var soundManager = {
                     function() {
                         alert('Success!');
                     },
-                    function() {
-                        alert('Fail!');
+                    function(err) {
+                        alert(err);
                     });
         }
         else {
