@@ -8,7 +8,15 @@
  * Music manager.
  * @type type
  */
-var musicPlayer = {
+var soundManager = {
+    playSound: function(id) {
+        var element, url, media;
+        
+        element = document.getElementById(id);
+        url = element.getAttribute('src');
+        media = new Media(url);
+        media.play();
+    },
     /**
      * Starts the background music.
      */

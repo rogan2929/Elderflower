@@ -96,8 +96,7 @@ var gameView = {
      * Play a simple sound effect.
      */
     playPopSound: function() {
-        var sound = new Media('res/sounds/pop.wav');
-        sound.play();
+        soundManager.playSound('pop');
     },
     /**
      * Display the number of chances that are left.
