@@ -275,5 +275,6 @@ var gamePresenter = {
         index = $(e.currentTarget).data('index');
         gamePresenter.selectedTile = gamePresenter.tiles[index];
         gameView.showSelectedTile(e.currentTarget);
+        gameView.playPopSound();
     }
 };

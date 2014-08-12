@@ -93,6 +93,13 @@ var gameView = {
         });
     },
     /**
+     * Play a simple sound effect.
+     */
+    playPopSound: function() {
+        var sound = new Audio('res/sounds/pop.wav');
+        sound.play();
+    },
+    /**
      * Display the number of chances that are left.
      * @param {type} chances
      */
