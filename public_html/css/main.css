@@ -301,3 +301,7 @@ iframe.clean {
     top: 50%;
     transform: translateY(-50%);
 }
+
+.header, .footer {
+    z-index: 101;
+}
