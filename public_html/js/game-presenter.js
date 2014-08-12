@@ -189,7 +189,6 @@ var gamePresenter = {
             color = gamePresenter.matchTile.getColor();
 
             gameView.showMatchTile(value, color, gamePresenter.HINT_LENGTH);
-            soundManager.playSound('woosh', 0.1);
 
             // Start next iteration. 
             gamePresenter.loopTimeout = setTimeout(gamePresenter.loop, gamePresenter.loopTick);
@@ -211,7 +210,6 @@ var gamePresenter = {
         color = gamePresenter.matchTile.getColor();
 
         gameView.showMatchTile(value, color, gamePresenter.HINT_LENGTH);
-        soundManager.playSound('woosh', 0.1);
 
         // Start the first iteration.
         gamePresenter.loopTimeout = setTimeout(gamePresenter.loop, gamePresenter.loopTick);
