@@ -9,7 +9,7 @@
  * @type type
  */
 var soundManager = {
-    playSound: function(id) {
+    playSound: function(id, volume) {
         var element, url, media;
 
         element = document.getElementById(id);
@@ -28,16 +28,27 @@ var soundManager = {
             }
         }
 
+        // Check if using PhoneGap media.
         if (typeof (Media) !== 'undefined') {
             media = new Media(url,
                     function() {
+                        media.release();
+                        media = null;
                     },
                     function(err) {
                         alert('playSound() error: ' + err.code);
                     });
+
+            if (volume) {
+                media.setVolume(volume);
+            }
         }
         else {
             media = new Audio(url);
+
+            if (volume) {
+                media.volume = volume;
+            }
         }
 
         media.play();

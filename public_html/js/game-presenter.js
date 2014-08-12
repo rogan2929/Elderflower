@@ -173,7 +173,7 @@ var gamePresenter = {
 
         // Show the tap result.
         gameView.showTapResult(match, gamePresenter.RESULT_TIMEOUT);
-        soundManager.playSound(sound);
+        soundManager.playSound(sound, 0.3);
         gameView.setScore(gamePresenter.score);
         gameView.setChances(gamePresenter.chances);
         gameView.hideTiles();
