@@ -16,12 +16,11 @@ var soundManager = {
         url = element.getAttribute('src');
 
         if (typeof (Media) !== 'undefined') {
-            media = new Media(url,
+            media = new Media('/android_asset/www/' + url,
                     function() {
-                        alert('Success!');
                     },
                     function(err) {
-                        alert(err.code);
+                        alert('playSound() error: ' + err.code);
                     });
         }
         else {
