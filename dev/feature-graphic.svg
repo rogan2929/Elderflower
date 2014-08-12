@@ -148,6 +148,565 @@
          d="M0,0h1000v1024h-1000z"
          id="missing-glyph4407" />
     </font>
+    <filter
+       inkscape:label="Liquid drawing"
+       inkscape:menu-tooltip="Gives a fluid and wavy expressionist drawing effect to images"
+       inkscape:menu="Image effects"
+       x="-0.25"
+       width="1.5"
+       y="-0.25"
+       height="1.5"
+       color-interpolation-filters="sRGB"
+       id="filter3644">
+      <feGaussianBlur
+         result="result11"
+         stdDeviation="2"
+         id="feGaussianBlur3646" />
+      <feGaussianBlur
+         in="SourceGraphic"
+         stdDeviation="0.5"
+         result="result8"
+         id="feGaussianBlur3648" />
+      <feTurbulence
+         result="result9"
+         baseFrequency="0.08"
+         numOctaves="1"
+         type="fractalNoise"
+         id="feTurbulence3650" />
+      <feDisplacementMap
+         result="result10"
+         in2="result11"
+         xChannelSelector="G"
+         scale="100"
+         yChannelSelector="R"
+         id="feDisplacementMap3652" />
+      <feConvolveMatrix
+         bias="0"
+         result="result0"
+         preserveAlpha="true"
+         targetY="1"
+         targetX="1"
+         divisor="1"
+         in="result10"
+         kernelMatrix="1 1 1 1 -8 1 1 1 1 "
+         order="3 3"
+         id="feConvolveMatrix3654" />
+      <feColorMatrix
+         in="result0"
+         values="0 -6 0 0 1 0 -6 0 0 1 0 -6 0 0 1 0 0 0 1 0 "
+         result="result3"
+         id="feColorMatrix3656" />
+      <feComposite
+         operator="in"
+         in2="SourceGraphic"
+         in="result3"
+         result="fbSourceGraphic"
+         id="feComposite3658" />
+      <feBlend
+         in2="result8"
+         mode="multiply"
+         result="result12"
+         id="feBlend3660" />
+      <feGaussianBlur
+         stdDeviation="0.01"
+         in="result12"
+         result="result7"
+         id="feGaussianBlur3662" />
+      <feBlend
+         mode="screen"
+         in2="result12"
+         id="feBlend3664" />
+      <feComposite
+         operator="in"
+         in2="SourceGraphic"
+         id="feComposite3666" />
+    </filter>
+    <filter
+       inkscape:label="Liquid drawing"
+       inkscape:menu-tooltip="Gives a fluid and wavy expressionist drawing effect to images"
+       inkscape:menu="Image effects"
+       x="-0.25"
+       width="1.5"
+       y="-0.25"
+       height="1.5"
+       color-interpolation-filters="sRGB"
+       id="filter3668">
+      <feGaussianBlur
+         result="result11"
+         stdDeviation="2"
+         id="feGaussianBlur3670" />
+      <feGaussianBlur
+         in="SourceGraphic"
+         stdDeviation="0.5"
+         result="result8"
+         id="feGaussianBlur3672" />
+      <feTurbulence
+         result="result9"
+         baseFrequency="0.08"
+         numOctaves="1"
+         type="fractalNoise"
+         id="feTurbulence3674" />
+      <feDisplacementMap
+         result="result10"
+         in2="result11"
+         xChannelSelector="G"
+         scale="100"
+         yChannelSelector="R"
+         id="feDisplacementMap3676" />
+      <feConvolveMatrix
+         bias="0"
+         result="result0"
+         preserveAlpha="true"
+         targetY="1"
+         targetX="1"
+         divisor="1"
+         in="result10"
+         kernelMatrix="1 1 1 1 -8 1 1 1 1 "
+         order="3 3"
+         id="feConvolveMatrix3678" />
+      <feColorMatrix
+         in="result0"
+         values="0 -6 0 0 1 0 -6 0 0 1 0 -6 0 0 1 0 0 0 1 0 "
+         result="result3"
+         id="feColorMatrix3680" />
+      <feComposite
+         operator="in"
+         in2="SourceGraphic"
+         in="result3"
+         result="fbSourceGraphic"
+         id="feComposite3682" />
+      <feBlend
+         in2="result8"
+         mode="multiply"
+         result="result12"
+         id="feBlend3684" />
+      <feGaussianBlur
+         stdDeviation="0.01"
+         in="result12"
+         result="result7"
+         id="feGaussianBlur3686" />
+      <feBlend
+         mode="screen"
+         in2="result12"
+         id="feBlend3688" />
+      <feComposite
+         operator="in"
+         in2="SourceGraphic"
+         id="feComposite3690" />
+    </filter>
+    <filter
+       inkscape:label="Liquid drawing"
+       inkscape:menu-tooltip="Gives a fluid and wavy expressionist drawing effect to images"
+       inkscape:menu="Image effects"
+       x="-0.25"
+       width="1.5"
+       y="-0.25"
+       height="1.5"
+       color-interpolation-filters="sRGB"
+       id="filter3692">
+      <feGaussianBlur
+         result="result11"
+         stdDeviation="2"
+         id="feGaussianBlur3694" />
+      <feGaussianBlur
+         in="SourceGraphic"
+         stdDeviation="0.5"
+         result="result8"
+         id="feGaussianBlur3696" />
+      <feTurbulence
+         result="result9"
+         baseFrequency="0.08"
+         numOctaves="1"
+         type="fractalNoise"
+         id="feTurbulence3698" />
+      <feDisplacementMap
+         result="result10"
+         in2="result11"
+         xChannelSelector="G"
+         scale="100"
+         yChannelSelector="R"
+         id="feDisplacementMap3700" />
+      <feConvolveMatrix
+         bias="0"
+         result="result0"
+         preserveAlpha="true"
+         targetY="1"
+         targetX="1"
+         divisor="1"
+         in="result10"
+         kernelMatrix="1 1 1 1 -8 1 1 1 1 "
+         order="3 3"
+         id="feConvolveMatrix3702" />
+      <feColorMatrix
+         in="result0"
+         values="0 -6 0 0 1 0 -6 0 0 1 0 -6 0 0 1 0 0 0 1 0 "
+         result="result3"
+         id="feColorMatrix3704" />
+      <feComposite
+         operator="in"
+         in2="SourceGraphic"
+         in="result3"
+         result="fbSourceGraphic"
+         id="feComposite3706" />
+      <feBlend
+         in2="result8"
+         mode="multiply"
+         result="result12"
+         id="feBlend3708" />
+      <feGaussianBlur
+         stdDeviation="0.01"
+         in="result12"
+         result="result7"
+         id="feGaussianBlur3710" />
+      <feBlend
+         mode="screen"
+         in2="result12"
+         id="feBlend3712" />
+      <feComposite
+         operator="in"
+         in2="SourceGraphic"
+         id="feComposite3714" />
+    </filter>
+    <filter
+       inkscape:label="Liquid drawing"
+       inkscape:menu-tooltip="Gives a fluid and wavy expressionist drawing effect to images"
+       inkscape:menu="Image effects"
+       x="-0.25"
+       width="1.5"
+       y="-0.25"
+       height="1.5"
+       color-interpolation-filters="sRGB"
+       id="filter3716">
+      <feGaussianBlur
+         result="result11"
+         stdDeviation="2"
+         id="feGaussianBlur3718" />
+      <feGaussianBlur
+         in="SourceGraphic"
+         stdDeviation="0.5"
+         result="result8"
+         id="feGaussianBlur3720" />
+      <feTurbulence
+         result="result9"
+         baseFrequency="0.08"
+         numOctaves="1"
+         type="fractalNoise"
+         id="feTurbulence3722" />
+      <feDisplacementMap
+         result="result10"
+         in2="result11"
+         xChannelSelector="G"
+         scale="100"
+         yChannelSelector="R"
+         id="feDisplacementMap3724" />
+      <feConvolveMatrix
+         bias="0"
+         result="result0"
+         preserveAlpha="true"
+         targetY="1"
+         targetX="1"
+         divisor="1"
+         in="result10"
+         kernelMatrix="1 1 1 1 -8 1 1 1 1 "
+         order="3 3"
+         id="feConvolveMatrix3726" />
+      <feColorMatrix
+         in="result0"
+         values="0 -6 0 0 1 0 -6 0 0 1 0 -6 0 0 1 0 0 0 1 0 "
+         result="result3"
+         id="feColorMatrix3728" />
+      <feComposite
+         operator="in"
+         in2="SourceGraphic"
+         in="result3"
+         result="fbSourceGraphic"
+         id="feComposite3730" />
+      <feBlend
+         in2="result8"
+         mode="multiply"
+         result="result12"
+         id="feBlend3732" />
+      <feGaussianBlur
+         stdDeviation="0.01"
+         in="result12"
+         result="result7"
+         id="feGaussianBlur3734" />
+      <feBlend
+         mode="screen"
+         in2="result12"
+         id="feBlend3736" />
+      <feComposite
+         operator="in"
+         in2="SourceGraphic"
+         id="feComposite3738" />
+    </filter>
+    <filter
+       inkscape:label="Liquid drawing"
+       inkscape:menu-tooltip="Gives a fluid and wavy expressionist drawing effect to images"
+       inkscape:menu="Image effects"
+       x="-0.25"
+       width="1.5"
+       y="-0.25"
+       height="1.5"
+       color-interpolation-filters="sRGB"
+       id="filter3740">
+      <feGaussianBlur
+         result="result11"
+         stdDeviation="10.322869955156952"
+         id="feGaussianBlur3742" />
+      <feGaussianBlur
+         in="SourceGraphic"
+         stdDeviation="0.5"
+         result="result8"
+         id="feGaussianBlur3744" />
+      <feTurbulence
+         result="result9"
+         baseFrequency="0.08"
+         numOctaves="1"
+         type="fractalNoise"
+         id="feTurbulence3746" />
+      <feDisplacementMap
+         result="result10"
+         in2="result11"
+         xChannelSelector="G"
+         scale="100"
+         yChannelSelector="R"
+         id="feDisplacementMap3748" />
+      <feConvolveMatrix
+         bias="0"
+         result="result0"
+         preserveAlpha="true"
+         targetY="1"
+         targetX="1"
+         divisor="1"
+         in="result10"
+         kernelMatrix="1 1 1 1 -8 1 1 1 1 "
+         order="3 3"
+         id="feConvolveMatrix3750" />
+      <feColorMatrix
+         in="result0"
+         values="0 -6 0 0 1 0 -6 0 0 1 0 -6 0 0 1 0 0 0 1 0 "
+         result="result3"
+         id="feColorMatrix3752" />
+      <feComposite
+         operator="in"
+         in2="SourceGraphic"
+         in="result3"
+         result="fbSourceGraphic"
+         id="feComposite3754" />
+      <feBlend
+         in2="result8"
+         mode="multiply"
+         result="result12"
+         id="feBlend3756" />
+      <feGaussianBlur
+         stdDeviation="0.01"
+         in="result12"
+         result="result7"
+         id="feGaussianBlur3758" />
+      <feBlend
+         mode="screen"
+         in2="result12"
+         id="feBlend3760" />
+      <feComposite
+         operator="in"
+         in2="SourceGraphic"
+         id="feComposite3762" />
+    </filter>
+    <filter
+       inkscape:label="Oil painting"
+       inkscape:menu="Image effects"
+       inkscape:menu-tooltip="Simulate oil painting style"
+       color-interpolation-filters="sRGB"
+       id="filter3164">
+      <feMorphology
+         radius="2"
+         in="SourceGraphic"
+         result="result0"
+         id="feMorphology3166" />
+      <feTurbulence
+         numOctaves="1"
+         baseFrequency="0.078"
+         result="result91"
+         id="feTurbulence3168" />
+      <feDisplacementMap
+         in="result0"
+         scale="6.3"
+         xChannelSelector="R"
+         yChannelSelector="G"
+         in2="result91"
+         id="feDisplacementMap3170" />
+    </filter>
+    <filter
+       inkscape:label="Oil painting"
+       inkscape:menu="Image effects"
+       inkscape:menu-tooltip="Simulate oil painting style"
+       color-interpolation-filters="sRGB"
+       id="filter3172">
+      <feMorphology
+         radius="2"
+         in="SourceGraphic"
+         result="result0"
+         id="feMorphology3174" />
+      <feTurbulence
+         numOctaves="1"
+         baseFrequency="0.078"
+         result="result91"
+         id="feTurbulence3176" />
+      <feDisplacementMap
+         in="result0"
+         scale="6.3"
+         xChannelSelector="R"
+         yChannelSelector="G"
+         in2="result91"
+         id="feDisplacementMap3178" />
+    </filter>
+    <filter
+       inkscape:label="Liquid drawing"
+       inkscape:menu-tooltip="Gives a fluid and wavy expressionist drawing effect to images"
+       inkscape:menu="Image effects"
+       x="-0.25"
+       width="1.5"
+       y="-0.25"
+       height="1.5"
+       color-interpolation-filters="sRGB"
+       id="filter3188">
+      <feGaussianBlur
+         result="result11"
+         stdDeviation="2"
+         id="feGaussianBlur3190" />
+      <feGaussianBlur
+         in="SourceGraphic"
+         stdDeviation="0.5"
+         result="result8"
+         id="feGaussianBlur3192" />
+      <feTurbulence
+         result="result9"
+         baseFrequency="0.08"
+         numOctaves="1"
+         type="fractalNoise"
+         id="feTurbulence3194" />
+      <feDisplacementMap
+         result="result10"
+         in2="result11"
+         xChannelSelector="G"
+         scale="100"
+         yChannelSelector="R"
+         id="feDisplacementMap3196" />
+      <feConvolveMatrix
+         bias="0"
+         result="result0"
+         preserveAlpha="true"
+         targetY="1"
+         targetX="1"
+         divisor="1"
+         in="result10"
+         kernelMatrix="1 1 1 1 -8 1 1 1 1 "
+         order="3 3"
+         id="feConvolveMatrix3198" />
+      <feColorMatrix
+         in="result0"
+         values="0 -6 0 0 1 0 -6 0 0 1 0 -6 0 0 1 0 0 0 1 0 "
+         result="result3"
+         id="feColorMatrix3200" />
+      <feComposite
+         operator="in"
+         in2="SourceGraphic"
+         in="result3"
+         result="fbSourceGraphic"
+         id="feComposite3202" />
+      <feBlend
+         in2="result8"
+         mode="multiply"
+         result="result12"
+         id="feBlend3204" />
+      <feGaussianBlur
+         stdDeviation="0.01"
+         in="result12"
+         result="result7"
+         id="feGaussianBlur3206" />
+      <feBlend
+         mode="screen"
+         in2="result12"
+         id="feBlend3208" />
+      <feComposite
+         operator="in"
+         in2="SourceGraphic"
+         id="feComposite3210" />
+    </filter>
+    <filter
+       inkscape:label="Liquid drawing"
+       inkscape:menu-tooltip="Gives a fluid and wavy expressionist drawing effect to images"
+       inkscape:menu="Image effects"
+       x="-0.25"
+       width="1.5"
+       y="-0.25"
+       height="1.5"
+       color-interpolation-filters="sRGB"
+       id="filter3212">
+      <feGaussianBlur
+         result="result11"
+         stdDeviation="2"
+         id="feGaussianBlur3214" />
+      <feGaussianBlur
+         in="SourceGraphic"
+         stdDeviation="0.5"
+         result="result8"
+         id="feGaussianBlur3216" />
+      <feTurbulence
+         result="result9"
+         baseFrequency="0.08"
+         numOctaves="1"
+         type="fractalNoise"
+         id="feTurbulence3218" />
+      <feDisplacementMap
+         result="result10"
+         in2="result11"
+         xChannelSelector="G"
+         scale="100"
+         yChannelSelector="R"
+         id="feDisplacementMap3220" />
+      <feConvolveMatrix
+         bias="0"
+         result="result0"
+         preserveAlpha="true"
+         targetY="1"
+         targetX="1"
+         divisor="1"
+         in="result10"
+         kernelMatrix="1 1 1 1 -8 1 1 1 1 "
+         order="3 3"
+         id="feConvolveMatrix3222" />
+      <feColorMatrix
+         in="result0"
+         values="0 -6 0 0 1 0 -6 0 0 1 0 -6 0 0 1 0 0 0 1 0 "
+         result="result3"
+         id="feColorMatrix3224" />
+      <feComposite
+         operator="in"
+         in2="SourceGraphic"
+         in="result3"
+         result="fbSourceGraphic"
+         id="feComposite3226" />
+      <feBlend
+         in2="result8"
+         mode="multiply"
+         result="result12"
+         id="feBlend3228" />
+      <feGaussianBlur
+         stdDeviation="0.01"
+         in="result12"
+         result="result7"
+         id="feGaussianBlur3230" />
+      <feBlend
+         mode="screen"
+         in2="result12"
+         id="feBlend3232" />
+      <feComposite
+         operator="in"
+         in2="SourceGraphic"
+         id="feComposite3234" />
+    </filter>
   </defs>
   <sodipodi:namedview
      id="base"
@@ -219,7 +778,8 @@
      style="display:inline">
     <g
        id="g4941"
-       transform="translate(-1.270105e-6,-5.0109824)">
+       transform="translate(-1.270105e-6,-5.0109824)"
+       style="filter:url(#filter3644)">
       <g
          style="fill:#f6898c;fill-opacity:1"
          transform="translate(13.780202,-45.098841)"
@@ -256,7 +816,8 @@
     </g>
     <g
        id="g4925"
-       transform="matrix(1.1049144,0,0,1.1049144,-79.634084,-73.320251)">
+       transform="matrix(1.1049144,0,0,1.1049144,-79.634084,-73.320251)"
+       style="filter:url(#filter3716)">
       <rect
          y="806.82404"
          x="799.25171"
@@ -280,7 +841,8 @@
     </g>
     <g
        id="g4930"
-       transform="matrix(1.1049144,0,0,1.1049144,-64.601137,-123.43007)">
+       transform="matrix(1.1049144,0,0,1.1049144,-64.601137,-123.43007)"
+       style="filter:url(#filter3740)">
       <rect
          y="806.82404"
          x="567.49377"
@@ -304,36 +866,37 @@
     </g>
     <g
        id="g4829"
-       transform="translate(1.2527454,387.35113)">
+       transform="translate(1.2527454,387.35113)"
+       style="filter:url(#filter3212)">
       <rect
          y="567.54962"
          x="12.527455"
          height="78.922974"
          width="245.53813"
          id="rect4821"
-         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-opacity:1" />
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-opacity:1;" />
       <text
          sodipodi:linespacing="125%"
          id="text4825"
          y="631.43964"
          x="53.868061"
-         style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#ffd761;fill-opacity:1;stroke:none;font-family:Sans"
+         style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#ffd761;fill-opacity:1;stroke:none;font-family:Sans;"
          xml:space="preserve"><tspan
-           style="font-size:72px;fill:#ffd761;fill-opacity:1"
+           style="font-size:72px;fill:#ffd761;fill-opacity:1;"
            y="631.43964"
            x="53.868061"
            id="tspan4827"
            sodipodi:role="line">three</tspan></text>
     </g>
     <g
-       style="display:inline"
+       style="display:inline;filter:url(#filter3188)"
        id="g4829-7"
        transform="translate(274.35129,390.23026)">
       <g
          id="g4869"
          transform="translate(-7.5164736,-2.8791315)">
         <rect
-           style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-opacity:1"
+           style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-opacity:1;"
            id="rect4821-8"
            width="245.53813"
            height="78.922974"
@@ -341,7 +904,7 @@
            y="567.54962" />
         <text
            xml:space="preserve"
-           style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#ffd761;fill-opacity:1;stroke:none;font-family:Sans"
+           style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#ffd761;fill-opacity:1;stroke:none;font-family:Sans;"
            x="83.933952"
            y="632.69238"
            id="text4825-1"
@@ -350,7 +913,7 @@
              id="tspan4827-6"
              x="83.933952"
              y="632.69238"
-             style="font-size:72px;fill:#a1d162;fill-opacity:1">five</tspan></text>
+             style="font-size:72px;fill:#a1d162;fill-opacity:1;">five</tspan></text>
       </g>
     </g>
   </g>

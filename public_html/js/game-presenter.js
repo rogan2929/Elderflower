@@ -189,7 +189,7 @@ var gamePresenter = {
             color = gamePresenter.matchTile.getColor();
 
             gameView.showMatchTile(value, color, gamePresenter.HINT_LENGTH);
-            soundManager.playSound('woosh');
+            soundManager.playSound('woosh', 0.3);
 
             // Start next iteration. 
             gamePresenter.loopTimeout = setTimeout(gamePresenter.loop, gamePresenter.loopTick);
@@ -211,7 +211,7 @@ var gamePresenter = {
         color = gamePresenter.matchTile.getColor();
 
         gameView.showMatchTile(value, color, gamePresenter.HINT_LENGTH);
-        soundManager.playSound('woosh');
+        soundManager.playSound('woosh', 0.3);
 
         // Start the first iteration.
         gamePresenter.loopTimeout = setTimeout(gamePresenter.loop, gamePresenter.loopTick);
@@ -287,6 +287,6 @@ var gamePresenter = {
         gameView.showSelectedTile(e.currentTarget);
         
         // Play a pop sound.
-        soundManager.playSound('pop');
+        soundManager.playSound('pop', 1.0);
     }
 };
