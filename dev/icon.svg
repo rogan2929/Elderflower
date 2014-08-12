@@ -175,8 +175,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.98994949"
-     inkscape:cx="260.20028"
-     inkscape:cy="266.9001"
+     inkscape:cx="291.86227"
+     inkscape:cy="217.37383"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -202,42 +202,34 @@
      inkscape:groupmode="layer"
      id="layer1"
      transform="translate(0,-540.36218)">
-    <rect
-       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-opacity:1"
-       id="rect3022"
-       width="526.28949"
-       height="528.30975"
-       x="-5.0507627"
-       y="537.18439" />
     <g
-       id="g4925"
-       transform="matrix(1.5363323,0,0,1.5363323,-1031.9608,-504.73164)"
-       style="display:inline;filter:url(#filter3716)">
+       id="g3826"
+       transform="matrix(0.88661144,0,0,0.88661144,149.72374,84.750282)">
       <rect
-         y="806.82404"
-         x="799.25171"
-         height="186.65909"
-         width="186.65909"
+         y="667.31964"
+         x="124.77921"
+         height="269.44333"
+         width="269.44333"
          id="rect4469-6"
-         style="fill:#a1d162;fill-opacity:1;stroke:#000000;stroke-opacity:1" />
+         style="fill:#a1d162;fill-opacity:1;stroke:#000000;stroke-width:1.44350493;stroke-opacity:1" />
       <text
          transform="scale(1.0564685,0.94654975)"
          sodipodi:linespacing="125%"
          id="text4792-7"
-         y="1022.553"
-         x="788.91949"
-         style="font-size:56.83456421px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:Sans"
+         y="954.77222"
+         x="162.39439"
+         style="font-size:87.60080719px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:Sans"
          xml:space="preserve"><tspan
-           style="font-size:204.60443115px;fill:#ffffff;fill-opacity:1"
-           y="1022.553"
-           x="788.91949"
+           style="font-size:315.36291504px;fill:#ffffff;fill-opacity:1"
+           y="954.77222"
+           x="162.39439"
            id="tspan4794-8"
            sodipodi:role="line">5</tspan></text>
     </g>
     <g
        id="g4930"
-       transform="matrix(1.5363323,0,0,1.5363323,-843.6164,-669.57161)"
-       style="display:inline;filter:url(#filter3740)">
+       transform="matrix(1.4413154,0,0,1.4413154,-791.76263,-387.97144)"
+       style="display:inline">
       <rect
          y="806.82404"
          x="567.49377"
@@ -258,6 +250,29 @@
            x="567.49493"
            id="tspan4794"
            sodipodi:role="line">3</tspan></text>
+    </g>
+    <g
+       id="g3838">
+      <rect
+         y="549.57324"
+         x="13.065833"
+         height="309.2254"
+         width="309.2254"
+         id="rect4469-6-7"
+         style="fill:#c299ff;fill-opacity:1;stroke:#000000;stroke-width:1.65663183000000000;stroke-opacity:1" />
+      <text
+         transform="scale(1.0564685,0.94654975)"
+         sodipodi:linespacing="125%"
+         id="text4792-7-4"
+         y="868.19977"
+         x="61.528511"
+         style="font-size:100.53466034px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:Sans"
+         xml:space="preserve"><tspan
+           style="font-size:361.92477417px;fill:#ffffff;fill-opacity:1"
+           y="868.19977"
+           x="61.528511"
+           id="tspan4794-8-0"
+           sodipodi:role="line">1</tspan></text>
     </g>
   </g>
 </svg>
