@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="1024"
+   height="500"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.48.5 r10040"
+   sodipodi:docname="feature-graphic.svg"
+   inkscape:export-filename="C:\Users\scalesr\Documents\NetBeansProjects\Elderflower\dev\feature-graphic.png"
+   inkscape:export-xdpi="90"
+   inkscape:export-ydpi="90">
+  <defs
+     id="defs4">
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 250 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="1024 : 250 : 1"
+       inkscape:persp3d-origin="512 : 166.66667 : 1"
+       id="perspective4425" />
+    <filter
+       inkscape:label="Blotting paper"
+       inkscape:menu="Textures"
+       inkscape:menu-tooltip="Inkblot on blotting paper"
+       height="1.3"
+       y="-0.15"
+       width="1.3"
+       x="-0.15"
+       color-interpolation-filters="sRGB"
+       id="filter3017">
+      <feGaussianBlur
+         stdDeviation="3"
+         in="SourceGraphic"
+         result="result1"
+         id="feGaussianBlur3019" />
+      <feTurbulence
+         type="turbulence"
+         baseFrequency="0.05"
+         numOctaves="5"
+         result="result0"
+         id="feTurbulence3021" />
+      <feDisplacementMap
+         in2="result0"
+         in="result1"
+         xChannelSelector="R"
+         yChannelSelector="G"
+         scale="3"
+         result="result2"
+         id="feDisplacementMap3023" />
+      <feBlend
+         result="result5"
+         in="result2"
+         mode="multiply"
+         in2="result2"
+         id="feBlend3025" />
+      <feGaussianBlur
+         stdDeviation="5"
+         in="result2"
+         result="result4"
+         id="feGaussianBlur3027" />
+      <feComposite
+         operator="arithmetic"
+         in2="result5"
+         in="result4"
+         k2="0.25"
+         k3="1"
+         k1="1"
+         id="feComposite3029" />
+      <feComposite
+         operator="in"
+         in2="result2"
+         id="feComposite3031" />
+    </filter>
+    <filter
+       inkscape:label="Cubes"
+       inkscape:menu="Scatter"
+       inkscape:menu-tooltip="Scattered cubes; adjust the Morphology primitive to vary size"
+       color-interpolation-filters="sRGB"
+       id="filter4379">
+      <feTurbulence
+         baseFrequency="0.14299516908212559"
+         numOctaves="1"
+         type="fractalNoise"
+         id="feTurbulence4381" />
+      <feColorMatrix
+         values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 6 -3.5 "
+         result="result5"
+         id="feColorMatrix4383" />
+      <feComposite
+         in2="result5"
+         operator="in"
+         in="SourceGraphic"
+         result="result6"
+         id="feComposite4385" />
+      <feMorphology
+         result="result3"
+         radius="5"
+         operator="dilate"
+         in="result6"
+         id="feMorphology4387" />
+      <feDisplacementMap
+         result="result4"
+         scale="0"
+         yChannelSelector="A"
+         xChannelSelector="R"
+         in="result3"
+         in2="result3"
+         id="feDisplacementMap4389" />
+      <feComposite
+         in2="result4"
+         operator="arithmetic"
+         result="result2"
+         k1="1"
+         k3="1"
+         id="feComposite4391" />
+      <feBlend
+         mode="darken"
+         in="result2"
+         in2="result2"
+         id="feBlend4393" />
+      <feConvolveMatrix
+         order="3 3"
+         kernelMatrix="2 0 0 0 1 0 0 0 -1 "
+         targetX="1"
+         targetY="1"
+         divisor="2"
+         edgeMode="duplicate"
+         id="feConvolveMatrix4395" />
+    </filter>
+    <font
+       horiz-adv-x="1024"
+       id="font4403"
+       inkscape:label="font 1">
+      <font-face
+         units-per-em="1024"
+         id="font-face4405"
+         font-family="SVGFont 1" />
+      <missing-glyph
+         d="M0,0h1000v1024h-1000z"
+         id="missing-glyph4407" />
+    </font>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.79824667"
+     inkscape:cx="490.93988"
+     inkscape:cy="200.11124"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer2"
+     showgrid="false"
+     showguides="true"
+     inkscape:window-width="1401"
+     inkscape:window-height="760"
+     inkscape:window-x="178"
+     inkscape:window-y="114"
+     inkscape:window-maximized="0"
+     inkscape:guide-bbox="true">
+    <inkscape:grid
+       type="xygrid"
+       id="grid2985"
+       empspacing="5"
+       visible="true"
+       enabled="true"
+       snapvisiblegridlinesonly="true" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="Background"
+     style="display:inline">
+    <text
+       xml:space="preserve"
+       style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="670.21887"
+       y="362.19797"
+       id="text4770"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4772" /></text>
+    <rect
+       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-opacity:1"
+       id="rect3039"
+       width="1227.6907"
+       height="643.91125"
+       x="-108.98887"
+       y="-26.153151" />
+  </g>
+  <g
+     inkscape:label="Middle Tiles"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-552.36217)"
+     style="display:inline">
+    <g
+       id="g4941"
+       transform="translate(-1.270105e-6,-5.0109824)">
+      <g
+         style="fill:#f6898c;fill-opacity:1"
+         transform="translate(13.780202,-45.098841)"
+         id="g4839">
+        <rect
+           style="fill:#f6898c;fill-opacity:1;stroke:#000000;stroke-opacity:1;display:inline"
+           id="rect4768"
+           width="838.08679"
+           height="360.79074"
+           x="0"
+           y="623.92322" />
+      </g>
+      <g
+         transform="translate(16.285693,-42.59335)"
+         id="g4834">
+        <text
+           xml:space="preserve"
+           style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Sans"
+           x="27.560404"
+           y="750.4505"
+           id="text4397"
+           sodipodi:linespacing="125%"><tspan
+             sodipodi:role="line"
+             x="27.560404"
+             y="750.4505"
+             id="tspan4401"
+             style="font-size:144px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#ffffff;fill-opacity:1;font-family:Trebuchet MS;-inkscape-font-specification:Trebuchet MS">match me if</tspan><tspan
+             sodipodi:role="line"
+             x="27.560404"
+             y="930.4505"
+             style="font-size:144px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#ffffff;fill-opacity:1;font-family:Trebuchet MS;-inkscape-font-specification:Trebuchet MS"
+             id="tspan4429">you can</tspan></text>
+      </g>
+    </g>
+    <g
+       id="g4925"
+       transform="matrix(1.1049144,0,0,1.1049144,-79.634084,-73.320251)">
+      <rect
+         y="806.82404"
+         x="799.25171"
+         height="186.65909"
+         width="186.65909"
+         id="rect4469-6"
+         style="fill:#a1d162;fill-opacity:1;stroke:#000000;stroke-opacity:1" />
+      <text
+         transform="scale(1.0564685,0.94654975)"
+         sodipodi:linespacing="125%"
+         id="text4792-7"
+         y="1022.553"
+         x="788.91949"
+         style="font-size:56.83456421px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:Sans"
+         xml:space="preserve"><tspan
+           style="font-size:204.60443115px;fill:#ffffff;fill-opacity:1"
+           y="1022.553"
+           x="788.91949"
+           id="tspan4794-8"
+           sodipodi:role="line">5</tspan></text>
+    </g>
+    <g
+       id="g4930"
+       transform="matrix(1.1049144,0,0,1.1049144,-64.601137,-123.43007)">
+      <rect
+         y="806.82404"
+         x="567.49377"
+         height="186.65909"
+         width="186.65909"
+         id="rect4469"
+         style="fill:#ffd761;fill-opacity:1;stroke:#000000;stroke-opacity:1" />
+      <text
+         transform="scale(1.0564685,0.94654975)"
+         sodipodi:linespacing="125%"
+         id="text4792"
+         y="1023.7712"
+         x="567.49493"
+         style="font-size:56.83456421px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         xml:space="preserve"><tspan
+           style="font-size:204.60443115px;fill:#ffffff;fill-opacity:1"
+           y="1023.7712"
+           x="567.49493"
+           id="tspan4794"
+           sodipodi:role="line">3</tspan></text>
+    </g>
+    <g
+       id="g4829"
+       transform="translate(1.2527454,387.35113)">
+      <rect
+         y="567.54962"
+         x="12.527455"
+         height="78.922974"
+         width="245.53813"
+         id="rect4821"
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-opacity:1" />
+      <text
+         sodipodi:linespacing="125%"
+         id="text4825"
+         y="631.43964"
+         x="53.868061"
+         style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#ffd761;fill-opacity:1;stroke:none;font-family:Sans"
+         xml:space="preserve"><tspan
+           style="font-size:72px;fill:#ffd761;fill-opacity:1"
+           y="631.43964"
+           x="53.868061"
+           id="tspan4827"
+           sodipodi:role="line">three</tspan></text>
+    </g>
+    <g
+       style="display:inline"
+       id="g4829-7"
+       transform="translate(274.35129,390.23026)">
+      <g
+         id="g4869"
+         transform="translate(-7.5164736,-2.8791315)">
+        <rect
+           style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-opacity:1"
+           id="rect4821-8"
+           width="245.53813"
+           height="78.922974"
+           x="12.527455"
+           y="567.54962" />
+        <text
+           xml:space="preserve"
+           style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#ffd761;fill-opacity:1;stroke:none;font-family:Sans"
+           x="83.933952"
+           y="632.69238"
+           id="text4825-1"
+           sodipodi:linespacing="125%"><tspan
+             sodipodi:role="line"
+             id="tspan4827-6"
+             x="83.933952"
+             y="632.69238"
+             style="font-size:72px;fill:#a1d162;fill-opacity:1">five</tspan></text>
+      </g>
+    </g>
+  </g>
+</svg>
