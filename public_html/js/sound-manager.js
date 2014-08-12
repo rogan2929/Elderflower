@@ -21,7 +21,7 @@ var soundManager = {
                         alert('Success!');
                     },
                     function(err) {
-                        alert(err.message);
+                        alert(err.code);
                     });
         }
         else {
