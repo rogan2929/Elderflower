@@ -11,17 +11,23 @@
 var soundManager = {
     playSound: function(id) {
         var element, url, media;
-        
+
         element = document.getElementById(id);
         url = element.getAttribute('src');
-        
-        if (typeof(Media) !== 'undefined') {
-            media = new Media(url);
+
+        if (typeof (Media) !== 'undefined') {
+            media = new Media(url,
+                    function() {
+                        alert('Success!');
+                    },
+                    function() {
+                        alert('Fail!');
+                    });
         }
         else {
             media = new Audio(url);
         }
-        
+
         media.play();
     },
     /**
