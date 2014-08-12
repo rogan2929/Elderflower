@@ -15,8 +15,21 @@ var soundManager = {
         element = document.getElementById(id);
         url = element.getAttribute('src');
 
+        if (window.device) {
+            // Determine the platform, so user can be directed to either Google Play or App Store.
+            switch (window.device.platform) {
+                case 'Android':
+                    url = '/android_asset/www/' + url;
+                    break;
+                case 'iOS':
+                    break;
+                default:
+                    break;
+            }
+        }
+
         if (typeof (Media) !== 'undefined') {
-            media = new Media('/android_asset/www/' + url,
+            media = new Media(url,
                     function() {
                     },
                     function(err) {

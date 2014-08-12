@@ -77,6 +77,9 @@ var gamePresenter = {
         // Event Handling
         eventBus.installHandler('gamePresenter.onTapTile', gamePresenter.onTapTile, '.game.tile', 'touchstart');    // Bind to touchstart, since tap has a 300ms delay. 
         eventBus.installHandler('gamePresenter.onTapButtonStartGame', gamePresenter.onTapButtonStartGame, '#button-start-game', 'tap');
+        
+        // Play a neat sound effect.
+        soundManager.playSound('woosh');
     },
     /**
      * Getter for score.
@@ -135,7 +138,7 @@ var gamePresenter = {
      * The main game loop function.
      */
     loop: function() {
-        var value, color, match;
+        var value, color, match, sound;
 
         match = gamePresenter.evaluate(gamePresenter.selectedTile);
 
@@ -150,6 +153,8 @@ var gamePresenter = {
             if (gamePresenter.combo % 10 === 0) {
                 gamePresenter.chances = Math.min(gamePresenter.chances + 1, gamePresenter.MAX_CHANCES);
             }
+            
+            sound = 'success';
         }
         else {
             // Incorrect selection. 
@@ -162,10 +167,13 @@ var gamePresenter = {
                 gamePresenter.finishGame();
                 return;
             }
+            
+            sound = 'fail';
         }
 
         // Show the tap result.
         gameView.showTapResult(match, gamePresenter.RESULT_TIMEOUT);
+        soundManager.playSound(sound);
         gameView.setScore(gamePresenter.score);
         gameView.setChances(gamePresenter.chances);
         gameView.hideTiles();
@@ -181,6 +189,7 @@ var gamePresenter = {
             color = gamePresenter.matchTile.getColor();
 
             gameView.showMatchTile(value, color, gamePresenter.HINT_LENGTH);
+            soundManager.playSound('woosh');
 
             // Start next iteration. 
             gamePresenter.loopTimeout = setTimeout(gamePresenter.loop, gamePresenter.loopTick);
@@ -202,6 +211,7 @@ var gamePresenter = {
         color = gamePresenter.matchTile.getColor();
 
         gameView.showMatchTile(value, color, gamePresenter.HINT_LENGTH);
+        soundManager.playSound('woosh');
 
         // Start the first iteration.
         gamePresenter.loopTimeout = setTimeout(gamePresenter.loop, gamePresenter.loopTick);
@@ -275,6 +285,8 @@ var gamePresenter = {
         index = $(e.currentTarget).data('index');
         gamePresenter.selectedTile = gamePresenter.tiles[index];
         gameView.showSelectedTile(e.currentTarget);
-        gameView.playPopSound();
+        
+        // Play a pop sound.
+        soundManager.playSound('pop');
     }
 };
