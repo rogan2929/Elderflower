@@ -45,7 +45,7 @@ var gameServices = {
                     redirect_uri: 'http://localhost',
                     grant_type: 'authorization_code'
                 }).done(function(data) {
-                    alert('token');
+                    alert(data.access_token);
                 }).fail(function(response) {
                     alert(response.responseJSON);
                 });
