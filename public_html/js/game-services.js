@@ -10,20 +10,32 @@
  */
 var gameServices = {
     CLIENT_ID: '218442145746-puhv60r2bt1342qmupgt13tptnsi67r4.apps.googleusercontent.com',
-    
     signIn: function() {
         var data;
 
         data = $.param({
             client_id: gameServices.CLIENT_ID,
-            redirect_uri: 'postmessage',
+            redirect_uri: 'http://localhost',
             cookie_policy: 'single_host_origin',
             scope: 'https://www.googleapis.com/auth/plus.login',
             origin: 'http://localhost',
             response_type: 'code token id_token gsession',
             include_granted_scopes: 'true'
         });
-        
-        window.open('https://accounts.google.com/o/oauth2/auth?' + data);
+
+        window.open('https://accounts.google.com/o/oauth2/auth?' + data, '_blank');
+
+        $(authWindow).on('loadstart', function(e) {
+            var url = e.originalEvent.url;
+            var code = /\?code=(.+)$/.exec(url);
+            var error = /\?error=(.+)$/.exec(url);
+
+            if (code || error) {
+                authWindow.close();
+            }
+
+            //TODO - exchange code for access token...
+            alert(url);
+        });
     }
 };

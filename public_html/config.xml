@@ -39,6 +39,7 @@
     <!-- Plugins -->
     <gap:plugin name="org.apache.cordova.device" />
     <gap:plugin name="org.apache.cordova.media" version="0.2.8" />
+    <gap:plugin name="org.li8.inappbrowser" version="0.1" />
 
     <!-- Access -->
     <access origin="*" />
