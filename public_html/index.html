@@ -10,6 +10,7 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no,minimal-ui" />
         <meta name="format-detection" content="telephone=no">
 
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="css/themes/elderflower/Elderflower.min.css">
         <link rel="stylesheet" href="css/themes/elderflower/jquery.mobile.icons.min.css">
         <link rel="stylesheet" href="css/vendor/jquery.mobile.structure-1.4.2.min.css">
@@ -118,17 +119,10 @@ and open the template in the editor.
             <a href='#options' class='ui-btn half'>Options</a>
             <a href='#more-apps' class='ui-btn half'>More Apps</a>
             <a href='#' id='btn-rate' class='ui-btn half'>Feedback</a>
-            <a href="#" id='btn-signin' class='ui-btn half'>Sign Into Google+</a>
-            <!--
-            <span id="signinButton" class='absolute h-centered fill-horizontal margin-auto'>
-                <span
-                    class="g-signin"
-                    data-callback="signinCallback"
-                    data-clientid="218442145746-o068hr95h3p40g3kgqa63ef9dkub4cfv.apps.googleusercontent.com"
-                    data-cookiepolicy="single_host_origin"
-                    data-scope="https://www.googleapis.com/auth/plus.login">
-                </span>
-            </span>-->
+            <div id='btn-signin' class='google-signin absolute h-centered fill-horizontal margin-auto'>
+                <span class="icon"></span>
+                <span class="buttonText">Sign in</span>
+            </div>
         </div>
 
         <div id='instructions' data-role='page'>
