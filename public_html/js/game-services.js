@@ -9,7 +9,7 @@
  * @type type
  */
 var gameServices = {
-    CLIENT_ID: '218442145746-o068hr95h3p40g3kgqa63ef9dkub4cfv.apps.googleusercontent.com',
+    CLIENT_ID: '218442145746-puhv60r2bt1342qmupgt13tptnsi67r4.apps.googleusercontent.com',
     CLIENT_SECRET: 'xgBwEsSTrSmnIi53WH1C0nge',
     
     signIn: function() {
@@ -17,7 +17,7 @@ var gameServices = {
 
         data = $.param({
             client_id: gameServices.CLIENT_ID,
-            redirect_uri: 'urn:ietf:wg:oauth:2.0:oob:auto',
+            redirect_uri: 'http://localhost',
             scope: 'email profile',
             origin: 'http://localhost',
             response_type: 'code'
