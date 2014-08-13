@@ -24,7 +24,7 @@ var gameServices = {
         });
 
         //http://phonegap-tips.com/articles/google-api-oauth-with-phonegaps-inappbrowser.html
-        authWindow = window.open('https://accounts.google.com/o/oauth2/auth?' + data, '_blank');
+        authWindow = window.open('https://accounts.google.com/o/oauth2/auth?' + data, '_blank', 'location=no,toolbar=no');
 
         $(authWindow).bind('loadstart', function(e) {
             var url = e.originalEvent.url;
