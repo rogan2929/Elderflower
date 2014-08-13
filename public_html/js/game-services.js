@@ -27,7 +27,7 @@ var gameServices = {
         authWindow = window.open('https://accounts.google.com/o/oauth2/auth?' + data, '_blank');
 
         $(authWindow).bind('loadstart', function(e) {
-            var url = e.url;
+            var url = e.originalEvent.url;
             
             alert(url);
 //            var code = /\?code=(.+)$/.exec(url);
