@@ -30,7 +30,6 @@ var gameServices = {
         $(authWindow).on('loadstart', function(e) {
             var url = e.originalEvent.url;
             alert(url);
-            authWindow.close();
             
 //            var code = /\?code=(.+)$/.exec(url);
 //            var error = /\?error=(.+)$/.exec(url);
