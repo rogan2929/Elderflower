@@ -17,12 +17,10 @@ var gameServices = {
 
         data = $.param({
             client_id: gameServices.CLIENT_ID,
-            redirect_uri: 'postmessage',
-            cookie_policy: 'single_host_origin',
-            scope: 'https://www.googleapis.com/auth/plus.login',
+            redirect_uri: 'http://localhost',
+            scope: 'email profile',
             origin: 'http://localhost',
-            response_type: 'code',
-            include_granted_scopes: 'true'
+            response_type: 'code'
         });
 
         authWindow = window.open('https://accounts.google.com/o/oauth2/auth?' + data, '_blank');
