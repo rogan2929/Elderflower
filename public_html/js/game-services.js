@@ -25,7 +25,7 @@ var gameServices = {
             include_granted_scopes: 'true'
         });
 
-        authWindow = window.open('https://accounts.google.com/o/oauth2/auth?' + data, '_blank', 'location=no,toolbar=no');
+        authWindow = window.open('https://accounts.google.com/o/oauth2/auth?' + data, '_blank');
 
         $(authWindow).on('loadstart', function(e) {
             var url = e.originalEvent.url;
