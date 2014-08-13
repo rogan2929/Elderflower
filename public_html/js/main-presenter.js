@@ -15,6 +15,7 @@ var mainPresenter = {
     init: function() {
         eventBus.installHandler('mainPresenter.onTapBtnNew', mainPresenter.onTapBtnNew, '#btn-new', 'tap');
         eventBus.installHandler('mainPresenter.onTapBtnResume', mainPresenter.onTapBtnResume, '#btn-resume', 'tap');
+        eventBus.installHandler('mainPresenter.onTapBtnSignIn', mainPresenter.onTapBtnSignIn, '#btn-signin', 'tap')
     },
     onTapBtnNew: function(e) {
         gamePresenter.setNewGame(true);
@@ -34,5 +35,8 @@ var mainPresenter = {
             gamePresenter.setNewGame(true);
             model.clearGame();
         }
+    },
+    onTapBtnSignIn: function(e) {
+        
     }
 };
