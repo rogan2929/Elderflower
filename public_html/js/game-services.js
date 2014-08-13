@@ -10,12 +10,14 @@
  */
 var gameServices = {
     CLIENT_ID: '218442145746-puhv60r2bt1342qmupgt13tptnsi67r4.apps.googleusercontent.com',
+    CLIENT_SECRET: 'xgBwEsSTrSmnIi53WH1C0nge',
+    
     signIn: function() {
         var data, authWindow;
 
         data = $.param({
             client_id: gameServices.CLIENT_ID,
-            redirect_uri: 'http://localhost',
+            redirect_uri: 'postmessage',
             cookie_policy: 'single_host_origin',
             scope: 'https://www.googleapis.com/auth/plus.login',
             origin: 'http://localhost',
@@ -34,8 +36,23 @@ var gameServices = {
                 authWindow.close();
             }
 
-            //TODO - exchange code for access token...
-            alert(url);
+            if (code) {
+                //Exchange the authorization code for an access token
+                $.post('https://accounts.google.com/o/oauth2/token', {
+                    code: code[1],
+                    client_id: gameServices.CLIENT_ID,
+                    client_secret: gameServices.CLIENT_SECRET,
+                    redirect_uri: 'http://localhost',
+                    grant_type: 'authorization_code'
+                }).done(function(data) {
+                    alert('token');
+                }).fail(function(response) {
+                    alert(response.responseJSON);
+                });
+            } else if (error) {
+                //The user denied access to the app
+                alert('denied');
+            }
         });
     }
 };
