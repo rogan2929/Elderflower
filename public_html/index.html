@@ -23,14 +23,10 @@ and open the template in the editor.
         <script src="js/vendor/jquery-2.1.1.min.js"></script>
         <script type="text/javascript" src="phonegap.js"></script>
         
-        <script src="https://apis.google.com/js/client.js"></script>
-        <script type="text/javascript">
-            (function() {
-                var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-                po.src = 'https://apis.google.com/js/client:plusone.js';
-                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-            })();
-        </script>
+        <!--
+        <script src="https://apis.google.com/js/client.js"></script>-->
+        
+        <script src="https://apis.google.com/js/plusone.js">
 
         <!-- Do some init work after PhoneGap loads -->
         <script type='text/javascript' charset="utf-8">
@@ -196,5 +192,14 @@ and open the template in the editor.
         <audio id='woosh' src='res/sounds/woosh.mp3' type='audio/mpeg'></audio>
         <audio id='success' src='res/sounds/success.mp3' type='audio/mpeg'></audio>
         <audio id='fail' src='res/sounds/fail.mp3' type='audio/mpeg'></audio>
+        
+       <!-- Place this asynchronous JavaScript just before your </body> tag
+    <script type="text/javascript">
+      (function() {
+       var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+       po.src = 'https://apis.google.com/js/client:plusone.js';
+       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+     })();
+    </script>-->
     </body>
 </html>
