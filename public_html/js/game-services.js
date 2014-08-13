@@ -29,30 +29,33 @@ var gameServices = {
 
         $(authWindow).on('loadstart', function(e) {
             var url = e.originalEvent.url;
-            var code = /\?code=(.+)$/.exec(url);
-            var error = /\?error=(.+)$/.exec(url);
-
-            if (code || error) {
-                authWindow.close();
-            }
-
-            if (code) {
-                //Exchange the authorization code for an access token
-                $.post('https://accounts.google.com/o/oauth2/token', {
-                    code: code[1],
-                    client_id: gameServices.CLIENT_ID,
-                    client_secret: gameServices.CLIENT_SECRET,
-                    redirect_uri: 'http://localhost',
-                    grant_type: 'authorization_code'
-                }).done(function(data) {
-                    alert('token');
-                }).fail(function(response) {
-                    alert(response.responseJSON);
-                });
-            } else if (error) {
-                //The user denied access to the app
-                alert('denied');
-            }
+            alert(url);
+            authWindow.close();
+            
+//            var code = /\?code=(.+)$/.exec(url);
+//            var error = /\?error=(.+)$/.exec(url);
+//
+//            if (code || error) {
+//                authWindow.close();
+//            }
+//
+//            if (code) {
+//                //Exchange the authorization code for an access token
+//                $.post('https://accounts.google.com/o/oauth2/token', {
+//                    code: code[1],
+//                    client_id: gameServices.CLIENT_ID,
+//                    client_secret: gameServices.CLIENT_SECRET,
+//                    redirect_uri: 'http://localhost',
+//                    grant_type: 'authorization_code'
+//                }).done(function(data) {
+//                    alert('token');
+//                }).fail(function(response) {
+//                    alert(response.responseJSON);
+//                });
+//            } else if (error) {
+//                //The user denied access to the app
+//                alert('denied');
+//            }
         });
     }
 };
