@@ -11,7 +11,7 @@
 var gameServices = {
     CLIENT_ID: '218442145746-puhv60r2bt1342qmupgt13tptnsi67r4.apps.googleusercontent.com',
     signIn: function() {
-        var data;
+        var data, authWindow;
 
         data = $.param({
             client_id: gameServices.CLIENT_ID,
@@ -23,7 +23,7 @@ var gameServices = {
             include_granted_scopes: 'true'
         });
 
-        window.open('https://accounts.google.com/o/oauth2/auth?' + data, '_blank');
+        authWindow = window.open('https://accounts.google.com/o/oauth2/auth?' + data, '_blank', 'location=no,toolbar=no');
 
         $(authWindow).on('loadstart', function(e) {
             var url = e.originalEvent.url;
