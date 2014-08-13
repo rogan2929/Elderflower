@@ -29,7 +29,7 @@ var gameServices = {
         $(authWindow).bind('loadstart', function(e) {
             var url = e.url;
             
-            alert('url');
+            alert(url);
 //            var code = /\?code=(.+)$/.exec(url);
 //            var error = /\?error=(.+)$/.exec(url);
 //
