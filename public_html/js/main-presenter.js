@@ -37,6 +37,6 @@ var mainPresenter = {
         }
     },
     onTapBtnSignIn: function(e) {
-        
+        gameServices.signIn();
     }
 };
