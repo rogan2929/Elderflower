@@ -28,15 +28,14 @@ var gameServices = {
 
         $(authWindow).bind('loadstart', function(e) {
             var url = e.originalEvent.url;
-            
-            alert(url);
-//            var code = /\?code=(.+)$/.exec(url);
-//            var error = /\?error=(.+)$/.exec(url);
-//
-//            if (code || error) {
-//                authWindow.close();
-//            }
+            var code = /\?code=(.+)$/.exec(url);
+            var error = /\?error=(.+)$/.exec(url);
 
+            if (code || error) {
+                authWindow.close();
+                alert(code[1]);
+            }
+ 
 //            if (code) {
 //                //Exchange the authorization code for an access token
 //                $.post('https://accounts.google.com/o/oauth2/token', {
