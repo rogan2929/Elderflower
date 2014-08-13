@@ -11,8 +11,20 @@
 var gameServices = {
     CLIENT_ID: '218442145746-puhv60r2bt1342qmupgt13tptnsi67r4.apps.googleusercontent.com',
     CLIENT_SECRET: 'xgBwEsSTrSmnIi53WH1C0nge',
-    
-    signIn: function() {
+    authenticated: false,
+    /**
+     * Getter for authenticated.
+     * @returns {Boolean}
+     */
+    getAuthenticated: function() {
+        return gameServices.authenticated;
+    },
+    /**
+     * Signs in and authorizes the app.
+     * @param {type} success
+     * @param {type} fail
+     */
+    signIn: function(success, fail) {
         var data, authWindow;
 
         data = $.param({
@@ -34,7 +46,7 @@ var gameServices = {
             if (code || error) {
                 authWindow.close();
             }
- 
+
             if (code) {
                 //Exchange the authorization code for an access token
                 $.post('https://accounts.google.com/o/oauth2/token', {
@@ -43,14 +55,14 @@ var gameServices = {
                     client_secret: gameServices.CLIENT_SECRET,
                     redirect_uri: 'http://localhost',
                     grant_type: 'authorization_code'
-                }).done(function(data) {
-                    alert(data.access_token);
-                }).fail(function(response) {
-                    alert(response.responseJSON);
+                }).done(function() {
+                    gameServices.authenticated = true;
+                }).fail(function() {
+                    gameServices.authenticated = false;
                 });
             } else if (error) {
                 //The user denied access to the app
-                alert('denied');
+                gameServices.authenticated = false;
             }
         });
     }
