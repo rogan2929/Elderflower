@@ -33,26 +33,25 @@ var gameServices = {
 
             if (code || error) {
                 authWindow.close();
-                alert(code[1]);
             }
  
-//            if (code) {
-//                //Exchange the authorization code for an access token
-//                $.post('https://accounts.google.com/o/oauth2/token', {
-//                    code: code[1],
-//                    client_id: gameServices.CLIENT_ID,
-//                    client_secret: gameServices.CLIENT_SECRET,
-//                    redirect_uri: 'http://localhost',
-//                    grant_type: 'authorization_code'
-//                }).done(function(data) {
-//                    alert(data.access_token);
-//                }).fail(function(response) {
-//                    alert(response.responseJSON);
-//                });
-//            } else if (error) {
-//                //The user denied access to the app
-//                alert('denied');
-//            }
+            if (code) {
+                //Exchange the authorization code for an access token
+                $.post('https://accounts.google.com/o/oauth2/token', {
+                    code: code[1],
+                    client_id: gameServices.CLIENT_ID,
+                    client_secret: gameServices.CLIENT_SECRET,
+                    redirect_uri: 'http://localhost',
+                    grant_type: 'authorization_code'
+                }).done(function(data) {
+                    alert(data.access_token);
+                }).fail(function(response) {
+                    alert(response.responseJSON);
+                });
+            } else if (error) {
+                //The user denied access to the app
+                alert('denied');
+            }
         });
     }
 };
