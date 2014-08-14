@@ -27,21 +27,14 @@ and open the template in the editor.
                 // Do init work here.
                 document.addEventListener("pause", onPause, false);
 
-                // Attempt to sign in automatically.
-                if (model.getConnectionStatus() === 'true') {
-                    if (window.device) {
-                        // Determine the platform, so user can be directed to either Google Play or App Store.
-                        switch (window.device.platform) {
-                            case 'Android':
-                                // Sign into Google Game Services
-                                enableGameServices();
-                                break;
-                            case 'iOS':
-                                // Connect to Game Center
-                                break;
-                        }
-                    }
+                if (window.device && window.device.platform === 'iOS') {
+                    model.setConnectionStatus(true);
                 }
+                
+                gameServices.signIn(function() {
+                }, function(error) {
+                    alert('Sign in failed: ' + error);
+                });
             }
 
             /**
@@ -56,30 +49,7 @@ and open the template in the editor.
                 // Bring the user to the main screen, where they can then choose what to do.
                 navigation.navigateTo('main');
             }
-
-            /**
-             * Signs into Google+
-             */
-            function enableGameServices() {
-                gameServices.signIn(function() {
-                    model.setConnectionStatus(true);
-                }, function(error) {
-                    alert('Google+ sign in failed: ' + error);
-                });
-            }
         </script>
-
-        <!-- Place this asynchronous JavaScript just before your </body> tag 
-        <script type="text/javascript">
-            (function() {
-                var po = document.createElement('script');
-                po.type = 'text/javascript';
-                po.async = true;
-                po.src = 'https://apis.google.com/js/client:plusone.js';
-                var s = document.getElementsByTagName('script')[0];
-                s.parentNode.insertBefore(po, s);
-            })();
-        </script>-->
 
         <script src="js/vendor/jquery.mobile-1.4.3.min.js" type="text/javascript"></script>
 

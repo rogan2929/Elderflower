@@ -13,25 +13,15 @@ var mainPresenter = {
      * Entry point
      */
     init: function() {
-        // Hide the Sign in button if already authenticated.
-        if (gameServices.getAuthenticated()) {
+        // Hide the Sign in button if already authenticated, or if the device is made by Apple.
+        if (gameServices.getAuthenticated() || (window.device && window.device.platform === 'iOS')) {
             mainView.hideGoogleSigninButton();
         }
-        
+
         eventBus.installHandler('mainPresenter.onTapBtnFeedback', mainPresenter.onTapBtnFeedback, '#btn-feedback', 'tap');
         eventBus.installHandler('mainPresenter.onTapBtnNew', mainPresenter.onTapBtnNew, '#btn-new', 'tap');
         eventBus.installHandler('mainPresenter.onTapBtnResume', mainPresenter.onTapBtnResume, '#btn-resume', 'tap');
         eventBus.installHandler('mainPresenter.onTapBtnSignIn', mainPresenter.onTapBtnSignIn, '#btn-signin', 'tap');
-    },
-    enableGameServices: function() {
-        gameServices.signIn(function() {
-            model.setConnectionStatus(true);
-
-            // Hide the sign in button.
-            mainView.hideGoogleSigninButton();
-        }, function(error) {
-            alert('Google+ sign in failed: ' + error);
-        });
     },
     onTapBtnFeedback: function(e) {
         if (window.device) {
@@ -65,6 +55,15 @@ var mainPresenter = {
         }
     },
     onTapBtnSignIn: function(e) {
-
+        // Sign into Google Game Services.
+        gameServices.signIn(function() {
+            // Allow auto login next time the app is launched.
+            model.setConnectionStatus(true);
+            
+            // Hide the sign in button.
+            mainView.hideGoogleSigninButton();
+        }, function(error) {
+            alert('Google+ sign in failed: ' + error);
+        });
     }
 };

@@ -9,8 +9,6 @@
  * @type type
  */
 var gameServices = {
-    CLIENT_ID: '218442145746-puhv60r2bt1342qmupgt13tptnsi67r4.apps.googleusercontent.com',
-    CLIENT_SECRET: 'xgBwEsSTrSmnIi53WH1C0nge',
     accessToken: null,
     /**
      * Getter for authenticated.
@@ -21,15 +19,39 @@ var gameServices = {
     },
     /**
      * Signs in and authorizes the app.
-     * Credits to http://phonegap-tips.com/articles/google-api-oauth-with-phonegaps-inappbrowser.html
      * @param {type} success
      * @param {type} fail
      */
     signIn: function(success, fail) {
-        var data, authWindow;
+        if (window.device) {
+            // Determine the platform, so user can be directed to either Google Play or App Store.
+            switch (window.device.platform) {
+                case 'Android':
+                    // Connect to Game Services
+                    gameServices.signInGoogle(success, fail);
+                    break;
+                case 'iOS':
+                    // Connect to Game Center
+                    gameServices.signInIOS(success, fail);
+                    break;
+            }
+        }
+    },
+    /**
+     * Signs into Google Game Services.
+     * Credits to http://phonegap-tips.com/articles/google-api-oauth-with-phonegaps-inappbrowser.html
+     * @param {type} success
+     * @param {type} fail
+     */
+    signInGoogle: function(success, fail) {
+        var data, authWindow, clientId, clientSecret;
+        
+        // Values from Google Developer Console.
+        clientId = '218442145746-puhv60r2bt1342qmupgt13tptnsi67r4.apps.googleusercontent.com';
+        clientSecret = 'xgBwEsSTrSmnIi53WH1C0nge';
 
         data = $.param({
-            client_id: gameServices.CLIENT_ID,
+            client_id: clientId,
             redirect_uri: 'http://localhost',
             scope: 'email profile',
             origin: 'http://localhost',
@@ -51,8 +73,8 @@ var gameServices = {
                 //Exchange the authorization code for an access token
                 $.post('https://accounts.google.com/o/oauth2/token', {
                     code: code[1],
-                    client_id: gameServices.CLIENT_ID,
-                    client_secret: gameServices.CLIENT_SECRET,
+                    client_id: clientId,
+                    client_secret: clientSecret,
                     redirect_uri: 'http://localhost',
                     grant_type: 'authorization_code'
                 }).done(function(data) {
@@ -68,5 +90,14 @@ var gameServices = {
                 gameServices.accessToken = null;
             }
         });
+    },
+    /**
+     * Signs into Game Center
+     * Uses PhoneGap Game Center plugin: https://build.phonegap.com/plugins/880
+     * @param {type} success
+     * @param {type} fail
+     */
+    signInIOS: function(success, fail) {
+        alert('Not yet implemented.');
     }
 };
