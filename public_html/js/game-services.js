@@ -163,7 +163,7 @@ var gameServices = {
 
                 if (code) {
                     // Truncate the code string further.
-                    code = code[1].substring(0, code[1].indexOf('='));
+                    code = code[1].substring(0, code[1].indexOf('&'));
                     
                     console.log(code);
 
