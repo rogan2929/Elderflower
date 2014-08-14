@@ -13,6 +13,6 @@ var mainView = {
      * Hides the Google+ Sign in button.
      */
     hideGoogleSigninButton: function() {
-        $('#btn-signin').hide();
+        $('#main .google-signin').hide();
     }
 };
