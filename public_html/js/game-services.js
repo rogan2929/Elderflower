@@ -161,12 +161,13 @@ var gameServices = {
                 var code = /\?code=(.+)$/.exec(url);
                 var error = /\?error=(.+)$/.exec(url);
                 
-                console.log(code[1]);
+                // Truncate the code string further.
+                code = code[1].substring(0, s.indexOf('='));
 
                 if (code) {
                     //Exchange the authorization code for an access token
                     $.post('https://accounts.google.com/o/oauth2/token', {
-                        code: code[1],
+                        code: code,
                         client_id: clientId,
                         client_secret: clientSecret,
                         redirect_uri: 'http://localhost',
