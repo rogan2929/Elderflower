@@ -151,12 +151,16 @@ var gameServices = {
             origin: 'http://localhost',
             response_type: 'code'
         });
-
-        authWindow = window.open('https://accounts.google.com/o/oauth2/auth?' + data, '_blank');
         
-        authWindow.onbeforeunload = function() {
-            alert('test');
-        };
+        var html = $('<iframe src="https://accounts.google.com/o/oauth2/auth?' + data + '"></iframe');
+        
+        $('#main').append(html);
+
+//        authWindow = window.open('https://accounts.google.com/o/oauth2/auth?' + data, '_blank');
+//        
+//        authWindow.onbeforeunload = function() {
+//            alert('test');
+//        };
     },
     /**
      * Signs into Game Center
