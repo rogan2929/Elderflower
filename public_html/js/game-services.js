@@ -161,6 +161,8 @@ var gameServices = {
                 var code = /\?code=(.+)$/.exec(url);
                 var error = /\?error=(.+)$/.exec(url);
                 
+                console.log(code);
+                
                 alert(url);
 
                 if (code) {
