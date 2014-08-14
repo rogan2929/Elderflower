@@ -5,14 +5,16 @@
  */
 
 /**
- * View for #main
+ * Presenter for #leaderboard.
  * @type type
  */
-var mainView = {
+var leaderboardPresenter = {
     /**
-     * Hides the Google+ Sign in button.
+     * Entry point.
      */
-    hideGoogleSigninButton: function() {
-        $('#main .google-signin').fadeOut();
+    init: function() {
+        if (gameServices.getAuthenticated()) {
+            leaderboardView.hideSigninNotice();
+        }
     }
 };

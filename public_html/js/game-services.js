@@ -79,7 +79,6 @@ var gameServices = {
                     grant_type: 'authorization_code'
                 }).done(function(data) {
                     gameServices.accessToken = data.access_token;
-                    alert(gameServices.accessToken);
                     success.call(gameServices);
                 }).fail(function(data) {
                     gameServices.accessToken = null;

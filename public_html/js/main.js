@@ -62,3 +62,7 @@ $(document).on('pagebeforeshow', '#main', function(e) {
 $(document).on('pagebeforeshow', '#options', function(e) {
     optionsPresenter.init();
 });
+
+$(document).on('pagebeforeshow', '#leaderboard', function(e) {
+    leaderboardPresenter.init();
+});

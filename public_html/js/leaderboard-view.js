@@ -5,14 +5,15 @@
  */
 
 /**
- * View for #main
+ * View for #leaderboard.
  * @type type
  */
-var mainView = {
+var leaderboardView = {
     /**
-     * Hides the Google+ Sign in button.
+     * Hides the Google+ Sign in button and login notice.
      */
-    hideGoogleSigninButton: function() {
-        $('#main .google-signin').fadeOut();
+    hideSigninNotice: function() {
+        $('#signin-notice').fadeOut()
+        $('#leaderboard .google-signin').fadeOut();
     }
 };
