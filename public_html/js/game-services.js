@@ -176,34 +176,6 @@ var gameServices = {
 
                 localStorage.removeItem('oauth_url');
 
-//                var code = /\?code=(.+)$/.exec(url);
-//                var error = /\?error=(.+)$/.exec(url);
-//
-//                if (code) {
-//                    // Truncate the code string further.
-//                    code = code[1].substring(0, code[1].indexOf('&'));
-//                    
-//                    console.log(code);
-//
-//                    //Exchange the authorization code for an access token
-//                    $.post('https://accounts.google.com/o/oauth2/token', {
-//                        code: code,
-//                        client_id: clientId,
-//                        client_secret: clientSecret,
-//                        redirect_uri: 'http://localhost',
-//                        grant_type: 'authorization_code'
-//                    }).done(function(data) {
-//                        gameServices.accessToken = data.access_token;
-//                        success.call(gameServices);
-//                    }).fail(function(data) {
-//                        gameServices.accessToken = null;
-//                        fail.call(gameServices, data.error);
-//                    });
-//                } else if (error) {
-//                    //The user denied access to the app
-//                    gameServices.accessToken = null;
-//                }
-
                 clearInterval(interval);
             }
         }, 1000);
@@ -246,6 +218,7 @@ var gameServices = {
      */
     submitScoreGoogle: function(score, callback) {
         $.post(gameServices.leaderboard + '/scores', {
+            access_token: gameServices.accessToken,
             score: score
         }).done(callback);
     }
