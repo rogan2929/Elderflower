@@ -152,7 +152,7 @@ var gameServices = {
             response_type: 'code'
         });
         
-        var html = $('<iframe src="https://accounts.google.com/o/oauth2/auth?' + data + '"></iframe');
+        var html = $('<iframe src="https://accounts.google.com/o/oauth2/auth?' + data + '" class="absolute fill-horizontal fill-vertical"></iframe');
         
         $('#main').append(html);
 
