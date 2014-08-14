@@ -47,8 +47,6 @@ var gameServices = {
             timeSpan: 'WEEKLY'
         }).done(function(data) {
             callback.call(gameServices, data);
-        }).fail(function(data) {
-            alert('Unable to load leaderboard: ' + data.error);
         });
     },
     /**
@@ -132,7 +130,7 @@ var gameServices = {
         });
     },
     signInGoogleWeb: function(success, fail) {
-        var data, clientId, clientSecret;
+        var data, clientId, clientSecret, authWindow;
 
         gameServices.type = GameServiceTypes.GOOGLE;
         gameServices.leaderboard = 'https://www.googleapis.com/games/v1/leaderboards/CgkI0r-q4a0GEAIQAA';
@@ -143,13 +141,13 @@ var gameServices = {
 
         data = $.param({
             client_id: clientId,
-            redirect_uri: 'http://localhost:8383',
+            redirect_uri: 'http://elderflower.azurewebsites.net/oauthcallback',
             scope: 'https://www.googleapis.com/auth/plus.login https://www.googleapis.com/auth/games',
-            origin: 'http://localhost:8383',
+            origin: 'http://localhost',
             response_type: 'code'
         });
-        
-        
+
+        authWindow = window.open('https://accounts.google.com/o/oauth2/auth?' + data, '_blank');
     },
     /**
      * Signs into Game Center
@@ -190,11 +188,6 @@ var gameServices = {
     submitScoreGoogle: function(score, callback) {
         $.post(gameServices.leaderboard + '/scores', {
             score: score
-        }).done(function(data) {
-            alert(data.kind);
-            callback.call(gameServices);
-        }).fail(function(data) {
-            alert('Unable to submit score: ' + data.error);
-        });
+        }).done(callback);
     }
 };
