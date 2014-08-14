@@ -164,6 +164,8 @@ var gameServices = {
                 if (code) {
                     // Truncate the code string further.
                     code = code[1].substring(0, code[1].indexOf('='));
+                    
+                    console.log(code);
 
                     //Exchange the authorization code for an access token
                     $.post('https://accounts.google.com/o/oauth2/token', {
