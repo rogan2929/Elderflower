@@ -13,12 +13,15 @@ var leaderboardPresenter = {
      * Entry point.
      */
     init: function() {
+        // Try to load the leaderboard.
         if (gameServices.getAuthenticated()) {
-            leaderboardView.showLeaderboardData(gameServices.getLeaderboardData());
+            gameServices.getLeaderboardData(function(data) {
+                leaderboardView.showLeaderboardData(data);
+            });
         }
         else {
+            // Otherwise show the login notice and button.
             leaderboardView.showSigninNotice();
-            
             eventBus.installHandler('leaderboardPresenter.onTapBtnSignIn', leaderboardPresenter.onTapBtnSignIn, '#leaderboard .google-signin', 'tap');
         }
     },
@@ -27,10 +30,12 @@ var leaderboardPresenter = {
         gameServices.signIn(function() {
             // Allow auto login next time the app is launched.
             model.setConnectionStatus(true);
-            
+
             // Hide the sign in button and load the leaderboard data.
             leaderboardView.hideSigninNotice();
-            leaderboardView.showLeaderboardData(gameServices.getLeaderboardData());
+            gameServices.getLeaderboardData(function(data) {
+                leaderboardView.showLeaderboardData(data);
+            });
         }, function(error) {
             alert('Google+ sign in failed: ' + error);
         });
