@@ -26,6 +26,22 @@ and open the template in the editor.
             function onDeviceReady() {
                 // Do init work here.
                 document.addEventListener("pause", onPause, false);
+
+                // Attempt to sign in automatically.
+                if (model.getConnectionStatus() === 'true') {
+                    if (window.device) {
+                        // Determine the platform, so user can be directed to either Google Play or App Store.
+                        switch (window.device.platform) {
+                            case 'Android':
+                                // Sign into Google Game Services
+                                enableGameServices();
+                                break;
+                            case 'iOS':
+                                // Connect to Game Center
+                                break;
+                        }
+                    }
+                }
             }
 
             /**
@@ -39,6 +55,17 @@ and open the template in the editor.
 
                 // Bring the user to the main screen, where they can then choose what to do.
                 navigation.navigateTo('main');
+            }
+
+            /**
+             * Signs into Google+
+             */
+            function enableGameServices() {
+                gameServices.signIn(function() {
+                    model.setConnectionStatus(true);
+                }, function(error) {
+                    alert('Google+ sign in failed: ' + error);
+                });
             }
         </script>
 

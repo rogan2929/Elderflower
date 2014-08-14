@@ -13,23 +13,11 @@ var mainPresenter = {
      * Entry point
      */
     init: function() {
-        if (window.device) {
-            // Determine the platform, so user can be directed to either Google Play or App Store.
-            switch (window.device.platform) {
-                case 'Android':
-                    // Sign into Google Game Services
-                    mainPresenter.enableGameServices();
-                    break;
-                case 'iOS':
-                    // Connect to Game Center
-                    break;
-            }
-        }
-        else {
-            // Not sure of which platform, so just hide the login buttons and do nothing.
+        // Hide the Sign in button if already authenticated.
+        if (gameServices.getAuthenticated()) {
             mainView.hideGoogleSigninButton();
         }
-
+        
         eventBus.installHandler('mainPresenter.onTapBtnFeedback', mainPresenter.onTapBtnFeedback, '#btn-feedback', 'tap');
         eventBus.installHandler('mainPresenter.onTapBtnNew', mainPresenter.onTapBtnNew, '#btn-new', 'tap');
         eventBus.installHandler('mainPresenter.onTapBtnResume', mainPresenter.onTapBtnResume, '#btn-resume', 'tap');
