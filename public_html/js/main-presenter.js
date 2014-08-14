@@ -21,7 +21,7 @@ var mainPresenter = {
         eventBus.installHandler('mainPresenter.onTapBtnFeedback', mainPresenter.onTapBtnFeedback, '#btn-feedback', 'tap');
         eventBus.installHandler('mainPresenter.onTapBtnNew', mainPresenter.onTapBtnNew, '#btn-new', 'tap');
         eventBus.installHandler('mainPresenter.onTapBtnResume', mainPresenter.onTapBtnResume, '#btn-resume', 'tap');
-        eventBus.installHandler('mainPresenter.onTapBtnSignIn', mainPresenter.onTapBtnSignIn, '#btn-signin', 'tap');
+        eventBus.installHandler('mainPresenter.onTapBtnSignIn', mainPresenter.onTapBtnSignIn, '#main .google-signin', 'tap');
     },
     onTapBtnFeedback: function(e) {
         if (window.device) {

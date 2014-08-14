@@ -47,13 +47,13 @@ var gameServices = {
         var data, authWindow, clientId, clientSecret;
         
         // Values from Google Developer Console.
-        clientId = '218442145746-puhv60r2bt1342qmupgt13tptnsi67r4.apps.googleusercontent.com';
-        clientSecret = 'xgBwEsSTrSmnIi53WH1C0nge';
+        clientId = '218442145746-7s9ofsa0i2ue6pjm51g627h0se8s359r.apps.googleusercontent.com';
+        clientSecret = 'TP0EE_7_OYYtETdfrBn8HG0a';
 
         data = $.param({
             client_id: clientId,
             redirect_uri: 'http://localhost',
-            scope: 'email profile',
+            scope: 'login',
             origin: 'http://localhost',
             response_type: 'code'
         });
