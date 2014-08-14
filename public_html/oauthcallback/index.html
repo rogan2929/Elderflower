@@ -13,14 +13,7 @@ and open the template in the editor.
     <body>
         <script type='text/javascript'>
             // Grab the code from the URL.
-            var url = location.toString();
-            var code = /\?code=(.+)$/.exec(url);
-            var error = /\?error=(.+)$/.exec(url);
-            
-            // Save code and error response.
-            localStorage.setItem('oauth_code', code);
-            localStorage.setItem('oauth_error', error);
-            
+            localStorage.setItem('oauth_url', location.toString());
             window.close();
         </script>
     </body>
