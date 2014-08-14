@@ -217,8 +217,7 @@ var gameServices = {
      * @param {type} callback
      */
     submitScoreGoogle: function(score, callback) {
-        $.post(gameServices.leaderboard + '/scores', {
-            access_token: gameServices.accessToken,
+        $.post(gameServices.leaderboard + '/scores?access_token=' + gameServices.accessToken, {
             score: score
         }).done(callback);
     }
