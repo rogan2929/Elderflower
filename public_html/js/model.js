@@ -12,6 +12,9 @@ var model = {
     clearGame: function() {
         localStorage.removeItem('gameData');
     },
+    getConnectionStatus: function() {
+        return localStorage.getItem('connectionStatus');
+    },
     /**
      * Loads the game data.
      * @returns {GameData}
@@ -39,5 +42,8 @@ var model = {
      */
     saveGameSpeed: function(speed) {
         localStorage.setItem('gameSpeed', speed);
+    },
+    setConnectionStatus: function(status) {
+        localStorage.setItem('connectionStatus', status);
     }
 };

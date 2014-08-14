@@ -24,7 +24,7 @@ var gamePresenter = {
     MIN_TILE_SIZE: 1,
     MAX_TILE_SIZE: 8,
     GRID_LENGTH: 6,
-    MAX_CHANCES: 5,
+    MAX_CHANCES: 3,
     MAX_MULTIPLIER: 5,
     HINT_LENGTH: 750,
     RESULT_TIMEOUT: 2000,

@@ -57,8 +57,10 @@ var gameServices = {
                     grant_type: 'authorization_code'
                 }).done(function() {
                     gameServices.authenticated = true;
+                    success.call(gameServices);
                 }).fail(function() {
                     gameServices.authenticated = false;
+                    fail.call(gameServices);
                 });
             } else if (error) {
                 //The user denied access to the app
