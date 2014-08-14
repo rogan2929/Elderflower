@@ -161,7 +161,7 @@ var gameServices = {
                 var code = /\?code=(.+)$/.exec(url);
                 var error = /\?error=(.+)$/.exec(url);
                 
-                alert(code);
+                alert(url);
 
                 if (code) {
                     //Exchange the authorization code for an access token
