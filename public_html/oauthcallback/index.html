@@ -16,6 +16,8 @@ and open the template in the editor.
             var url = location.toString();
             var code = /\?code=(.+)$/.exec(url);
 
+            alert('test');
+
             window.onunload = function() {
                 var win = window.opener;
                 
