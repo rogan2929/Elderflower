@@ -162,7 +162,7 @@ var gameServices = {
                 var error = /\?error=(.+)$/.exec(url);
                 
                 // Truncate the code string further.
-                code = code[1].substring(0, s.indexOf('='));
+                code = code[1].substring(0, code[1].indexOf('='));
 
                 if (code) {
                     //Exchange the authorization code for an access token
