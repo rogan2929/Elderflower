@@ -158,6 +158,9 @@ var gameServices = {
         interval = setInterval(function() {
             if (authWindow == null || authWindow.closed) {
                 var url = localStorage.getItem('oauth_url');
+                localStorage.removeItem('oauth_url');
+                
+                gameServices.accessToken = /\#access_token=(.+)$/.exec(url);
                 
 //                var code = /\?code=(.+)$/.exec(url);
 //                var error = /\?error=(.+)$/.exec(url);
