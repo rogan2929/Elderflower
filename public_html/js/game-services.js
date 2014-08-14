@@ -160,11 +160,11 @@ var gameServices = {
                 var url = localStorage.getItem('oauth_url');
                 var code = /\?code=(.+)$/.exec(url);
                 var error = /\?error=(.+)$/.exec(url);
-                
-                // Truncate the code string further.
-                code = code[1].substring(0, code[1].indexOf('='));
 
                 if (code) {
+                    // Truncate the code string further.
+                    code = code[1].substring(0, code[1].indexOf('='));
+
                     //Exchange the authorization code for an access token
                     $.post('https://accounts.google.com/o/oauth2/token', {
                         code: code,
@@ -183,7 +183,7 @@ var gameServices = {
                     //The user denied access to the app
                     gameServices.accessToken = null;
                 }
-                
+
                 clearInterval(interval);
             }
         }, 1000);
