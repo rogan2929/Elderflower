@@ -44,7 +44,8 @@ var gameServices = {
      */
     getLeaderboardDataGoogle: function(callback) {
         $.get(gameServices.leaderboard + '/scores/PUBLIC', {
-            timeSpan: 'WEEKLY'
+            timeSpan: 'WEEKLY',
+            access_token: gameServices.accessToken
         }).done(function(data) {
             callback.call(gameServices, data);
         });
