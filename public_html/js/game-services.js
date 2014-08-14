@@ -4,12 +4,21 @@
  * and open the template in the editor.
  */
 
+GameServiceTypes = {
+    GOOGLE: 0,
+    APPLE: 1
+}
+
 /**
  * Wrapper for Google Game Services
  * @type type
  */
 var gameServices = {
     accessToken: null,
+    // TODO: Token expiration time must be examined before every API call.
+    expirationTime: null,
+    leaderboard: null,
+    type: null,
     /**
      * Getter for authenticated.
      * @returns {Boolean}
@@ -21,8 +30,26 @@ var gameServices = {
      * Retrieve leaderboard data.
      * @returns {type}
      */
-    getLeaderboardData: function() {
-        return null;
+    getLeaderboardData: function(callback) {
+        if (gameServices.type === GameServiceTypes.GOOGLE) {
+            gameServices.getLeaderboardDataGoogle(callback);
+        }
+        else if (gameServices.type === GameServiceTypes.APPLE) {
+
+        }
+    },
+    /**
+     * Retrieves leaderboard data from Google Game Services.
+     * @param {type} callback
+     */
+    getLeaderboardDataGoogle: function(callback) {
+        $.get(gameServices.leaderboard + '/scores/PUBLIC', {
+            timeSpan: 'WEEKLY'
+        }).done(function(data) {
+            callback.call(gameServices, data);
+        }).fail(function(data) {
+            alert('Unable to load leaderboard: ' + data.error);
+        });
     },
     /**
      * Signs in and authorizes the app.
@@ -43,6 +70,10 @@ var gameServices = {
                     break;
             }
         }
+        else {
+            // Connect to Game Services
+            gameServices.signInGoogleWeb(success, fail);
+        }
     },
     /**
      * Signs into Google Game Services.
@@ -52,7 +83,10 @@ var gameServices = {
      */
     signInGoogle: function(success, fail) {
         var data, authWindow, clientId, clientSecret;
-        
+
+        gameServices.type = GameServiceTypes.GOOGLE;
+        gameServices.leaderboard = 'https://www.googleapis.com/games/v1/leaderboards/CgkI0r-q4a0GEAIQAA';
+
         // Values from Google Developer Console.
         clientId = '218442145746-7s9ofsa0i2ue6pjm51g627h0se8s359r.apps.googleusercontent.com';
         clientSecret = 'TP0EE_7_OYYtETdfrBn8HG0a';
@@ -60,7 +94,7 @@ var gameServices = {
         data = $.param({
             client_id: clientId,
             redirect_uri: 'http://localhost',
-            scope: 'https://www.googleapis.com/auth/plus.login',
+            scope: 'https://www.googleapis.com/auth/plus.login https://www.googleapis.com/auth/games',
             origin: 'http://localhost',
             response_type: 'code'
         });
@@ -97,6 +131,9 @@ var gameServices = {
             }
         });
     },
+    signInGoogleWeb: function(success, fail) {
+        alert('Not yet implemented.');
+    },
     /**
      * Signs into Game Center
      * Uses PhoneGap Game Center plugin: https://build.phonegap.com/plugins/880
@@ -105,5 +142,39 @@ var gameServices = {
      */
     signInIOS: function(success, fail) {
         alert('Not yet implemented.');
+        gameServices.type = GameServiceTypes.APPLE;
+    },
+    /**
+     * Submits a score to the leaderboard.
+     * @param {type} score
+     * @param {type} callback
+     */
+    submitScore: function(score, callback) {
+        if (gameServices.type === GameServiceTypes.GOOGLE) {
+            gameServices.submitScoreGoogle(score, callback);
+        }
+        else if (gameServices.type === GameServiceTypes.APPLE) {
+            gameServices.submitScoreApple(score, callback);
+        }
+    },
+    /**
+     * Submit a score to Game Center.
+     * @param {type} score
+     * @param {type} callback
+     */
+    submitScoreApple: function(score, callback) {
+        
+    },
+    /**
+     * Submit a score to Google Game Services.
+     * @param {type} score
+     * @param {type} callback
+     */
+    submitScoreGoogle: function(score, callback) {
+        $.post(gameServices.leaderboard + '/scores', {
+            score: score
+        }).done(callback).fail(function(data) {
+            alert('Unable to submit score: ' + data.error);
+        });
     }
 };

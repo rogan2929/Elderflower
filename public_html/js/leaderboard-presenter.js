@@ -16,6 +16,10 @@ var leaderboardPresenter = {
         if (gameServices.getAuthenticated()) {
             leaderboardView.hideSigninNotice();
             leaderboardView.showLeaderboardData(gameServices.getLeaderboardData());
+            
+            gameServices.submitScore(1000, function() {
+                alert('TEST');
+            });
         }
     }
 };
