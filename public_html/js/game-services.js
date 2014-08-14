@@ -135,7 +135,7 @@ var gameServices = {
      * @param {type} fail
      */
     signInGoogleWeb: function(success, fail) {
-        var data, clientId, clientSecret, authWindow;
+        var data, clientId, clientSecret, authWindow, interval;
 
         gameServices.type = GameServiceTypes.GOOGLE;
         gameServices.leaderboard = 'https://www.googleapis.com/games/v1/leaderboards/CgkI0r-q4a0GEAIQAA';
@@ -151,14 +151,40 @@ var gameServices = {
             origin: 'http://localhost',
             response_type: 'code'
         });
-        
-        $('#oauth-overlay').attr('src', 'https://accounts.google.com/o/oauth2/auth?' + data).show();
 
-//        authWindow = window.open('https://accounts.google.com/o/oauth2/auth?' + data, '_blank');
-//        
-//        authWindow.onbeforeunload = function() {
-//            alert('test');
-//        };
+        authWindow = window.open('https://accounts.google.com/o/oauth2/auth?' + data, '_blank');
+
+        // Wait for the window to close, indicating that the user has authenticated the app through the callback.
+        interval = setInterval(function() {
+            if (authWindow == null || authWindow.closed) {
+                var code, error;
+                
+                code = localStorage.getItem('oauth_code');
+                error = localStorage.getItem('oauth_error');
+
+                if (code) {
+                    //Exchange the authorization code for an access token
+                    $.post('https://accounts.google.com/o/oauth2/token', {
+                        code: code[1],
+                        client_id: clientId,
+                        client_secret: clientSecret,
+                        redirect_uri: 'http://elderflower.azurewebsites.net',
+                        grant_type: 'authorization_code'
+                    }).done(function(data) {
+                        gameServices.accessToken = data.access_token;
+                        success.call(gameServices);
+                    }).fail(function(data) {
+                        gameServices.accessToken = null;
+                        fail.call(gameServices, data.error);
+                    });
+                } else if (error) {
+                    //The user denied access to the app
+                    gameServices.accessToken = null;
+                }
+                
+                clearInterval(interval);
+            }
+        }, 1000);
     },
     /**
      * Signs into Game Center
