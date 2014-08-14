@@ -18,6 +18,13 @@ var gameServices = {
         return (gameServices.accessToken !== null);
     },
     /**
+     * Retrieve leaderboard data.
+     * @returns {type}
+     */
+    getLeaderboardData: function() {
+        return null;
+    },
+    /**
      * Signs in and authorizes the app.
      * @param {type} success
      * @param {type} fail

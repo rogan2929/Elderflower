@@ -15,5 +15,12 @@ var leaderboardView = {
     hideSigninNotice: function() {
         $('#signin-notice').fadeOut()
         $('#leaderboard .google-signin').fadeOut();
+    },
+    /**
+     * Displays the leaderboard.
+     * @param {type} data
+     */
+    showLeaderboardData: function(data) {
+        
     }
 };

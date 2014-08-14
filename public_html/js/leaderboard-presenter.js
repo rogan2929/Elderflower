@@ -15,6 +15,7 @@ var leaderboardPresenter = {
     init: function() {
         if (gameServices.getAuthenticated()) {
             leaderboardView.hideSigninNotice();
+            leaderboardView.showLeaderboardData(gameServices.getLeaderboardData());
         }
     }
 };
