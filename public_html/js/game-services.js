@@ -53,7 +53,7 @@ var gameServices = {
         data = $.param({
             client_id: clientId,
             redirect_uri: 'http://localhost',
-            scope: 'login',
+            scope: 'plus.login',
             origin: 'http://localhost',
             response_type: 'code'
         });
