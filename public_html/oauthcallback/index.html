@@ -15,18 +15,10 @@ and open the template in the editor.
             // Grab the code from the URL.
             var url = location.toString();
             var code = /\?code=(.+)$/.exec(url);
-
-            window.onunload = function() {
-                var win = window.opener;
-                
-                if (win.closed) {
-                    win.test(code);
-                }
-            };
             
-            console.log(window);
+            localStorage.setItem('oauth_code', code);
             
-            //window.close();
+            window.close();
         </script>
     </body>
 </html>

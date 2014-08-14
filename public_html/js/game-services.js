@@ -153,6 +153,10 @@ var gameServices = {
         });
 
         authWindow = window.open('https://accounts.google.com/o/oauth2/auth?' + data, '_blank');
+        
+        authWindow.onbeforeunload = function() {
+            alert('test');
+        };
     },
     /**
      * Signs into Game Center
