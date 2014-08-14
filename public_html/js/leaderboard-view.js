@@ -12,6 +12,13 @@ var leaderboardView = {
     /**
      * Hides the Google+ Sign in button and login notice.
      */
+    hideSigninNotice: function() {
+        $('#signin-notice').fadeOut();
+        $('#leaderboard .google-signin').fadeOut();
+    },
+    /**
+     * Shows the Google+ Sign in button and login notice.
+     */
     showSigninNotice: function() {
         $('#signin-notice').fadeIn();
         $('#leaderboard .google-signin').fadeIn();

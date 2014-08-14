@@ -15,13 +15,24 @@ var leaderboardPresenter = {
     init: function() {
         if (gameServices.getAuthenticated()) {
             leaderboardView.showLeaderboardData(gameServices.getLeaderboardData());
-            
-            gameServices.submitScore(1000, function() {
-                alert('TEST');
-            });
         }
         else {
             leaderboardView.showSigninNotice();
+            
+            eventBus.installHandler('mainPresenter.onTapBtnSignIn', mainPresenter.onTapBtnSignIn, '#main .google-signin', 'tap');
         }
+    },
+    onTapBtnSignIn: function(e) {
+        // Sign into Google Game Services.
+        gameServices.signIn(function() {
+            // Allow auto login next time the app is launched.
+            model.setConnectionStatus(true);
+            
+            // Hide the sign in button and load the leaderboard data.
+            leaderboardView.hideSigninNotice();
+            leaderboardView.showLeaderboardData(gameServices.getLeaderboardData());
+        }, function(error) {
+            alert('Google+ sign in failed: ' + error);
+        });
     }
 };

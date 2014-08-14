@@ -168,7 +168,6 @@ var gameServices = {
                     token = token[1].substring(0, token[1].indexOf('&'));
                     
                     gameServices.accessToken = token;
-                    alert(gameServices.accessToken);
                     success.call(gameServices);
                 }
                 else {
