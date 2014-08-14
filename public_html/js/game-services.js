@@ -154,9 +154,6 @@ var gameServices = {
 
         authWindow = window.open('https://accounts.google.com/o/oauth2/auth?' + data, '_blank');
     },
-    test: function(code) {
-        alert(code);
-    },
     /**
      * Signs into Game Center
      * Uses PhoneGap Game Center plugin: https://build.phonegap.com/plugins/880
