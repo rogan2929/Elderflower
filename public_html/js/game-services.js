@@ -11,16 +11,17 @@
 var gameServices = {
     CLIENT_ID: '218442145746-puhv60r2bt1342qmupgt13tptnsi67r4.apps.googleusercontent.com',
     CLIENT_SECRET: 'xgBwEsSTrSmnIi53WH1C0nge',
-    authenticated: false,
+    accessToken: null,
     /**
      * Getter for authenticated.
      * @returns {Boolean}
      */
     getAuthenticated: function() {
-        return gameServices.authenticated;
+        return (gameServices.accessToken !== null);
     },
     /**
      * Signs in and authorizes the app.
+     * Credits to http://phonegap-tips.com/articles/google-api-oauth-with-phonegaps-inappbrowser.html
      * @param {type} success
      * @param {type} fail
      */
@@ -35,7 +36,6 @@ var gameServices = {
             response_type: 'code'
         });
 
-        //http://phonegap-tips.com/articles/google-api-oauth-with-phonegaps-inappbrowser.html
         authWindow = window.open('https://accounts.google.com/o/oauth2/auth?' + data, '_blank', 'location=no,toolbar=no');
 
         $(authWindow).bind('loadstart', function(e) {
@@ -55,16 +55,17 @@ var gameServices = {
                     client_secret: gameServices.CLIENT_SECRET,
                     redirect_uri: 'http://localhost',
                     grant_type: 'authorization_code'
-                }).done(function() {
-                    gameServices.authenticated = true;
+                }).done(function(data) {
+                    gameServices.accessToken = data.access_token;
+                    alert(gameServices.accessToken);
                     success.call(gameServices);
-                }).fail(function() {
-                    gameServices.authenticated = false;
-                    fail.call(gameServices);
+                }).fail(function(data) {
+                    gameServices.accessToken = null;
+                    fail.call(gameServices, data.error);
                 });
             } else if (error) {
                 //The user denied access to the app
-                gameServices.authenticated = false;
+                gameServices.accessToken = null;
             }
         });
     }
