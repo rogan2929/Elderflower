@@ -27,14 +27,18 @@ and open the template in the editor.
                 // Do init work here.
                 document.addEventListener("pause", onPause, false);
 
+                // If device is iOS, then flag for automatic Game Center signin.
                 if (window.device && window.device.platform === 'iOS') {
                     model.setConnectionStatus(true);
                 }
-                
-                gameServices.signIn(function() {
-                }, function(error) {
-                    alert('Sign in failed: ' + error);
-                });
+
+                // Sign into either Game Services or Game Center.
+                if (model.getConnectionStatus() === 'true') {
+                    gameServices.signIn(function() {
+                    }, function(error) {
+                        alert('Sign in failed: ' + error);
+                    });
+                }
             }
 
             /**
