@@ -19,7 +19,7 @@ var leaderboardPresenter = {
         else {
             leaderboardView.showSigninNotice();
             
-            eventBus.installHandler('mainPresenter.onTapBtnSignIn', mainPresenter.onTapBtnSignIn, '#main .google-signin', 'tap');
+            eventBus.installHandler('leaderboardPresenter.onTapBtnSignIn', leaderboardPresenter.onTapBtnSignIn, '#leaderboard .google-signin', 'tap');
         }
     },
     onTapBtnSignIn: function(e) {
