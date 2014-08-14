@@ -15,7 +15,8 @@ and open the template in the editor.
             var url = location.toString();
             var code = /\?code=(.+)$/.exec(url);
             
-            alert(url);
+            localStorage.set('oauth_code', code);
+            window.close();
         </script>
     </body>
 </html>
