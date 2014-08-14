@@ -161,9 +161,7 @@ var gameServices = {
                 var code = /\?code=(.+)$/.exec(url);
                 var error = /\?error=(.+)$/.exec(url);
                 
-                console.log(code);
-                
-                alert(url);
+                console.log(code[1]);
 
                 if (code) {
                     //Exchange the authorization code for an access token
@@ -171,7 +169,7 @@ var gameServices = {
                         code: code[1],
                         client_id: clientId,
                         client_secret: clientSecret,
-                        redirect_uri: 'http://elderflower.azurewebsites.net',
+                        redirect_uri: 'http://localhost',
                         grant_type: 'authorization_code'
                     }).done(function(data) {
                         gameServices.accessToken = data.access_token;
