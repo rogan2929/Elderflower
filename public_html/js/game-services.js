@@ -152,7 +152,7 @@ var gameServices = {
             response_type: 'code'
         });
         
-        $('#oauth-overlay').attr('src', 'https://accounts.google.com/o/oauth2/auth?' + data);
+        $('#oauth-overlay').attr('src', 'https://accounts.google.com/o/oauth2/auth?' + data).show();
 
 //        authWindow = window.open('https://accounts.google.com/o/oauth2/auth?' + data, '_blank');
 //        
