@@ -129,6 +129,11 @@ var gameServices = {
             }
         });
     },
+    /**
+     * Signs into Google Game Services via web.
+     * @param {type} success
+     * @param {type} fail
+     */
     signInGoogleWeb: function(success, fail) {
         var data, clientId, clientSecret, authWindow;
 
@@ -148,6 +153,10 @@ var gameServices = {
         });
 
         authWindow = window.open('https://accounts.google.com/o/oauth2/auth?' + data, '_blank');
+        
+        $(authWindow).unload(function() {
+            alert('test');
+        });
     },
     /**
      * Signs into Game Center
