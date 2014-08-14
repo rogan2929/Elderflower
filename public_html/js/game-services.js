@@ -157,13 +157,16 @@ var gameServices = {
         // Wait for the window to close, indicating that the user has authenticated the app through the callback.
         interval = setInterval(function() {
             if (authWindow == null || authWindow.closed) {
-                var url, error;
+                var url, error, token;
 
                 url = localStorage.getItem('oauth_url');
                 error = /\?error=(.+)$/.exec(url);
 
                 if (!error) {
-                    gameServices.accessToken = /\#access_token=(.+)$/.exec(url);
+                    token = /\#access_token=(.+)$/.exec(url);
+                    token = token[1].substring(0, token[1].indexOf('&'));
+                    
+                    gameServices.accessToken = token;
                     alert(gameServices.accessToken);
                     success.call(gameServices);
                 }
