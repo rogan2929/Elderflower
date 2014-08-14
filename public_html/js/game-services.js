@@ -132,7 +132,24 @@ var gameServices = {
         });
     },
     signInGoogleWeb: function(success, fail) {
-        alert('Not yet implemented.');
+        var data, clientId, clientSecret;
+
+        gameServices.type = GameServiceTypes.GOOGLE;
+        gameServices.leaderboard = 'https://www.googleapis.com/games/v1/leaderboards/CgkI0r-q4a0GEAIQAA';
+
+        // Values from Google Developer Console.
+        clientId = '218442145746-7s9ofsa0i2ue6pjm51g627h0se8s359r.apps.googleusercontent.com';
+        clientSecret = 'TP0EE_7_OYYtETdfrBn8HG0a';
+
+        data = $.param({
+            client_id: clientId,
+            redirect_uri: 'http://localhost:8383',
+            scope: 'https://www.googleapis.com/auth/plus.login https://www.googleapis.com/auth/games',
+            origin: 'http://localhost:8383',
+            response_type: 'code'
+        });
+        
+        
     },
     /**
      * Signs into Game Center
@@ -163,7 +180,7 @@ var gameServices = {
      * @param {type} callback
      */
     submitScoreApple: function(score, callback) {
-        
+
     },
     /**
      * Submit a score to Google Game Services.
@@ -173,7 +190,10 @@ var gameServices = {
     submitScoreGoogle: function(score, callback) {
         $.post(gameServices.leaderboard + '/scores', {
             score: score
-        }).done(callback).fail(function(data) {
+        }).done(function(data) {
+            alert(data.kind);
+            callback.call(gameServices);
+        }).fail(function(data) {
             alert('Unable to submit score: ' + data.error);
         });
     }
