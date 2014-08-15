@@ -307,7 +307,7 @@ iframe.clean {
 }
 
 .google-signin {
-    display: inline-block;
+    display: block;
     background: #dd4b39;
     color: white;
     width: 130px;
