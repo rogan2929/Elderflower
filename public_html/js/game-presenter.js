@@ -151,7 +151,7 @@ var gamePresenter = {
         var value, color, match, sound;
 
         match = gamePresenter.evaluate(gamePresenter.selectedTile);
-        
+
         // Immediately halt the loop if we're supposed to be stopping.
         if (gamePresenter.stopped) {
             gamePresenter.stopLoop();
@@ -187,6 +187,12 @@ var gamePresenter = {
             sound = {name: 'fail', volume: 0.4};
         }
 
+        // Immediately halt the loop if we're supposed to be stopping.
+        if (gamePresenter.stopped) {
+            gamePresenter.stopLoop();
+            return;
+        }
+
         // Show the results and hide the tiles.
         gameView.showTapResult(match, gamePresenter.RESULT_TIMEOUT);
         soundManager.playSound(sound.name, sound.volume);
@@ -203,6 +209,12 @@ var gamePresenter = {
 
             value = gamePresenter.matchTile.getValue();
             color = gamePresenter.matchTile.getColor();
+
+            // Immediately halt the loop if we're supposed to be stopping.
+            if (gamePresenter.stopped) {
+                gamePresenter.stopLoop();
+                return;
+            }
 
             gameView.showMatchTile(value, color, gamePresenter.HINT_LENGTH);
 
@@ -278,7 +290,7 @@ var gamePresenter = {
             clearTimeout(gamePresenter.loopTimeout);
             gamePresenter.loopTimeout = null;
         }
-        
+
         // Prevent a race condition where stopLoop() is called before resetLoop().
         gamePresenter.stopped = true;
     },
