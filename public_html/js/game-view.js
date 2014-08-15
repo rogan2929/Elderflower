@@ -35,7 +35,7 @@ var gameView = {
         gameView.values.push('six');
         gameView.values.push('seven');
         gameView.values.push('eight');
-        
+
         gameView.showButtonStartGame();
         gameView.clearTiles();
     },
@@ -107,8 +107,8 @@ var gameView = {
         $('#game-score').html('Score:<br/>' + score);
     },
     /**
-    * Shows the start game button.
-    */
+     * Shows the start game button.
+     */
     showButtonStartGame: function() {
         $('#button-start-game').fadeIn(gameView.FADE_LENGTH);
     },
@@ -119,6 +119,11 @@ var gameView = {
      * @param {type} timeout
      */
     showMatchTile: function(value, color, timeout) {
+        // Don't do anything if we're supposed to be stopping.
+        if (gamePresenter.getStopped()) {
+            return;
+        }
+
         // Set match tile's text and color. 
         $('#match-tile .content').removeClass(function(index, css) {
             return (css.match(/\bcolor\S+/g) || []).join(' ');
@@ -143,6 +148,11 @@ var gameView = {
      */
     showTapResult: function(result, timeout) {
         var text, color;
+
+        // Don't do anything if we're supposed to be stopping.
+        if (gamePresenter.getStopped()) {
+            return;
+        }
 
         if (result) {
             text = 'match';

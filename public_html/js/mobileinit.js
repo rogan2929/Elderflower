@@ -7,6 +7,6 @@
 // When ready, navigate to the game page.
 $(document).on('pageinit', function() {
     setTimeout(function() {
-        $('body').pagecontainer('change', '#game');
+        $('body:not(.loaded)').pagecontainer('change', '#game').addClass('loaded');
     }, 1000);
 });

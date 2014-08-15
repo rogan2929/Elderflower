@@ -19,7 +19,7 @@ var eventBus = {
      */
     installHandler: function(name, handler, selector, event) {
         eventBus.handlers[name] = handler;
-        $(selector).off(event).bind(event, function(e, args) {
+        $(selector).off(event).on(event, function(e, args) {
             eventBus.handlers[name].call(eventBus, e, args);
         });
     }

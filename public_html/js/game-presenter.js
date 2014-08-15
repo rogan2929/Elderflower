@@ -92,6 +92,13 @@ var gamePresenter = {
         return gamePresenter.score;
     },
     /**
+     * Getter for stopped.
+     * @returns {Boolean}
+     */
+    getStopped: function() {
+        return gamePresenter.stopped;
+    },
+    /**
      * Evaluate the given tile to see if is the match tile.
      * @param {type} tile
      * @returns {type}
