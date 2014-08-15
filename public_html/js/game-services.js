@@ -166,7 +166,7 @@ var gameServices = {
                 if (!error) {
                     token = /\#access_token=(.+)$/.exec(url);
                     token = token[1].substring(0, token[1].indexOf('&'));
-                    
+
                     gameServices.accessToken = token;
                     success.call(gameServices);
                 }
@@ -196,11 +196,17 @@ var gameServices = {
      * @param {type} callback
      */
     submitScore: function(score, callback) {
-        if (gameServices.type === GameServiceTypes.GOOGLE) {
-            gameServices.submitScoreGoogle(score, callback);
+        if (gameServices.getAuthenticated()) {
+            if (gameServices.type === GameServiceTypes.GOOGLE) {
+                gameServices.submitScoreGoogle(score, callback);
+            }
+            else if (gameServices.type === GameServiceTypes.APPLE) {
+                gameServices.submitScoreApple(score, callback);
+            }
         }
-        else if (gameServices.type === GameServiceTypes.APPLE) {
-            gameServices.submitScoreApple(score, callback);
+        else {
+            // Token not valid. Try again after signing back in.
+            
         }
     },
     /**
