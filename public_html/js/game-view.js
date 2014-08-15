@@ -52,6 +52,12 @@ var gameView = {
         $('#button-start-game').fadeOut(gameView.FADE_LENGTH);
     },
     /**
+     * Hides all message overlays.
+     */
+    hideMessageOverlays: function() {
+        $('.message-overlay').stop(true).hide();
+    },
+    /**
      * Hides all tiles.
      */
     hideTiles: function() {

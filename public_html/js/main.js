@@ -45,8 +45,9 @@ $(document).on('pagebeforeshow', '#game', function(e) {
 });
 
 $(document).on('pagebeforehide', '#game', function(e) {
-    // Pause the game and save it. 
+    // Pause the game and save it.
     gamePresenter.stopLoop();
+    gameView.hideMessageOverlays();
     gamePresenter.saveGameData();
     soundManager.stopMusic();
 });
