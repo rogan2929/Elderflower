@@ -9,26 +9,46 @@
  * @type type
  */
 var optionsPresenter = {
+    options: null,
+    
     init: function() {
-        var speed;
-        
-        speed = model.loadGameSpeed();
-        
-        // Attempt to set the game speed.
-        if (speed) {
-            optionsView.setGameSpeed(speed);
-        }
-        else {
-            optionsView.setGameSpeed(2);      // Assume normal speed.
-        }
+//        var speed;
+//        
+//        speed = model.loadGameSpeed();
+//        
+//        // Attempt to set the game speed.
+//        if (speed) {
+//            optionsView.setGameSpeed(speed);
+//        }
+//        else {
+//            optionsView.setGameSpeed(2);      // Assume normal speed.
+//        }
         
         //eventBus.installHandler('optionsPresenter.onChangeSelectGameSpeed', optionsPresenter.onChangeSelectGameSpeed, '#select-game-speed', 'change');
         
-        // Not sure why... but for some reason we have to bypass the eventBus. It prevents the ui from updating after the change event fires.
-        $("#select-game-speed").bind("change", optionsPresenter.onChangeSelectGameSpeed);
+        optionsPresenter.loadAllOptions();
     },
-    onChangeSelectGameSpeed: function(e) {
-        // Save the game speed.
-        model.saveGameSpeed($(e.currentTarget)[0].selectedIndex);
+    /**
+     * Loads all options.
+     */
+    loadAllOptions: function() {
+        optionsPresenter.options = model.loadOptions();
+        
+        optionsView.setGameSpeed(optionsPresenter.options.getSpeed());
+        optionsView.setLength(optionsPresenter.options.getLength());
+    },
+    /**
+     * Saves all options.
+     */
+    saveAllOptions: function() {
+        var speed, length;
+        
+        speed = $('#select-game-speed')[0].selectedIndex;
+        length = $('#slider-length').val();
+        
+        optionsPresenter.options.setSpeed(speed);
+        optionsPresenter.options.setLength(length);
+        
+        model.saveOptions(optionsPresenter.options);
     }
 };

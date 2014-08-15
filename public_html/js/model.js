@@ -30,11 +30,24 @@ var model = {
         return JSON.parse(localStorage.getItem('gameData'));
     },
     /**
-     * Loads game speed.
-     * @returns {DOMString}
+     * Loads game options.
+     * @returns {Array|Object}
      */
-    loadGameSpeed: function() {
-        return localStorage.getItem('gameSpeed');
+    loadOptions: function() {
+        var options, opt;
+        
+        opt = JSON.parse(localStorage.getItem('options'));
+        
+        // Create a new Options object with defaults.
+        options = new Options(2, 6);
+        
+        // If options have actually been set, then load them into the options object now.
+        if (opt) {
+            options.setSpeed(parseInt(opt.speed));
+            options.setLength(parseInt(opt.length));
+        }
+        
+        return options;
     },
     /**
      * Saves the game data.
@@ -44,11 +57,11 @@ var model = {
         localStorage.setItem('gameData', JSON.stringify(gameData));
     },
     /**
-     * Saves the game speed.
-     * @param {type} speed
+     * Saves the game options.
+     * @param {type} options
      */
-    saveGameSpeed: function(speed) {
-        localStorage.setItem('gameSpeed', speed);
+    saveOptions: function(options) {
+        localStorage.setItem('options', JSON.stringify(options));
     },
     /**
      * Saves whether or not the app has connected to Game Services or Game Center.

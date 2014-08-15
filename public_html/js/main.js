@@ -64,6 +64,11 @@ $(document).on('pagebeforeshow', '#options', function(e) {
     optionsPresenter.init();
 });
 
+$(document).on('pagebeforehide', '#options', function(e) {
+    // Save all options when navigating away from the options page.
+    optionsPresenter.saveAllOptions();
+});
+
 $(document).on('pagebeforeshow', '#leaderboard', function(e) {
     leaderboardPresenter.init();
 });

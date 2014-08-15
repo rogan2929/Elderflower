@@ -11,16 +11,17 @@
 var tileFactory = {
     /**
      * Generate a tile object.
+     * @param {type} maxTileSize
      * @returns {Tile}
      */
-    generateTile: function() {
+    generateTile: function(maxTileSize) {
         var tile, color, value;
 
-        value = Math.ceil((Math.random() * gamePresenter.MAX_TILE_SIZE));
-        color = Math.ceil((Math.random() * gamePresenter.MAX_TILE_SIZE));
+        value = Math.ceil((Math.random() * maxTileSize));
+        color = Math.ceil((Math.random() * maxTileSize));
 
         while (value === color) {
-            color = Math.ceil((Math.random() * gamePresenter.MAX_TILE_SIZE));
+            color = Math.ceil((Math.random() * maxTileSize));
         }
 
         tile = new Tile(value, color);
@@ -29,21 +30,22 @@ var tileFactory = {
     },
     /**
      * Generate tile values and colors.
+     * @param {type} length
+     * @param {type} maxTileSize
      * @return {Tile}
      */
-    generateTiles: function() {
+    generateTiles: function(length, maxTileSize) {
         var i, gridSquare, tile, tiles;
 
-        values = [];
         tiles = [];
 
-        gridSquare = gamePresenter.GRID_LENGTH * gamePresenter.GRID_LENGTH;
+        gridSquare = length * length;
 
         for (i = 0; i < gridSquare; i++) {
-            tile = tileFactory.generateTile();
+            tile = tileFactory.generateTile(maxTileSize);
 
             while (tiles.contains(tile)) {
-                tile = tileFactory.generateTile();
+                tile = tileFactory.generateTile(maxTileSize);
             }
 
             tiles.push(tile);

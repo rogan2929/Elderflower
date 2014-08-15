@@ -21,14 +21,12 @@ var LoopTicks = {
  */
 var gamePresenter = {
     // Constants
-    MIN_TILE_SIZE: 1,
     MAX_TILE_SIZE: 8,
-    GRID_LENGTH: 6,
     MAX_CHANCES: 3,
     MAX_MULTIPLIER: 5,
     HINT_LENGTH: 750,
     RESULT_TIMEOUT: 2000,
-    SCORE_INCREMENT: 50,
+    SCORE_INCREMENT_BASE: 50,
     // Variables
     tiles: null,
     newGame: true,
@@ -40,28 +38,25 @@ var gamePresenter = {
     loopTimeout: null,
     loopTick: null,
     stopped: false,
+    length: 0,
     /**
      * Entry point.
      */
     init: function() {
-        var gameData, speed;
+        var gameData, options;
 
-        // Load game data and speed.
+        // Load game data and options.
         gameData = model.loadGame();
-        speed = model.loadGameSpeed();
+        options = model.loadOptions();
+        
+        // Set speed and side length
+        gamePresenter.loopTick = LoopTicks[options.getSpeed()];
+        gamePresenter.length = options.getLength();
 
         // Resume the game if there is one.
         if (gameData) {
             gamePresenter.setNewGame(false);
             gamePresenter.setGameData(gameData);
-        }
-
-        // Attempt to set the game speed.
-        if (speed) {
-            gamePresenter.setGameSpeed(speed);
-        }
-        else {
-            gamePresenter.setGameSpeed(2);      // Assume normal speed.
         }
 
         if (gamePresenter.newGame) {
@@ -128,21 +123,23 @@ var gamePresenter = {
     incrementScore: function() {
         var multiplier;
 
-        // Factor a bonus for combo and game speed. 
+        // When considering how much to increment the score, take these into account:
+        // 1. Current combo length
+        // 2. Game speed
+        // 3. Grid Size.
         multiplier = Math.min(gamePresenter.combo, gamePresenter.MAX_MULTIPLIER);
         multiplier = multiplier * LoopTicks[0] / gamePresenter.loopTick;
-
-        gamePresenter.score += Math.floor(gamePresenter.SCORE_INCREMENT * multiplier);
+        gamePresenter.score += Math.floor(gamePresenter.SCORE_INCREMENT_BASE * multiplier + (multiplier * 3 * gamePresenter.length));
     },
     /**
      * Load tiles.
      */
     loadTiles: function() {
-        gamePresenter.tiles = tileFactory.generateTiles();
+        gamePresenter.tiles = tileFactory.generateTiles(gamePresenter.length, gamePresenter.MAX_TILE_SIZE);
 
         // Populate the interface.
         gameView.clearTiles();
-        gameView.loadTiles(gamePresenter.GRID_LENGTH, gamePresenter.tiles);
+        gameView.loadTiles(gamePresenter.length, gamePresenter.tiles);
     },
     /**
      * The main game loop function.
@@ -266,14 +263,6 @@ var gamePresenter = {
         gamePresenter.score = gameData.score;
         gamePresenter.chances = gameData.chances;
         gamePresenter.combo = gameData.combo;
-    },
-    /**
-     * Set the game speed.
-     * @param {type} speed
-     */
-    setGameSpeed: function(speed) {
-        // Retrieve loop duration based on speed index.
-        gamePresenter.loopTick = LoopTicks[speed];
     },
     /**
      * Setter for newGame

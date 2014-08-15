@@ -275,6 +275,10 @@ img {
     margin-bottom: 10px;
 }
 
+.bottom-spaced {
+    margin-bottom: 10px;
+}
+
 .full {
     width: 100%;
     max-width: 350px;

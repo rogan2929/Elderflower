@@ -163,7 +163,7 @@ var gameServices = {
                 url = localStorage.getItem('oauth_url');
                 error = /\?error=(.+)$/.exec(url);
 
-                if (!error) {
+                if (!error && url) {
                     token = /\#access_token=(.+)$/.exec(url);
                     token = token[1].substring(0, token[1].indexOf('&'));
 

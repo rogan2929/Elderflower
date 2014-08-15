@@ -16,5 +16,12 @@ var optionsView = {
     setGameSpeed: function(index) {
         $('#select-game-speed')[0].selectedIndex = index;
         $('#select-game-speed').selectmenu('refresh');
+    },
+    /**
+     * Sets the length slider control value.
+     * @param {type} length
+     */
+    setLength: function(length) {
+        $('#slider-length').val(length).slider('refresh');
     }
 };
