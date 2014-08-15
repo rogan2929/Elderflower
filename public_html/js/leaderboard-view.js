@@ -14,14 +14,14 @@ var leaderboardView = {
      */
     hideSigninNotice: function() {
         $('#signin-notice').fadeOut();
-        $('#leaderboard .google-signin').fadeOut();
+        $('#leaderboard-tabs').fadeIn();
     },
     /**
      * Shows the Google+ Sign in button and login notice.
      */
     showSigninNotice: function() {
         $('#signin-notice').fadeIn();
-        $('#leaderboard .google-signin').fadeIn();
+        $('#leaderboard-tabs').fadeOut();
     },
     /**
      * Displays the leaderboard.

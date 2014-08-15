@@ -161,10 +161,21 @@ and open the template in the editor.
         </div>
 
         <div id='leaderboard' data-role='page'>
-            <h2 class='ui-title ui-bar h-centered'>LEADERBOARD</h2>
+            <h2 class='ui-title ui-bar h-centered'>LEADERBOARD & ACHIEVEMENTS</h2>
+
+            <div data-role='tabs' id='leaderboard-tabs'>
+                <div data-role='navbar'>
+                    <ul>
+                        <li><a href="#tab-leaderboard" data-ajax="false">Leaderboard</a></li>
+                        <li><a href="#tab-achievements" data-ajax="false">Achievements</a></li>
+                    </ul>
+                </div>
+                <div id='tab-leaderboard'></div>
+                <div id='tab-achievements'></div>
+            </div>
 
             <div id='signin-notice' class='ui-content hidden'>
-                The Leaderboard isn't accessible until you've signed into Google+.
+                Leaderboard & Achievements aren't accessible until you've signed into Google+.
                 <div class='google-signin h-centered fill-horizontal margin-auto hidden spaced'>
                     <span class="icon"></span>
                     <span class="buttonText">Sign in</span>
