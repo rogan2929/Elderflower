@@ -17,7 +17,7 @@ var leaderboardPresenter = {
         if (gameServices.getAuthenticated()) {
             gameServices.getLeaderboardData(function(data) {
                 leaderboardView.showLeaderboardData(data);
-            });
+            }, 'ALL_TIME');
         }
         else {
             // Otherwise show the login notice and button.
@@ -35,7 +35,7 @@ var leaderboardPresenter = {
             leaderboardView.hideSigninNotice();
             gameServices.getLeaderboardData(function(data) {
                 leaderboardView.showLeaderboardData(data);
-            });
+            }, 'ALL_TIME');
         }, function(error) {
             alert('Google+ sign in failed: ' + error);
         });

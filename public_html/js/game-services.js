@@ -28,11 +28,13 @@ var gameServices = {
     },
     /**
      * Retrieve leaderboard data.
+     * @param {type} callback
+     * @param {type} timeSpan
      * @returns {type}
      */
-    getLeaderboardData: function(callback) {
+    getLeaderboardData: function(callback, timeSpan) {
         if (gameServices.type === GameServiceTypes.GOOGLE) {
-            gameServices.getLeaderboardDataGoogle(callback);
+            gameServices.getLeaderboardDataGoogle(callback, timeSpan);
         }
         else if (gameServices.type === GameServiceTypes.APPLE) {
 
@@ -40,11 +42,14 @@ var gameServices = {
     },
     /**
      * Retrieves leaderboard data from Google Game Services.
+     * This retrieves scores that are similar in rank to the authenticated user.
+     * https://developers.google.com/games/services/web/api/scores/listWindow
      * @param {type} callback
+     * @param {type} timeSpan
      */
-    getLeaderboardDataGoogle: function(callback) {
-        $.get(gameServices.leaderboard + '/scores/PUBLIC', {
-            timeSpan: 'WEEKLY',
+    getLeaderboardDataGoogle: function(callback, timeSpan) {
+        $.get(gameServices.leaderboard + '/window/PUBLIC', {
+            timeSpan: timeSpan,
             access_token: gameServices.accessToken
         }).done(function(data) {
             callback.call(gameServices, data);
