@@ -39,6 +39,13 @@ and open the template in the editor.
                         alert('Sign in failed: ' + error);
                     });
                 }
+
+                // Go to the game page.
+                $(document).on('pageinit', function() {
+                    setTimeout(function() {
+                        $('body').pagecontainer('change', '#game');
+                    }, 1000);
+                });
             }
 
             /**
@@ -55,6 +62,7 @@ and open the template in the editor.
             }
         </script>
 
+        <script src="js/mobileinit.js" type="text/javascript"></script>
         <script src="js/vendor/jquery.mobile-1.4.3.min.js" type="text/javascript"></script>
 
         <script src="js/game-services.js" type="text/javascript"></script>
@@ -79,13 +87,7 @@ and open the template in the editor.
     </head>
 
     <body>
-        <div id='landing' data-role='page'>
-            <script>
-            setTimeout(function() {
-                $('body').pagecontainer('change', '#game');
-            }, 2000);
-            </script>
-        </div>
+        <div id='landing' data-role='page'></div>
 
         <div id='game' data-role='page' class='no-scroll'>
             <div class='absolute header fill-horizontal'>
@@ -151,13 +153,13 @@ and open the template in the editor.
 
         <div id='leaderboard' data-role='page'>
             <h2 class='ui-title ui-bar h-centered'>LEADERBOARD</h2>
-            
+
             <a href='#main' class='ui-btn half'>Back</a>
-            
+
             <div id='signin-notice' class='ui-content hidden'>
                 The Leaderboard isn't accessible until you've signed into Google+.
             </div>
-            
+
             <div class='google-signin absolute h-centered fill-horizontal margin-auto hidden'>
                 <span class="icon"></span>
                 <span class="buttonText">Sign in</span>
