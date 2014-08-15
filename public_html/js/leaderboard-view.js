@@ -28,6 +28,6 @@ var leaderboardView = {
      * @param {type} data
      */
     showLeaderboardData: function(data) {
-        
+        console.log(data);
     }
 };
