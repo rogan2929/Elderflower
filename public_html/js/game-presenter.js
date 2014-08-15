@@ -144,6 +144,12 @@ var gamePresenter = {
         var value, color, match, sound;
 
         match = gamePresenter.evaluate(gamePresenter.selectedTile);
+        
+        // Immediately halt the loop if we're supposed to be stopping.
+        if (gamePresenter.stopped) {
+            gamePresenter.stopLoop();
+            return;
+        }
 
         if (match) {
             // Correct tile was tapped.
@@ -174,7 +180,7 @@ var gamePresenter = {
             sound = {name: 'fail', volume: 0.4};
         }
 
-        // Show the tap result.
+        // Show the results and hide the tiles.
         gameView.showTapResult(match, gamePresenter.RESULT_TIMEOUT);
         soundManager.playSound(sound.name, sound.volume);
         gameView.setScore(gamePresenter.score);
