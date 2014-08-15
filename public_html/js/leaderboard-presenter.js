@@ -13,8 +13,9 @@ var leaderboardPresenter = {
      * Entry point.
      */
     init: function() {
-        // Try to load the leaderboard.
+        // Check for valid connection to Game Services.
         if (gameServices.getAuthenticated()) {
+            // Try to load the leaderboard.
             gameServices.getLeaderboardData(function(data) {
                 leaderboardView.showLeaderboardData(data);
             }, 'ALL_TIME');
@@ -33,6 +34,7 @@ var leaderboardPresenter = {
 
             // Hide the sign in button and load the leaderboard data.
             leaderboardView.hideSigninNotice();
+            
             gameServices.getLeaderboardData(function(data) {
                 leaderboardView.showLeaderboardData(data);
             }, 'ALL_TIME');

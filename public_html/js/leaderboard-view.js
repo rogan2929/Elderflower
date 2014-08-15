@@ -14,20 +14,19 @@ var leaderboardView = {
      */
     hideSigninNotice: function() {
         $('#signin-notice').fadeOut();
-        $('#leaderboard-tabs').fadeIn();
     },
     /**
      * Shows the Google+ Sign in button and login notice.
      */
     showSigninNotice: function() {
         $('#signin-notice').fadeIn();
-        $('#leaderboard-tabs').fadeOut();
     },
     /**
      * Displays the leaderboard.
      * @param {type} data
      */
     showLeaderboardData: function(data) {
+        $('#leaderboard-tabs').fadeIn();
         console.log(data);
     }
 };
