@@ -206,7 +206,16 @@ var gameServices = {
         }
         else {
             // Token not valid. Try again after signing back in.
-            
+            gameServices.signIn(function() {
+                if (gameServices.type === GameServiceTypes.GOOGLE) {
+                    gameServices.submitScoreGoogle(score, callback);
+                }
+                else if (gameServices.type === GameServiceTypes.APPLE) {
+                    gameServices.submitScoreApple(score, callback);
+                }
+            }, function(error) {
+                alert('Unable to submit score: ' + error);
+            });
         }
     },
     /**
