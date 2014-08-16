@@ -18,6 +18,7 @@ var leaderboardPresenter = {
             // Try to load the leaderboard.
             gameServices.getLeaderboardData(function(data) {
                 leaderboardView.showLeaderboardData(data);
+                leaderboardView.hideSigninNotice();
             }, 'ALL_TIME');
         }
         else {
