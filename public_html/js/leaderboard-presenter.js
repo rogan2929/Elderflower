@@ -14,7 +14,7 @@ var leaderboardPresenter = {
      */
     init: function() {
         // Check for valid connection to Game Services.
-        if (gameServices.getConnectionStatus()()) {
+        if (gameServices.getConnectionStatus()) {
             // Try to load the leaderboard.
             gameServices.getLeaderboardData(function(data) {
                 // Success
