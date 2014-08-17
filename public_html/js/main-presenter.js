@@ -14,7 +14,7 @@ var mainPresenter = {
      */
     init: function() {
         // Hide the Sign in button if already authenticated, or if the device is made by Apple.
-        if (gameServices.getAuthenticated() || (window.device && window.device.platform === 'iOS')) {
+        if (gameServices.getConnectionStatus() || (window.device && window.device.platform === 'iOS')) {
             mainView.hideGoogleSigninButton();
         }
 
