@@ -14,13 +14,20 @@ var gameOverPresenter = {
      */
     init: function() {
         var score;
-        
+
         score = gamePresenter.getScore();
-        
+
         // Clean up and then submit the score to the leaderboard.
         gamePresenter.setNewGame(true);
         model.clearGame();
         gameOverView.setScoreResult(score);
-        gameServices.submitScore(score, function() {});
+
+        // If we know that we are signed in, then submit a score to the leaderboard.
+        if (model.getConnectionStatus()) {
+            gameServices.submitScore(score, function() {
+            }, function(error) {
+                alert(error);
+            }, true);
+        }
     }
 };

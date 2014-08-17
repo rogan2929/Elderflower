@@ -17,8 +17,14 @@ var leaderboardPresenter = {
         if (gameServices.getAuthenticated()) {
             // Try to load the leaderboard.
             gameServices.getLeaderboardData(function(data) {
+                // Success
+                
+                // Show leaderboard and hide sigin notice.
                 leaderboardView.showLeaderboardData(data);
                 leaderboardView.hideSigninNotice();
+            }, function(error) {
+                // Fail
+                alert(error);
             }, 'ALL_TIME');
         }
         else {
@@ -27,20 +33,20 @@ var leaderboardPresenter = {
             eventBus.installHandler('leaderboardPresenter.onTapBtnSignIn', leaderboardPresenter.onTapBtnSignIn, '#leaderboard .google-signin', 'tap');
         }
     },
-    onTapBtnSignIn: function(e) {
-        // Sign into Google Game Services.
-        gameServices.signIn(function() {
-            // Allow auto login next time the app is launched.
-            model.setConnectionStatus(true);
-
-            // Hide the sign in button and load the leaderboard data.
+    onTapBtnSignIn: function(e) {      
+        // Sign into Google Game Services and try to load the leaderboard.
+        gameServices.getLeaderboardData(function(data) {
+            // Success
+            
+            // Show leaderboard and hide sigin notice.
+            leaderboardView.showLeaderboardData(data);
             leaderboardView.hideSigninNotice();
             
-            gameServices.getLeaderboardData(function(data) {
-                leaderboardView.showLeaderboardData(data);
-            }, 'ALL_TIME');
+            // Allow auto login next time the app is launched.
+            model.setConnectionStatus(true);
         }, function(error) {
-            alert('Google+ sign in failed: ' + error);
-        });
+            // Fail
+            alert(error);
+        }, 'ALL_TIME', true);
     }
 };

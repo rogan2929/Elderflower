@@ -15,7 +15,6 @@ GameServiceTypes = {
  */
 var gameServices = {
     accessToken: null,
-    // TODO: Token expiration time must be examined before every API call.
     expirationTime: null,
     leaderboard: null,
     type: null,
@@ -23,18 +22,25 @@ var gameServices = {
      * Getter for authenticated.
      * @returns {Boolean}
      */
-    getAuthenticated: function() {
+    getConnectionStatus: function() {
+        // Test these things:
+        // accessToken isn't null
+        // accessToken isn't expired
+        // network connection is present.
+
         return (gameServices.accessToken !== null);
     },
     /**
      * Retrieve leaderboard data.
-     * @param {type} callback
+     * @param {type} success
+     * @param {type} fail
      * @param {type} timeSpan
+     * @param {type] signin
      * @returns {type}
      */
-    getLeaderboardData: function(callback, timeSpan) {
+    getLeaderboardData: function(success, fail, timeSpan, signin) {
         if (gameServices.type === GameServiceTypes.GOOGLE) {
-            gameServices.getLeaderboardDataGoogle(callback, timeSpan);
+            gameServices.getLeaderboardDataGoogle(success, fail, timeSpan, signin);
         }
         else if (gameServices.type === GameServiceTypes.APPLE) {
 
@@ -44,16 +50,38 @@ var gameServices = {
      * Retrieves leaderboard data from Google Game Services.
      * This retrieves scores that are similar in rank to the authenticated user.
      * https://developers.google.com/games/services/web/api/scores/listWindow
-     * @param {type} callback
+     * @param {type} success
+     * @param {type} fail
      * @param {type} timeSpan
      */
-    getLeaderboardDataGoogle: function(callback, timeSpan) {
-        $.get(gameServices.leaderboard + '/window/PUBLIC', {
-            timeSpan: timeSpan,
-            access_token: gameServices.accessToken
-        }).done(function(data) {
-            callback.call(gameServices, data);
-        });
+    getLeaderboardDataGoogle: function(success, fail, timeSpan, signin) {
+        if (gameServices.getConnectionStatus()) {
+            $.get(gameServices.leaderboard + '/window/PUBLIC', {
+                timeSpan: timeSpan,
+                access_token: gameServices.accessToken
+            }).done(function(data) {
+                success.call(gameServices, data);
+            }).fail(function(data) {
+                fail.call(gameServices, data.error);
+            });
+        }
+        else {
+            if (signin) {
+                gameServices.signIn(function() {
+                    $.get(gameServices.leaderboard + '/window/PUBLIC', {
+                        timeSpan: timeSpan,
+                        access_token: gameServices.accessToken
+                    }).done(function(data) {
+                        success.call(gameServices, data);
+                    }).fail(function(data) {
+                        fail.call(gameServices, data.error);
+                    });
+                }, fail);
+            }
+            else {
+                fail.call(gameServices, 'Unable to sign in.');
+            }
+        }
     },
     /**
      * Signs in and authorizes the app.
@@ -102,6 +130,8 @@ var gameServices = {
             origin: 'http://localhost',
             response_type: 'code'
         });
+        
+        // TODO: Test for network connectivity.
 
         authWindow = window.open('https://accounts.google.com/o/oauth2/auth?' + data, '_blank', 'location=no,toolbar=no');
 
@@ -198,47 +228,56 @@ var gameServices = {
     /**
      * Submits a score to the leaderboard.
      * @param {type} score
-     * @param {type} callback
+     * @param {type} success
+     * @param {type} fail
+     * @param {type} signin
      */
-    submitScore: function(score, callback) {
-        if (gameServices.getAuthenticated()) {
+    submitScore: function(score, success, fail, signin) {
+        if (gameServices.getConnectionStatus()) {
             if (gameServices.type === GameServiceTypes.GOOGLE) {
-                gameServices.submitScoreGoogle(score, callback);
+                gameServices.submitScoreGoogle(score, success, fail);
             }
             else if (gameServices.type === GameServiceTypes.APPLE) {
-                gameServices.submitScoreApple(score, callback);
+                gameServices.submitScoreApple(score, success, fail);
             }
         }
         else {
-            // Token not valid. Try again after signing back in.
-            gameServices.signIn(function() {
-                if (gameServices.type === GameServiceTypes.GOOGLE) {
-                    gameServices.submitScoreGoogle(score, callback);
-                }
-                else if (gameServices.type === GameServiceTypes.APPLE) {
-                    gameServices.submitScoreApple(score, callback);
-                }
-            }, function(error) {
-                alert('Unable to submit score: ' + error);
-            });
+            if (signin) {
+                // Token not valid. Try again after signing back in.
+                gameServices.signIn(function() {
+                    if (gameServices.type === GameServiceTypes.GOOGLE) {
+                        gameServices.submitScoreGoogle(score, success, fail);
+                    }
+                    else if (gameServices.type === GameServiceTypes.APPLE) {
+                        gameServices.submitScoreApple(score, success, fail);
+                    }
+                }, function(error) {
+                    fail.call(gameServices, 'Unable to submit score: ' + error);
+                });
+            }
+            else {
+                fail.call(gameServices, 'Unable to sign in.');
+            }
         }
     },
     /**
      * Submit a score to Game Center.
      * @param {type} score
-     * @param {type} callback
+     * @param {type} success
+     * @param {type} fail
      */
-    submitScoreApple: function(score, callback) {
+    submitScoreApple: function(score, success, fail) {
 
     },
     /**
      * Submit a score to Google Game Services.
      * @param {type} score
-     * @param {type} callback
+     * @param {type} success
+     * @param {type} fail
      */
-    submitScoreGoogle: function(score, callback) {
+    submitScoreGoogle: function(score, success, fail) {
         $.post(gameServices.leaderboard + '/scores?access_token=' + gameServices.accessToken, {
             score: score
-        }).done(callback);
+        }).done(success).fail(fail);
     }
 };
