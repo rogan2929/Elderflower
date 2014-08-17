@@ -199,8 +199,9 @@ img {
 }
 
 .message-overlay .content.long {
-    font-size: 3em;
-    height: 4em;
+    font-size: 2em;
+    line-height: normal;
+    height: 25%;
 }
 
 .float-left {
@@ -301,7 +302,7 @@ iframe.clean {
     overflow: hidden;
 }
 
-.full-page-center {
+.v-center {
     position: relative;
     top: 50%;
     transform: translateY(-50%);
