@@ -165,7 +165,7 @@ var gameView = {
             color = 'color4';
         }
         else {
-            text = 'fail';
+            text = 'no match';
             color = 'color3';
         }
 

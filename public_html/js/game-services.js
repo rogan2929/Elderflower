@@ -7,7 +7,7 @@
 GameServiceTypes = {
     GOOGLE: 0,
     APPLE: 1
-}
+};
 
 /**
  * Wrapper for Google Game Services

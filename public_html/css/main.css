@@ -35,6 +35,15 @@ img {
     color: white;
 }
 
+.tile.large {
+    font-size: 1.5em;
+    padding: 8px;
+}
+
+.fill-horizontal, .fill-vertical {
+    box-sizing: border-box;
+}
+
 .bevel-shadow {
     -webkit-box-shadow: 3px 3px 5px 0px rgba(50, 50, 50, 0.75), inset 0 0 15px 0px rgba(50, 50, 50, 0.75);
     -moz-box-shadow:    3px 3px 5px 0px rgba(50, 50, 50, 0.75), inset 0 0 15px 0px rgba(50, 50, 50, 0.75);
