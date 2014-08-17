@@ -198,6 +198,11 @@ img {
     margin: auto;
 }
 
+.message-overlay .content.long {
+    font-size: 3em;
+    height: 4em;
+}
+
 .float-left {
     float: left;
 }
