@@ -65,38 +65,40 @@ var gameView = {
     },
     /**
      * Loads tiles into the view.
-     * @param {type} gridSize
      * @param {type} tiles
      */
-    loadTiles: function(gridSize, tiles) {
-        var html, i, j, width, tile, color, value, textSize;
-
-        containerWidth = $(window).width();
+    loadTiles: function(tiles) {
+        var i, j, gridSize, width;
+        
+        gridSize = gamePresenter.getGridSize();
+        width = $(window).width() / gridSize - 2 - 8;
 
         $('#tile-container').hide();
 
-        width = containerWidth / gridSize - 2 - 8;
-        textSize = (width / 1.5);
-
-        html = $('#tile-template').html();
-
         for (i = 0; i < gridSize * gridSize; i += gridSize) {
             for (j = 0; j < gridSize; j++) {
-                value = tiles[i + j].getValue();
-                color = tiles[i + j].getColor();
-
-                tile = $(html).width(width).height(width).css('font-size', textSize + 'px').css('line-height', width + 'px').data('index', i + j).addClass(gameView.colors[color - 1]);
-
-                $(tile).text(value);
-
-                $(tile).appendTo('#tile-container');
+                gameView.renderTile(tiles[i + j], '#tile-container', width, i + j);
             }
         }
 
-        $('#tile-container').height(containerWidth + 'px').fadeIn(gameView.FADE_LENGTH, function() {
+        $('#tile-container').height($(window).width() + 'px').fadeIn(gameView.FADE_LENGTH, function() {
             // Re-register event hookups.
             eventBus.installHandler('gamePresenter.onTapTile', gamePresenter.onTapTile, '.game.tile', 'tap');
         });
+    },
+    renderTile: function(tile, container, width, index) {
+        var value, color, html, textSize, tileHtml;
+        
+        value = tile.getValue();
+        color = tile.getColor();
+        
+        textSize = (width / 1.5);
+        
+        html = $('#tile-template').html();
+        
+        tileHtml = $(html).width(width).height(width).css('font-size', textSize + 'px').css('line-height', width + 'px').data('index', index).addClass(gameView.colors[color - 1]);
+
+        $(tileHtml).text(value).appendTo(container);
     },
     /**
      * Display the number of chances that are left.
@@ -120,20 +122,31 @@ var gameView = {
     },
     /**
      * Display the tile that has to be tapped.
-     * @param {type} value
-     * @param {type} color
+     * @param {type} tile
      * @param {type} timeout
      */
-    showMatchTile: function(value, color, timeout) {
+    showMatchTile: function(tile, timeout) {
+        var width, gridSize;
+        
         // Don't do anything if we're supposed to be stopping.
         if (gamePresenter.getStopped()) {
             return;
         }
-
+        
+        gridSize = gamePresenter.getGridSize();
+        width = $(window).width() / gridSize - 2 - 8;
+        
+        $('#match-tile').empty();
+        
+        gameView.renderTile(tile, '#match-tile .content', width, 100);
+        
+        $('#match-tile').fadeIn(gameView.FADE_LENGTH);
+        
+        /*
         // Set match tile's text and color. 
         $('#match-tile .content').removeClass(function(index, css) {
             return (css.match(/\bcolor\S+/g) || []).join(' ');
-        }).text(gameView.values[value - 1]).addClass(gameView.colors[color - 1]).parent().fadeIn(gameView.FADE_LENGTH);
+        }).text(value).addClass(gameView.colors[color - 1]).parent().fadeIn(gameView.FADE_LENGTH);*/
 
         setTimeout(function() {
             $('#match-tile').fadeOut(gameView.FADE_LENGTH);

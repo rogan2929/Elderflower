@@ -79,6 +79,9 @@ var gamePresenter = {
         // Play a neat sound effect.
         soundManager.playSound('woosh', 0.1);
     },
+    getGridSize: function() {
+        return gamePresenter.length;
+    },
     /**
      * Getter for score.
      * @returns {gameData.score|Number}
@@ -136,10 +139,10 @@ var gamePresenter = {
      */
     loadTiles: function() {
         gamePresenter.tiles = tileFactory.generateTiles(gamePresenter.length, gamePresenter.MAX_TILE_SIZE);
-
+        
         // Populate the interface.
         gameView.clearTiles();
-        gameView.loadTiles(gamePresenter.length, gamePresenter.tiles);
+        gameView.loadTiles(gamePresenter.tiles);
     },
     /**
      * The main game loop function.
@@ -213,7 +216,7 @@ var gamePresenter = {
                 return;
             }
 
-            gameView.showMatchTile(value, color, gamePresenter.HINT_LENGTH);
+            gameView.showMatchTile(gamePresenter.matchTile, gamePresenter.HINT_LENGTH);
 
             // Start next iteration. 
             gamePresenter.loopTimeout = setTimeout(gamePresenter.loop, gamePresenter.loopTick);
@@ -236,7 +239,7 @@ var gamePresenter = {
             value = gamePresenter.matchTile.getValue();
             color = gamePresenter.matchTile.getColor();
 
-            gameView.showMatchTile(value, color, gamePresenter.HINT_LENGTH);
+            gameView.showMatchTile(gamePresenter.matchTile, gamePresenter.HINT_LENGTH);
 
             // Start the first iteration.
             gamePresenter.loopTimeout = setTimeout(gamePresenter.loop, gamePresenter.loopTick);
