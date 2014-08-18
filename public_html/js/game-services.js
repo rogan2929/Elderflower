@@ -62,7 +62,7 @@ var gameServices = {
             }).done(function(data) {
                 success.call(gameServices, data);
             }).fail(function(data) {
-                fail.call(gameServices, data.error);
+                fail.call(gameServices, 'Unable to retrieve leaderboard data.');
             });
         }
         else {
@@ -74,7 +74,7 @@ var gameServices = {
                     }).done(function(data) {
                         success.call(gameServices, data);
                     }).fail(function(data) {
-                        fail.call(gameServices, data.error);
+                        fail.call(gameServices, 'Unable to retrieve leaderboard data.');
                     });
                 }, fail);
             }
@@ -157,7 +157,7 @@ var gameServices = {
                     success.call(gameServices);
                 }).fail(function(data) {
                     gameServices.accessToken = null;
-                    fail.call(gameServices, data.error);
+                    fail.call(gameServices, 'Unable to sign in.');
                 });
             } else if (error) {
                 //The user denied access to the app
@@ -252,7 +252,7 @@ var gameServices = {
                         gameServices.submitScoreApple(score, success, fail);
                     }
                 }, function(error) {
-                    fail.call(gameServices, 'Unable to submit score: ' + error);
+                    fail.call(gameServices, 'Unable to submit score.');
                 });
             }
             else {
@@ -278,6 +278,8 @@ var gameServices = {
     submitScoreGoogle: function(score, success, fail) {
         $.post(gameServices.leaderboard + '/scores?access_token=' + gameServices.accessToken, {
             score: score
-        }).done(success).fail(fail);
+        }).done(success).fail(function() {
+            fail.call(gameServices, 'Unable to submit score.');
+        });
     }
 };
