@@ -75,7 +75,7 @@ var gameView = {
 
         $('#tile-container').hide();
 
-        width = containerWidth / gridSize - 2;
+        width = containerWidth / gridSize - 2 - 8;
         textSize = (width / 1.5);
 
         html = $('#tile-template').html();

@@ -30,9 +30,10 @@ img {
 .tile {
     display: inline-block;
     text-shadow: none !important;
-    margin: 0px;
-    border: 1px solid #ccc;
+    margin: 4px;
+    border: 1px solid #ddd;
     color: white;
+    border-radius: 5px;
 }
 
 .tile.large {
