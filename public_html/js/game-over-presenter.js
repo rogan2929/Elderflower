@@ -25,7 +25,9 @@ var gameOverPresenter = {
         // If we know that we are signed in, then submit a score to the leaderboard.
         if (model.getConnectionStatus()) {
             gameServices.submitScore(score, function() {
+                // Success
             }, function(error) {
+                // Fail
                 alert(error);
             }, true);
         }
