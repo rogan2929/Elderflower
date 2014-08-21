@@ -79,6 +79,10 @@ var gamePresenter = {
         // Play a neat sound effect.
         soundManager.playSound('woosh', 0.1);
     },
+    /**
+     * Getter for length.
+     * @returns {Number}
+     */
     getGridSize: function() {
         return gamePresenter.length;
     },
@@ -242,7 +246,7 @@ var gamePresenter = {
             gameView.showMatchTile(gamePresenter.matchTile, gamePresenter.HINT_LENGTH);
 
             // Start the first iteration.
-            gamePresenter.loopTimeout = setTimeout(gamePresenter.loop, gamePresenter.loopTick);
+            //gamePresenter.loopTimeout = setTimeout(gamePresenter.loop, gamePresenter.loopTick);
         }
     },
     /**
@@ -296,7 +300,8 @@ var gamePresenter = {
         setTimeout(function() {
             // Start the game loop. 
             gamePresenter.resetLoop();
-        }, gamePresenter.HINT_LENGTH);
+        //}, gamePresenter.HINT_LENGTH);
+        }, 1000);
     },
     /**
      * onTapTile

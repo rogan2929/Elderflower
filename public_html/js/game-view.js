@@ -86,6 +86,13 @@ var gameView = {
             eventBus.installHandler('gamePresenter.onTapTile', gamePresenter.onTapTile, '.game.tile', 'tap');
         });
     },
+    /**
+     * Render an individual tile.
+     * @param {type} tile
+     * @param {type} container
+     * @param {type} width
+     * @param {type} index
+     */
     renderTile: function(tile, container, width, index) {
         var value, color, html, textSize, tileHtml;
         
